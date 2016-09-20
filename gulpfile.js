@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     nodemon = require('gulp-nodemon');
 
-gulp.task('install', function () {
+gulp.task('bower', function () {
     return bower({
         "cmd": "install",
         "directory": "./public/lib",
@@ -43,23 +43,6 @@ gulp.task('nodemon', function () {
     }).on('restart', function () {
         console.log('restarted!')
     });
-/*   return nodemon({
-       dev: {
-           options: {
-               file: 'server.js',
-               args: [],
-               ignoredFiles: ['README.md', 'node_modules/!**', '.DS_Store'],
-               watchedExtensions: ['js'],
-               watchedFolders: ['app', 'config'],
-               debug: true,
-               delayTime: 1,
-               env: {
-                   PORT: 3000
-               },
-               cwd: __dirname
-           }
-       }
-   });*/
 });
 
 gulp.task('watch', function () {
@@ -75,3 +58,11 @@ gulp.task('watch', function () {
     // css
     gulp.watch(['public/css/**'], ['sass']);
 });
+// Default task(s).
+gulp.task('default', ['jshint', 'nodemon', 'watch', 'sass']);
+
+// Test task
+gulp.task('test',['mochaTest']);
+
+// Bower task
+gulp.task('install',['bower']);
