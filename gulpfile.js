@@ -28,7 +28,7 @@ gulp.task('sass', function(){
 });
 
 gulp.task('jshint', function() {
-    return gulp.src(['gruntfile.js', 'public/js/**/*.js', 'test/**/*.js',
+    return gulp.src(['gulpfile.js', 'public/js/**/*.js', 'test/**/*.js',
         'app/**/*.js'])
         .pipe(jshint())
         .pipe(jshint.reporter('jshint-stylish'));
@@ -41,7 +41,7 @@ gulp.task('nodemon', function () {
         ignore: ['README.md', 'node_modules/!**', '.DS_Store'],
         watch:  ['app', 'config']
     }).on('restart', function () {
-        console.log('restarted!')
+        console.log('restarted!');
     });
 });
 
