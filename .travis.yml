@@ -1,0 +1,8 @@
+language: node_js
+node_js:
+  - "6"
+script:
+  - npm run start
+  - npm run test
+after_success:
+  - npm run postinstall
