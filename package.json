@@ -14,9 +14,7 @@
   },
   "scripts": {
     "test:coverage": "rm -rf coverage/ && karma start --single-run",
-    "start": "node node_modules/grunt-cli/bin/grunt",
     "test": "karma start --reporters kjhtml",
-    "postinstall": "node node_modules/grunt-cli/bin/grunt install",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
