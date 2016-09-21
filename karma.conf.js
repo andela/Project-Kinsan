@@ -3,10 +3,6 @@
 
 module.exports = function(config) {
 
-  if (process.env.TRAVIS) {
-      config.browsers = ['Chrome_travis_ci'];
-  }
-
   config.set({
 
     customLaunchers: {
@@ -87,6 +83,10 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   });
+
+  if (process.env.TRAVIS) {
+    config.browsers = ['Chrome_travis_ci'];
+  }
 };
 
 
