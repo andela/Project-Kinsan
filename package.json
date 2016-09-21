@@ -14,7 +14,7 @@
   },
   "scripts": {
     "test:coverage": "rm -rf coverage/ && karma start --single-run",
-    "test": "karma start --reporters kjhtml",
+    "test": "karma start --single-run",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
