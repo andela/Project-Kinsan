@@ -13,9 +13,11 @@
     "npm": "1.2.x"
   },
   "scripts": {
+    "test:coverage": "rm -rf coverage/ && karma start --single-run",
     "start": "node node_modules/grunt-cli/bin/grunt",
     "test": "karma start --reporters kjhtml",
-    "postinstall": "node node_modules/grunt-cli/bin/grunt install"
+    "postinstall": "node node_modules/grunt-cli/bin/grunt install",
+    "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "dependencies": {
     "express": "~3.4.0",
@@ -45,6 +47,7 @@
     "console-stamp": "~0.1.1"
   },
   "devDependencies": {
+    "coveralls": "^2.11.14",
     "grunt": "~0.4.1",
     "grunt-concurrent": "~0.4.0",
     "grunt-contrib-jshint": "~0.6.4",
@@ -52,6 +55,7 @@
     "grunt-contrib-watch": "~0.5.3",
     "grunt-mocha-test": "~0.7.0",
     "grunt-nodemon": "~0.1.1",
+    "istanbul": "^0.4.5",
     "jasmine-core": "^2.5.2",
     "karma": "^1.3.0",
     "karma-chrome-launcher": "^2.0.0",

@@ -4,7 +4,7 @@
 module.exports = function(config) {
   config.set({
 
-    reporters: ['kjhtml'],
+    reporters: ['kjhtml', 'progress', 'coverage'],
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
@@ -33,6 +33,11 @@ module.exports = function(config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
       './src/app/**/*.js': ['coverage']
+    },
+
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/'
     },
 
 
