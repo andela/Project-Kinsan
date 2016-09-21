@@ -24,7 +24,9 @@ module.exports = function(config) {
       'public/lib/angular-resource/angular-resource.js',
       'public/lib/angular-mocks/angular-mocks.js',
       './src/app/**/*.js',
-      './src/test/**/*.js'
+      './src/app/*.js',
+      './src/test/**/*.js',
+      './src/test/*.js'
     ],
 
 
