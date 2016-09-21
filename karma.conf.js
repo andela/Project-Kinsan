@@ -1,7 +1,3 @@
-// Karma configuration
-// Generated on Tue Sep 20 2016 11:36:14 GMT+0100
-// (W. Central Africa Standard Time)
-
 module.exports = function(config) {
     config.set({
     reporters: ['kjhtml', 'progress', 'coverage'],
@@ -11,16 +7,16 @@ module.exports = function(config) {
 
         // frameworks to use
         // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ["jasmine"],
+        frameworks: ['jasmine'],
 
 
         // list of files / patterns to load in the browser
         files: [
-            "bower_components/angular/angular.js",
-            "bower_components/angular-resource/angular-resource.js",
-            "bower_components/angular-mocks/angular-mocks.js",
-            "./src/app/**/*.js",
-            "./src/test/**/*.js"
+          'bower_components/angular/angular.js',
+          'bower_components/angular-resource/angular-resource.js',
+          'bower_components/angular-mocks/angular-mocks.js',
+          './src/app/**/*.js',
+          './src/test/**/*.js'
         ],
 
 
@@ -30,22 +26,27 @@ module.exports = function(config) {
 
 
         // preprocess matching files before serving them to the browser
-        // available preprocessors:
-        // https://npmjs.org/browse/keyword/karma-preprocessor
+        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            "./src/app/**/*.js": ["coverage"]
+          './src/app/**/*.js': ['coverage']
         },
 
-    coverageReporter: {
-      type : 'lcov',
-      dir : 'coverage/'
-    },
+        coverageReporter: {
+          type : 'lcov',
+          dir : 'coverage/'
+        },
 
 
         // test results reporter to use
-        // possible values: "dots", "progress"
+        // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
 
+    customLaunchers: {
+        Chrome_travis_ci: {
+            base: 'Chrome',
+            flags: ['--no-sandbox']
+        }
+    },
 
         // web server port
         port: 9876,
@@ -56,20 +57,17 @@ module.exports = function(config) {
 
 
         // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR
-        //|| config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
         logLevel: config.LOG_INFO,
 
 
-        // enable / disable watching file and
-        // executing tests whenever any file changes
+        // enable / disable watching file and executing tests whenever any file changes
         autoWatch: true,
 
 
         // start these browsers
-        // available browser launchers:
-        // https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ["Chrome"],
+        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+        browsers: ['Chrome'],
 
 
         // Continuous Integration mode
@@ -80,4 +78,11 @@ module.exports = function(config) {
         // how many browser should be started simultaneous
         concurrency: Infinity
     });
+
+    if (process.env.TRAVIS) {
+    configuration.browsers = ['Chrome_travis_ci'];
+}
 };
+
+
+
