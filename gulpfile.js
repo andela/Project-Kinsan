@@ -1,8 +1,8 @@
 var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     bower = require('gulp-bower'),
-    mocha = require('gulp-mocha'),
     sass = require("gulp-sass"),
+    karma = require('karma').Server,
     jshint = require('gulp-jshint'),
     nodemon = require('gulp-nodemon');
 
@@ -14,11 +14,11 @@ gulp.task('bower', function () {
     });
 });
 
-gulp.task('mochaTest', function () {
-   return gulp.src('test/**/*.js')
-       .pipe(mocha({
-           "reporter" : "spec"
-       }));
+gulp.task('karma',function (done) {
+   return new karma({
+       configFile: __dirname + '/karma.conf.js',
+       singleRun: process.env.TRAVIS ? true : false
+   }, done).start();
 });
 
 gulp.task('sass', function(){
@@ -62,7 +62,7 @@ gulp.task('watch', function () {
 gulp.task('default', ['jshint', 'nodemon', 'watch', 'sass']);
 
 // Test task
-gulp.task('test',['mochaTest']);
+gulp.task('test',['karma']);
 
 // Bower task
 gulp.task('install',['bower']);
