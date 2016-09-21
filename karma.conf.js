@@ -1,9 +1,5 @@
 module.exports = function(config) {
 
-  if (process.env.TRAVIS) {
-      config.browsers = ['Chrome_travis_ci'];
-  }
-
   config.set({
 
     customLaunchers: {
@@ -87,6 +83,14 @@ module.exports = function(config) {
     // how many browser should be started simultaneous
     concurrency: Infinity
   });
+<<<<<<< 07eee20cd51a03e59274a31aa821d47200a189ba
+=======
+
+  if (process.env.TRAVIS) {
+    config.browsers = ['Chrome_travis_ci'];
+  }
+};
+>>>>>>> chore(coveralls-coverage): modify karma.conf
 
   if (process.env.TRAVIS) {
       configuration.browsers = ['Chrome_travis_ci'];
