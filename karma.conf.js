@@ -1,6 +1,17 @@
 module.exports = function(config) {
+
+  if (process.env.TRAVIS) {
+      config.browsers = ['Chrome_travis_ci'];
+  }
+
   config.set({
 
+    customLaunchers: {
+        Chrome_travis_ci: {
+            base: 'Chrome',
+            flags: ['--no-sandbox']
+        }
+    },
     reporters: ['kjhtml', 'progress', 'coverage'],
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
@@ -62,12 +73,6 @@ module.exports = function(config) {
     // enable / disable watching file and executing tests whenever any file changes
     autoWatch: true,
 
-    customLaunchers: {
-        Chrome_travis_ci: {
-            base: 'Chrome',
-            flags: ['--no-sandbox']
-        }
-    },
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
