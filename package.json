@@ -15,7 +15,7 @@
   "scripts": {
     "test:coverage": "rm -rf coverage/ && karma start --single-run",
     "test": "karma start --single-run",
-    "coveralls": "cat ./coverage//Chrome 53.0.2785 (Linux 0.0.0)/lcov.info | coveralls"
+    "coveralls": "cat ./coverage/Chrome 53.0.2785 (Linux 0.0.0)/lcov.info | coveralls"
   },
   "dependencies": {
     "express": "~3.4.0",
