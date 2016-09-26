@@ -1,16 +1,16 @@
 var gulp = require('gulp'),
     livereload = require('gulp-livereload'),
     bower = require('gulp-bower'),
-    sass = require("gulp-sass"),
+    sass = require('gulp-sass'),
     karma = require('karma').Server,
     jshint = require('gulp-jshint'),
     nodemon = require('gulp-nodemon');
 
 gulp.task('bower', function () {
     return bower({
-        "cmd": "install",
-        "directory": "./public/lib",
-        "verbosity": 2
+        'cmd': 'install',
+        'directory': './public/lib',
+        'verbosity': 2
     });
 });
 
@@ -36,8 +36,8 @@ gulp.task('jshint', function() {
 
 gulp.task('nodemon', function () {
     nodemon({
-        script : "server.js",
-        ext : "js",
+        script : 'server.js',
+        ext : 'js',
         ignore: ['README.md', 'node_modules/!**', '.DS_Store'],
         watch:  ['app', 'config']
     }).on('restart', function () {
