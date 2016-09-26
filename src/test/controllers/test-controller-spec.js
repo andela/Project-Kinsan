@@ -1,6 +1,6 @@
 describe('TestController', function() {
   var $rootScope,
-      $scope,
+    $scope,
       controller;
 
   beforeEach(function() {
