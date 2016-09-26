@@ -2,11 +2,11 @@
  * Module dependencies.
  */
 var express = require('express'),
-    fs = require('fs'),
-    passport = require('passport'),
-    logger = require('mean-logger'),
-    dotenv = require('dotenv'),
-    io = require('socket.io');
+  fs = require('fs'),
+  passport = require('passport'),
+  logger = require('mean-logger'),
+  dotenv = require('dotenv'),
+  io = require('socket.io');
 
 /**
  * Main application entry file.
@@ -16,11 +16,10 @@ dotenv.config();
 //Load configurations
 //if test env, load example file
 process.env.NODE_ENV = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
-var
-    env = process.env.NODE_ENV,
-    config = require('./config/config'),
-    auth = require('./config/middlewares/authorization'),
-    mongoose = require('mongoose');
+var env = process.env.NODE_ENV,
+  config = require('./config/config'),
+  auth = require('./config/middlewares/authorization'),
+  mongoose = require('mongoose');
 
 //Bootstrap db connection
 var db = mongoose.connect(config.db);
@@ -28,17 +27,17 @@ var db = mongoose.connect(config.db);
 //Bootstrap models
 var models_path = __dirname + '/app/models';
 var walk = function(path) {
-    fs.readdirSync(path).forEach(function(file) {
-        var newPath = path + '/' + file;
-        var stat = fs.statSync(newPath);
-        if (stat.isFile()) {
-            if (/(.*)\.(js|coffee)/.test(file)) {
-                require(newPath);
-            }
-        } else if (stat.isDirectory()) {
-            walk(newPath);
-        }
-    });
+  fs.readdirSync(path).forEach(function(file) {
+    var newPath = path + '/' + file;
+    var stat = fs.statSync(newPath);
+    if (stat.isFile()) {
+      if (/(.*)\.(js|coffee)/.test(file)) {
+        require(newPath);
+      }
+    } else if (stat.isDirectory()) {
+      walk(newPath);
+    }
+  });
 };
 walk(models_path);
 
@@ -48,7 +47,7 @@ require('./config/passport')(passport);
 var app = express();
 
 app.use(function(req, res, next){
-    next();
+  next();
 });
 
 //express settings

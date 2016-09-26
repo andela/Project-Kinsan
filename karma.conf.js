@@ -1,79 +1,92 @@
-// Karma configuration
-// Generated on Tue Sep 20 2016 11:36:14 GMT+0100
-// (W. Central Africa Standard Time)
-
 module.exports = function(config) {
-    config.set({
 
-        reporters: ["kjhtml"],
-        // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: "",
+  config.set({
 
-
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ["jasmine"],
-
-
-        // list of files / patterns to load in the browser
-        files: [
-            "bower_components/angular/angular.js",
-            "bower_components/angular-resource/angular-resource.js",
-            "bower_components/angular-mocks/angular-mocks.js",
-            "./src/app/**/*.js",
-            "./src/test/**/*.js"
-        ],
+    customLaunchers: {
+      Chrome_travis_ci: {
+        base: 'Chrome',
+        flags: ['--no-sandbox']
+      }
+    },
+    reporters: ['progress', 'coverage', 'kjhtml'],
+    // base path that will be used to resolve all patterns (eg. files, exclude)
+    basePath: '',
 
 
-        // list of files to exclude
-        exclude: [
-        ],
+    // frameworks to use
+    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+    frameworks: ['jasmine'],
 
 
-        // preprocess matching files before serving them to the browser
-        // available preprocessors:
-        // https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {
-            "./src/app/**/*.js": ["coverage"]
-        },
+    // list of files / patterns to load in the browser
+    files: [
+      'public/lib/angular/angular.js',
+      'public/lib/angular-resource/angular-resource.js',
+      'public/lib/angular-mocks/angular-mocks.js',
+      './src/app/**/*.js',
+      './src/app/*.js',
+      './src/test/**/*.js',
+      './src/test/*.js'
+    ],
 
 
-        // test results reporter to use
-        // possible values: "dots", "progress"
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    // list of files to exclude
+    exclude: [
+    ],
+
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: {
+      './src/app/**/*.js': ['coverage']
+    },
+
+    coverageReporter: {
+      type : 'lcov',
+      dir : 'coverage/'
+    },
 
 
-        // web server port
-        port: 9876,
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
 
 
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
+    // web server port
+    port: 9876,
 
 
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR
-        //|| config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+    // enable / disable colors in the output (reporters and logs)
+    colors: true,
 
 
-        // enable / disable watching file and
-        // executing tests whenever any file changes
-        autoWatch: true,
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
 
 
-        // start these browsers
-        // available browser launchers:
-        // https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ["Chrome"],
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: true,
 
 
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun: false,
+    // start these browsers
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: ['Chrome'],
 
-        // Concurrency level
-        // how many browser should be started simultaneous
-        concurrency: Infinity
-    });
+
+    // Continuous Integration mode
+    // if true, Karma captures browsers, runs the tests and exits
+    singleRun: false,
+
+    // Concurrency level
+    // how many browser should be started simultaneous
+    concurrency: Infinity
+  });
+
+  if (process.env.TRAVIS) {
+    config.browsers = ['Chrome_travis_ci'];
+  }
 };
