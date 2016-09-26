@@ -5,16 +5,19 @@ var express = require('express'),
     fs = require('fs'),
     passport = require('passport'),
     logger = require('mean-logger'),
+    dotenv = require('dotenv'),
     io = require('socket.io');
 
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
  */
-
+dotenv.config();
 //Load configurations
 //if test env, load example file
-var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development',
+process.env.NODE_ENV = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
+var
+    env = process.env.NODE_ENV,
     config = require('./config/config'),
     auth = require('./config/middlewares/authorization'),
     mongoose = require('mongoose');
