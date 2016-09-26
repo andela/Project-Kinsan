@@ -17,8 +17,8 @@ gulp.task('bower', function () {
 gulp.task('karma',function (done) {
   return new karma({
     configFile: __dirname + '/karma.conf.js',
-      singleRun: process.env.TRAVIS ? true : false
-      }, done).start();
+    singleRun: process.env.TRAVIS ? true : false
+  }, done).start();
 });
 
 gulp.task('sass', function(){
