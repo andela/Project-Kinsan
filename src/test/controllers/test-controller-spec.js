@@ -11,7 +11,7 @@ describe('TestController', function() {
       $scope = $rootScope.$new();
       $scope.controller = $injector.get('$controller')('TestController',
         {$scope: $scope});
-      });
+    });
   });
 
   describe('Initial time', function() {
