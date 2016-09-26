@@ -10,7 +10,7 @@ describe('TestController', function() {
         $rootScope = $injector.get('$rootScope');
         $scope = $rootScope.$new();
         $scope.controller = $injector.get('$controller')('TestController',
-            {$scope: $scope});
+          {$scope: $scope});
         });
     });
 
