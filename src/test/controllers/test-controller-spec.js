@@ -1,7 +1,7 @@
-describe("TestController", function() {
-    var $rootScope,
-        $scope,
-        controller;
+describe('TestController', function() {
+  var $rootScope,
+    $scope,
+      controller;
 
     beforeEach(function() {
         module("test");
