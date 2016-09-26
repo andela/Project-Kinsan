@@ -9,9 +9,9 @@ var gulp = require('gulp'),
 gulp.task('bower', function () {
   return bower({
     'cmd': 'install',
-      'directory': './public/lib',
-      'verbosity': 2
-    });
+    'directory': './public/lib',
+    'verbosity': 2
+  });
 });
 
 gulp.task('karma',function (done) {
