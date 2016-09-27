@@ -21,7 +21,7 @@ let auth = {
           message: 'Authentication failed. User not found.'
         });
       } else if (user) {
-        if (user.password !== req.body.password) {
+        if (!user.authenticate(req.body.password)) {
           res.json({
             success: false,
             message: 'Authentication failed. Wrong password.'
