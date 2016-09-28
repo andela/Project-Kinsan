@@ -15,18 +15,20 @@ let auth = {
       if(err) {
         res.send(err);
       }
+      // If user does not exist
       if (!user) {
         res.json({
           success: false,
           message: 'Authentication failed. User not found.'
         });
       } else if (user) {
+        // If user exists but password is wrong 
         if (!user.authenticate(req.body.password)) {
           res.json({
             success: false,
             message: 'Authentication failed. Wrong password.'
           });
-        } else {
+        } else {  // If everything checks out
           let token = jwt.sign(user, config.secret, {
             expiresIn: '24h'
           });

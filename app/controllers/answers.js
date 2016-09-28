@@ -46,9 +46,7 @@ exports.all = function(req, res) {
  */
 exports.allAnswersForGame = function(cb) {
   Answer.find({official:true}).select('-_id').exec(function(err, answers) {
-    if (err) {
-      console.log(err);
-    } else {
+    if (!err) {
       cb(answers);
     }
   });

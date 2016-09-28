@@ -44,9 +44,7 @@ exports.all = function(req, res) {
  */
 exports.allQuestionsForGame = function(cb) {
   Question.find({official:true, numAnswers: {$lt : 3}}).select('-_id').exec(function(err, questions) {
-    if (err) {
-      console.log(err);
-    } else {
+    if (!err) {
       cb(questions);
     }
   });

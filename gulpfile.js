@@ -41,7 +41,7 @@ gulp.task('nodemon', function () {
     ignore: ['README.md', 'node_modules/!**', '.DS_Store'],
     watch:  ['app', 'config']
   }).on('restart', function () {
-    console.log('restarted!');
+    //console.log('restarted!');
   });
 });
 

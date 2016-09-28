@@ -1,7 +1,7 @@
 module.exports = function(app, passport, auth) {
     //User Routes
-  var users = require('../app/controllers/users');
-  let autho = require('../app/controllers/auth');
+  let users = require('../app/controllers/users');
+  let authorize = require('../app/controllers/auth');
 
   app.get('/signin', users.signin);
   app.get('/signup', users.signup);
@@ -91,5 +91,5 @@ module.exports = function(app, passport, auth) {
   app.get('/', index.render);
 
     // Setting up new login route
-  app.post('/api/auth/login', autho.login);
+  app.post('/api/auth/login', authorize.login);
 };
