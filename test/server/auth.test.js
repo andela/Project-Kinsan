@@ -2,10 +2,10 @@ process.env.NODE_ENV = 'development';
 
 const chai = require('chai');
 const chai_http = require('chai-http');
-const mongoose = require('mongoose');
 
 const server = require('./../../server');
 const User = require('./../../app/models/user');
+// eslint-disable-next-line
 const should = chai.should();
 
 chai.use(chai_http);
@@ -15,13 +15,47 @@ describe('Authentication', function() {
     let user = new User();
     user.username = 'user';
     user.password = 'password';
-    user.save((err) => {
+    user.save(() => {
       done();
     });
   });
 
   describe('Login', function() {
-    it('should return an error on unsuccessful login', function(done) {
+    it('should return an error on wrong username and password login', function(done) {
+      let user = {
+        username : 'user1',
+        password : 'passwor'
+      };
+
+      chai.request(server)
+      .post('/api/auth/login')
+      .send(user)
+      .end((err, res) => {
+        res.body.should.be.a('object');
+        res.body.should.have.property('message');
+        res.body.should.have.property('message').eql('Authentication failed. User not found.');
+        done();
+      });
+    });
+
+    it('should return an error on wrong username login', function(done) {
+      let user = {
+        username : 'user1',
+        password : 'password'
+      };
+
+      chai.request(server)
+      .post('/api/auth/login')
+      .send(user)
+      .end((err, res) => {
+        res.body.should.be.a('object');
+        res.body.should.have.property('message');
+        res.body.should.have.property('message').eql('Authentication failed. User not found.');
+        done();
+      });
+    });
+
+    it('should return an error on wrong password login', function(done) {
       let user = {
         username : 'user',
         password : 'passwor'
