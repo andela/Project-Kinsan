@@ -50,7 +50,7 @@ gulp.task('watch', function () {
   // jade
   gulp.watch(['app/views/**']);
   // js
-  gulp.watch(['public/js/**', 'app/**/*.js'], ['jshint']);
+  gulp.watch(['public/js/**', 'app/**/*.js'], ['eslint']);
   // html
   gulp.watch(['public/views/**']);
   // sass
@@ -60,7 +60,7 @@ gulp.task('watch', function () {
 });
 
 // Default task(s).
-gulp.task('default', ['jshint', 'nodemon', 'watch', 'sass']);
+gulp.task('default', ['eslint', 'nodemon', 'watch', 'sass']);
 
 // Test task
 gulp.task('test',['karma']);
