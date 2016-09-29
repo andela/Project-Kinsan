@@ -15,10 +15,10 @@
           'x-access-token': token
         }}, function (err) {
         if (err) {
-          throw err;
+          throw err;   
         }
         done();
-      });
+     });
     });
 
     it('should connect', function (done) {
