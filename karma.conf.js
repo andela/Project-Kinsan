@@ -25,8 +25,11 @@ module.exports = function(config) {
       'public/lib/angular-mocks/angular-mocks.js',
       './src/app/**/*.js',
       './src/app/*.js',
+      'public/js/controllers/history.ctr.js',
+      'public/js/services/history.fac.js',
       './src/test/**/*.js',
-      './src/test/*.js'
+      './src/test/*.js',
+      'test/app/*.test.js'
     ],
 
 
