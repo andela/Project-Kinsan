@@ -3,4 +3,6 @@ public/lib
 .sass-cache/
 .DS_store
 c4h_keys.txt
+.idea/
 bower_components
+/coverage
