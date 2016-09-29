@@ -1,5 +1,6 @@
 var async = require('async');
 
+
 module.exports = function(app, passport, auth) {
     //User Routes
     var users = require('../app/controllers/users');
@@ -89,5 +90,9 @@ module.exports = function(app, passport, auth) {
     var index = require('../app/controllers/index');
     app.get('/play', index.play);
     app.get('/', index.render);
+
+    var authorize = require('../app/controllers/auth');
+    app.post('/api/auth/signup', authorize.signup);
+    app.delete('/api/auth/signup', authorize.delete);
 
 };
