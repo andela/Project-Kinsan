@@ -13,12 +13,12 @@
         headers: {
           'Content-Type': 'application/json',
           'x-access-token': token
-      }}, function (err) {
-      if (err) {
-        throw err;
-      }
-      done();
-      });
+        }}, function (err) {
+        if (err) {
+          throw err;
+        }
+        done();
+       });
     });
 
     it('should connect', function (done) {
