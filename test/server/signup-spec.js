@@ -8,14 +8,16 @@
     var url = 'http://localhost:3000/api/auth/signup';
 
     before( function (done) {
-      request({url:url, method: "DELETE", json: {
+      request({url:url, method: 'DELETE', json: {
         name: 'freshclean1'},
         headers: {
           'Content-Type': 'application/json',
           'x-access-token': token
-        }}, function (err, res) {
-          //Do nothing
-          done();
+        }}, function (err) {
+        if (err) {
+          throw err;
+        }
+        done();
         });
     });
 
@@ -24,7 +26,10 @@
         headers: {
           'Content-Type': 'application/json',
           'x-access-token': token
-        }}, function (err, res, body) {
+        }}, function (err, res) {
+          if (err) {
+            throw err;
+          }
         expect(res.statusCode).to.equal(200);
         done();
       });
@@ -40,6 +45,9 @@
           'Content-Type': 'application/json',
           'x-access-token': token
         }}, function (err, res, body) {
+          if (err) {
+            throw err;
+          }
         expect(body.message).to.equal('Signup details are incomplete');
         done();
       });
@@ -55,6 +63,9 @@
           'Content-Type': 'application/json',
           'x-access-token': token
         }}, function (err, res, body) {
+          if (err) {
+            throw err;
+          }
         expect(body.message).to.equal('User already exists.');
         done();
       });
@@ -70,6 +81,9 @@
           'Content-Type': 'application/json',
           'x-access-token': token
         }}, function (err, res, body) {
+          if (err) {
+            throw err;
+          }
         expect(body.message).to.equal('You have successfully signed up');
         expect(typeof body.token).to.equal('string');
         done();

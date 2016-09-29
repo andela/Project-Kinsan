@@ -91,8 +91,8 @@ module.exports = function(app, passport, auth) {
     app.get('/play', index.play);
     app.get('/', index.render);
 
-    var authorize = require('../app/controllers/auth');
-    app.post('/api/auth/signup', authorize.signup);
-    app.delete('/api/auth/signup', authorize.delete);
+  var authorize = require('../app/controllers/auth');
+  app.post('/api/auth/signup', authorize.signup);
+  app.delete('/api/auth/signup', authorize.delete);
 
 };

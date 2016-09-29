@@ -6,5 +6,5 @@ module.exports = {
 	root: rootPath,
 	port: process.env.PORT || 3000,
     db: process.env.MONGOHQ_URL,
-	secret: process.env.SECRET
+  secret: process.env.SECRET
 };
