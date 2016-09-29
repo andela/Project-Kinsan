@@ -87,12 +87,20 @@ module.exports = function(app, passport) {
   app.get('/avatars', avatars.allJSON);
 
     //Home route
+<<<<<<< eeb1f2c5e8624aa3008a41cb2aea2b512a57bda1
   var index = require('../app/controllers/index');
   app.get('/play', index.play);
   app.get('/', index.render);
 
     // Setting up new login route
   app.post('/api/auth/login', authorize.login);
+=======
+    var index = require('../app/controllers/index');
+    app.get('/play', index.play);
+    app.get('/', index.render);
+
+  var authorize = require('../app/controllers/auth');
+>>>>>>> feature(signup): signup-with-jwt
   app.post('/api/auth/signup', authorize.signup);
   app.delete('/api/auth/signup', authorize.delete);
 
