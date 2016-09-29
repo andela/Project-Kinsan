@@ -27,9 +27,9 @@
           'Content-Type': 'application/json',
           'x-access-token': token
         }}, function (err, res) {
-          if (err) {
-            throw err;
-          }
+        if (err) {
+          throw err;
+        }
         expect(res.statusCode).to.equal(200);
         done();
       });
@@ -45,9 +45,9 @@
           'Content-Type': 'application/json',
           'x-access-token': token
         }}, function (err, res, body) {
-          if (err) {
-            throw err;
-          }
+        if (err) {
+          throw err;
+        }
         expect(body.message).to.equal('Signup details are incomplete');
         done();
       });
@@ -63,9 +63,9 @@
           'Content-Type': 'application/json',
           'x-access-token': token
         }}, function (err, res, body) {
-          if (err) {
-            throw err;
-          }
+        if (err) {
+          throw err;
+        }
         expect(body.message).to.equal('User already exists.');
         done();
       });
@@ -81,9 +81,9 @@
           'Content-Type': 'application/json',
           'x-access-token': token
         }}, function (err, res, body) {
-          if (err) {
-            throw err;
-          }
+        if (err) {
+          throw err;
+        }
         expect(body.message).to.equal('You have successfully signed up');
         expect(typeof body.token).to.equal('string');
         done();
