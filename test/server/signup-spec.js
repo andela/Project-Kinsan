@@ -18,7 +18,7 @@
           throw err;
         }
         done();
-       });
+      });
     });
 
     it('should connect', function (done) {
