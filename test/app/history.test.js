@@ -7,21 +7,21 @@
 // TODO: add a test that tests that the service returns a message when the resource doesn't exist
 
 describe('History factory', function() {
-  let History;
+  let HistoryFac;
 
   // before each test load the angular module
   beforeEach(
-    angular.mock.module('mean')
+    angular.mock.module('services.History')
   );
 
   // Set our injected History service (_Users_) to our local History variable
-  beforeEach(inject(function(_History_){
-    History = _History_;
+  beforeEach(inject(function(_HistoryFac_){
+    HistoryFac = _HistoryFac_;
   }));
 
   // A simple test to verify the History service exists
   it('should exist', function() {
-    expect(History).toBeDefined();
+    expect(HistoryFac).toBeDefined();
   });
 
 });
