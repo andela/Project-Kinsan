@@ -30,7 +30,7 @@
 
             var token = jwt.sign(user, config.secret, {expiresIn: 60*60*24});
 
-            res.json({successful: true, message: "You have successfully signed up", token: token});
+            res.json({successful: true, message: 'You have successfully signed up', token: token});
 
           });
         } else {
