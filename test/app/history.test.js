@@ -24,4 +24,8 @@ describe('History factory', function() {
     expect(HistoryFac).toBeDefined();
   });
 
+  it('should expect getHistory() to be defined', function() {
+    expect(typeof HistoryFac.getHistory).toBe('function');
+  });
+
 });
