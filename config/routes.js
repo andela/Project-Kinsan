@@ -90,6 +90,11 @@ module.exports = function(app, passport, auth) {
   app.get('/play', index.play);
   app.get('/', index.render);
 
-    // Setting up new login route
+   // Setting up new login route
   app.post('/api/auth/login', authorize.login);
+
+  //history routes
+  var history = require('../app/controllers/history');
+  app.get('/api/users/:id/history', history.userHistory);
+  app.post('/api/history', history.saveGameHistory);
 };
