@@ -2,7 +2,9 @@
     "env": {
         "node": true,
         "es6": true,
-        "jasmine": true
+        "jasmine": true,
+        "mocha": true,
+        "jquery": true
     },
     "extends": "eslint:recommended",
     "rules": {
@@ -25,5 +27,10 @@
     "parserOptions": {
         "ecmaVersion" : 6,
         "sourceType": "script"
+    },
+    "globals": {
+        "should": true,
+        "angular": true,
+        "inject": true
     }
 }

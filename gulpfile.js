@@ -3,7 +3,7 @@ var gulp = require('gulp'),
   bower = require('gulp-bower'),
   sass = require('gulp-sass'),
   karma = require('karma').Server,
-  jshint = require('gulp-jshint'),
+  eslint = require('gulp-eslint'),
   nodemon = require('gulp-nodemon');
 
 gulp.task('bower', function () {
@@ -27,11 +27,11 @@ gulp.task('sass', function(){
     .pipe(gulp.dest('public/css/'));
 });
 
-gulp.task('jshint', function() {
+gulp.task('eslint', function() {
   return gulp.src(['gulpfile.js', 'public/js/**/*.js', 'test/**/*.js',
     'app/**/*.js'])
-    .pipe(jshint())
-    .pipe(jshint.reporter('jshint-stylish'));
+    .pipe(eslint())
+    .pipe(eslint.format());
 });
 
 gulp.task('nodemon', function () {
@@ -41,7 +41,7 @@ gulp.task('nodemon', function () {
     ignore: ['README.md', 'node_modules/!**', '.DS_Store'],
     watch:  ['app', 'config']
   }).on('restart', function () {
-    console.log('restarted!');
+    //console.log('restarted!');
   });
 });
 
@@ -50,7 +50,7 @@ gulp.task('watch', function () {
   // jade
   gulp.watch(['app/views/**']);
   // js
-  gulp.watch(['public/js/**', 'app/**/*.js'], ['jshint']);
+  gulp.watch(['public/js/**', 'app/**/*.js'], ['eslint']);
   // html
   gulp.watch(['public/views/**']);
   // sass
@@ -60,7 +60,7 @@ gulp.task('watch', function () {
 });
 
 // Default task(s).
-gulp.task('default', ['jshint', 'nodemon', 'watch', 'sass']);
+gulp.task('default', ['eslint', 'nodemon', 'watch', 'sass']);
 
 // Test task
 gulp.task('test',['karma']);

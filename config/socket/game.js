@@ -3,18 +3,18 @@ var _ = require('underscore');
 var questions = require(__dirname + '/../../app/controllers/questions.js');
 var answers = require(__dirname + '/../../app/controllers/answers.js');
 var guestNames = [
-  "Disco Potato",
-  "Silver Blister",
-  "Insulated Mustard",
-  "Funeral Flapjack",
-  "Toenail",
-  "Urgent Drip",
-  "Raging Bagel",
-  "Aggressive Pie",
-  "Loving Spoon",
-  "Swollen Node",
-  "The Spleen",
-  "Dingle Dangle"
+  'Disco Potato',
+  'Silver Blister',
+  'Insulated Mustard',
+  'Funeral Flapjack',
+  'Toenail',
+  'Urgent Drip',
+  'Raging Bagel',
+  'Aggressive Pie',
+  'Loving Spoon',
+  'Swollen Node',
+  'The Spleen',
+  'Dingle Dangle'
 ];
 
 function Game(gameID, io) {
@@ -29,7 +29,7 @@ function Game(gameID, io) {
   this.playerMinLimit = 3;
   this.playerMaxLimit = 6;
   this.pointLimit = 5;
-  this.state = "awaiting players";
+  this.state = 'awaiting players';
   this.round = 0;
   this.questions = null;
   this.answers = null;
@@ -106,7 +106,7 @@ Game.prototype.assignGuestNames = function() {
 };
 
 Game.prototype.prepareGame = function() {
-  this.state = "game in progress";
+  this.state = 'game in progress';
 
   this.io.sockets.in(this.gameID).emit('prepareGame',
     {
@@ -120,7 +120,7 @@ Game.prototype.prepareGame = function() {
   async.parallel([
     this.getQuestions,
     this.getAnswers
-    ],
+  ],
     function(err, results){
       if (err) {
         console.log(err);
@@ -144,7 +144,7 @@ Game.prototype.sendUpdate = function() {
 };
 
 Game.prototype.stateChoosing = function(self) {
-  self.state = "waiting for players to pick";
+  self.state = 'waiting for players to pick';
   // console.log(self.gameID,self.state);
   self.table = [];
   self.winningCard = -1;
@@ -186,7 +186,7 @@ Game.prototype.selectFirst = function() {
 };
 
 Game.prototype.stateJudging = function(self) {
-  self.state = "waiting for czar to decide";
+  self.state = 'waiting for czar to decide';
   // console.log(self.gameID,self.state);
 
   if (self.table.length <= 1) {
@@ -202,7 +202,7 @@ Game.prototype.stateJudging = function(self) {
 };
 
 Game.prototype.stateResults = function(self) {
-  self.state = "winner has been chosen";
+  self.state = 'winner has been chosen';
   console.log(self.state);
   // TODO: do stuff
   var winner = -1;
@@ -222,13 +222,13 @@ Game.prototype.stateResults = function(self) {
 };
 
 Game.prototype.stateEndGame = function(winner) {
-  this.state = "game ended";
+  this.state = 'game ended';
   this.gameWinner = winner;
   this.sendUpdate();
 };
 
 Game.prototype.stateDissolveGame = function() {
-  this.state = "game dissolved";
+  this.state = 'game dissolved';
   this.sendUpdate();
 };
 
@@ -286,7 +286,7 @@ Game.prototype._findPlayerIndexBySocket = function(thisPlayer) {
 
 Game.prototype.pickCards = function(thisCardArray, thisPlayer) {
   // Only accept cards when we expect players to pick a card
-  if (this.state === "waiting for players to pick") {
+  if (this.state === 'waiting for players to pick') {
     // Find the player's position in the players array
     var playerIndex = this._findPlayerIndexBySocket(thisPlayer);
     console.log('player is at index',playerIndex);
@@ -360,7 +360,7 @@ Game.prototype.removePlayer = function(thisPlayer) {
     // Remove player from this.players
     this.players.splice(playerIndex,1);
 
-    if (this.state === "awaiting players") {
+    if (this.state === 'awaiting players') {
       this.assignPlayerColors();
     }
 
@@ -368,11 +368,11 @@ Game.prototype.removePlayer = function(thisPlayer) {
     if (this.czar === playerIndex) {
       // If the player is the czar...
       // If players are currently picking a card, advance to a new round.
-      if (this.state === "waiting for players to pick") {
+      if (this.state === 'waiting for players to pick') {
         clearTimeout(this.choosingTimeout);
         this.sendNotification('The Czar left the game! Starting a new round.');
         return this.stateChoosing(this);
-      } else if (this.state === "waiting for czar to decide") {
+      } else if (this.state === 'waiting for czar to decide') {
         // If players are waiting on a czar to pick, auto pick.
         this.sendNotification('The Czar left the game! First answer submitted wins!');
         this.pickWinning(this.table[0].card[0].id, thisPlayer, true);
@@ -392,7 +392,7 @@ Game.prototype.removePlayer = function(thisPlayer) {
 Game.prototype.pickWinning = function(thisCard, thisPlayer, autopicked) {
   autopicked = autopicked || false;
   var playerIndex = this._findPlayerIndexBySocket(thisPlayer);
-  if ((playerIndex === this.czar || autopicked) && this.state === "waiting for czar to decide") {
+  if ((playerIndex === this.czar || autopicked) && this.state === 'waiting for czar to decide') {
     var cardIndex = -1;
     _.each(this.table, function(winningSet, index) {
       if (winningSet.card[0].id === thisCard) {
