@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> abf11c98cfb710c69c161d584e99763054d94957
 module.exports = function(app, passport) {
     //User Routes
   let users = require('../app/controllers/users');

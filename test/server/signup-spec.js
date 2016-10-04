@@ -1,9 +1,17 @@
 'use strict';
+<<<<<<< HEAD
 var expect = require('chai').expect;
 var request = require('request');
 
 describe('Signup', function () {
   var url = 'http://localhost:3000/api/auth/signup';
+=======
+let expect = require('chai').expect;
+let request = require('request');
+
+describe('Signup', function () {
+  let url = 'http://localhost:3000/api/auth/signup';
+>>>>>>> abf11c98cfb710c69c161d584e99763054d94957
 
   before( function (done) {
     request({url:url, method: 'DELETE', json: {
