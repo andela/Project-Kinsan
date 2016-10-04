@@ -5,11 +5,14 @@
          .controller('HistoryController', [ 'HistoryFac', 'Global', function(HistoryFac, Global) {
            const vm = this;
            vm.authenticated = Global.authenticated;
-           vm.userId = Global.user._id;
+           vm.userId = Global.user ? Global.user._id : null;
 
-           HistoryFac.getHistory(vm.userId).then(function(res) {
-             vm.history = res;
-           });
+           if(vm.authenticated) {
+             HistoryFac.getHistory(vm.userId).then(function(res) {
+               vm.histories = res;
+             });
+           }
+           
          }]);
 
 
