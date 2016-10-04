@@ -95,4 +95,8 @@ module.exports = function(app, passport) {
   app.post('/api/auth/signup', authorize.signup);
   app.delete('/api/auth/signup', authorize.delete);
 
+    //history routes
+    var history = require('../app/controllers/history');
+    app.get('/api/users/:id/history', history.userHistory);
+    app.post('/api/history', history.saveGameHistory);
 };
