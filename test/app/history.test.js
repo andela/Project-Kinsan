@@ -153,5 +153,48 @@ describe('History factory', function() {
 
     expect(HistoryFac.getHistory).toHaveBeenCalledWith(userId);
   });
+});
 
+// mock uo the Global service provided by the mean.system module
+beforeEach(function(){
+  GlobalMock = {
+    user: {
+      _id: userId
+    },
+    authenticated: true
+  };
+});
+
+describe('History Controller', function() {
+  var $controller;
+  var HistoryCtr;
+  var Global;
+
+  // load the angular module
+  beforeEach(
+    angular.mock.module('services.History')
+  );
+
+  beforeEach(inject(function(_$controller_, _HistoryFac_, _$httpBackend_, _$q_){
+    $controller = _$controller_;
+    HistoryFac = _HistoryFac_;
+    HistoryCtr = $controller('HistoryController', {HistoryFac: HistoryFac, Global: GlobalMock});
+    $httpBackend = _$httpBackend_;
+    $q = _$q_;
+  }));
+
+  it('should be defined', function() {
+    expect(HistoryCtr).toBeDefined();
+  });
+
+  it('call the getHistory() function of HistoryFac service', function() {
+    spyOn(HistoryFac, 'getHistory').and.callThrough();
+    HistoryCtr = $controller('HistoryController', {HistoryFac: HistoryFac, Global: GlobalMock});
+    
+    $httpBackend.whenGET(api).respond(200, $q.when(response));
+    $httpBackend.flush();
+
+    expect(HistoryFac.getHistory).toHaveBeenCalledWith(userId);
+    expect(HistoryCtr.history).toEqual(response);
+  });
 });
