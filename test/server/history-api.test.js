@@ -1,18 +1,17 @@
-var should = require('chai').should(),
-  expect = require('chai').expect,
-  supertest = require('supertest'),
-  api = supertest('http://localhost:3000');
+var expect = require('chai').expect;
+var supertest = require('supertest');
+var api = supertest('http://localhost:3000');
 
 describe('History', function () {
   describe('/api/user/:id/history endpoint', function () {
     it('should respond with status code of 200', function (done) {
-      api.get('/api/users/57f2454ae37936dd5c000001/history')
+      api.get('/api/users/57ea45dd18be84c20f000001/history')
       .set('Accept', 'application/json')
       .expect(200, done);
     });
 
     it('should respond with an array of json objects', function (done) {
-      api.get('/api/users/57f2454ae37936dd5c000001/history')
+      api.get('/api/users/57ea45dd18be84c20f000001/history')
       .set('Accept', 'appliction/json')
       .end(function (err, res){
         expect(Array.isArray(res.body)).to.be.equal(true);
@@ -28,7 +27,7 @@ describe('History', function () {
         }
       }
 
-      api.get('/api/users/57f2454ae37936dd5c000001/history')
+      api.get('/api/users/57ea45dd18be84c20f000001/history')
       .set('Accept', 'application/json')
       .end(function (err, res) {
         checkProperty(res.body, 'gameId');
