@@ -90,4 +90,8 @@ module.exports = function(app, passport, auth) {
     app.get('/play', index.play);
     app.get('/', index.render);
 
+    //history routes
+    var history = require('../app/controllers/history');
+    app.get('/api/users/:id/history', history.userHistory);
+    app.post('/api/history', history.saveGameHistory);
 };
