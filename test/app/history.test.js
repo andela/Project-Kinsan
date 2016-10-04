@@ -1,12 +1,11 @@
-beforeEach(function() {
+describe('History functionality test', function(){
   var HistoryFac;
   var $httpBackend;
   var $q;
-  var GlobalMock;
-  userId = '57ea45dd18be84c20f000001';
 
-  api = '/api/users/'+userId+'/history';
-  response = [
+  var userId = '57ea45dd18be84c20f000001';
+  var api = '/api/users/'+userId+'/history';
+  var response = [
     {
       '_id': '57f26306fc81500d5b000001',
       'gameId': 'qwerty123456',
@@ -100,9 +99,6 @@ beforeEach(function() {
       ]
     }
   ];
-});
-
-describe('History factory', function() {
 
   // before each test load the angular module for history controller
   // and history factory
@@ -115,86 +111,74 @@ describe('History factory', function() {
     angular.mock.module('mean.system')
   );
 
-  // Set our injected History service (_Users_) to our local History variable
-  beforeEach(inject(function(_HistoryFac_){
-    HistoryFac = _HistoryFac_;
-  }));
+  describe('History factory', function() {
 
-  // Load HistoryFac, $httpBackend(mocks $http service) and $q service
-  beforeEach(inject(function(_HistoryFac_, _$httpBackend_, _$q_){
-    HistoryFac = _HistoryFac_;
-    $httpBackend = _$httpBackend_;
-    $q = _$q_;
-  }));
+    // Load HistoryFac, $httpBackend(mocks $http service) and $q service
+    beforeEach(inject(function(_HistoryFac_, _$httpBackend_, _$q_){
+      HistoryFac = _HistoryFac_;
+      $httpBackend = _$httpBackend_;
+      $q = _$q_;
+    }));
 
-  // A simple test to verify the History service exists
-  it('should exist', function() {
-    expect(HistoryFac).toBeDefined();
-  });
-
-  it('should expect getHistory() to be defined', function() {
-    expect(typeof HistoryFac.getHistory).toBe('function');
-  });
-
-  it('should expect getHistory() to make a get request to /api/users/:id/history', function() {
-    spyOn(HistoryFac, 'getHistory').and.callThrough();
-
-    // create a mock http get request and supply it with a sample response
-    $httpBackend.whenGET(api).respond(200, $q.when(response));
-    result = {};
-
-    expect(result).toEqual({});
-
-    HistoryFac.getHistory(userId).then(function(res){
-      result = res;
+    // A simple test to verify the History service exists
+    it('should exist', function() {
+      expect(HistoryFac).toBeDefined();
     });
 
-    $httpBackend.flush();
+    it('should expect getHistory() to be defined', function() {
+      expect(typeof HistoryFac.getHistory).toBe('function');
+    });
 
-    expect(HistoryFac.getHistory).toHaveBeenCalledWith(userId);
-  });
-});
+    it('should expect getHistory() to make a get request to /api/users/:id/history', function() {
+      spyOn(HistoryFac, 'getHistory').and.callThrough();
 
-// mock uo the Global service provided by the mean.system module
-beforeEach(function(){
-  GlobalMock = {
-    user: {
-      _id: userId
-    },
-    authenticated: true
-  };
-});
+      // create a mock http get request and supply it with a sample response
+      $httpBackend.whenGET(api).respond(200, $q.when(response));
+      var result = {};
 
-describe('History Controller', function() {
-  var $controller;
-  var HistoryCtr;
-  var Global;
+      expect(result).toEqual({});
 
-  // load the angular module
-  beforeEach(
-    angular.mock.module('services.History')
-  );
+      HistoryFac.getHistory(userId).then(function(res){
+        result = res;
+      });
 
-  beforeEach(inject(function(_$controller_, _HistoryFac_, _$httpBackend_, _$q_){
-    $controller = _$controller_;
-    HistoryFac = _HistoryFac_;
-    HistoryCtr = $controller('HistoryController', {HistoryFac: HistoryFac, Global: GlobalMock});
-    $httpBackend = _$httpBackend_;
-    $q = _$q_;
-  }));
+      $httpBackend.flush();
 
-  it('should be defined', function() {
-    expect(HistoryCtr).toBeDefined();
+      expect(HistoryFac.getHistory).toHaveBeenCalledWith(userId);
+    });
   });
 
-  it('call the getHistory() function of HistoryFac service', function() {
-    spyOn(HistoryFac, 'getHistory').and.callThrough();
-    HistoryCtr = $controller('HistoryController', {HistoryFac: HistoryFac, Global: GlobalMock});
-    
-    $httpBackend.whenGET(api).respond(200, $q.when(response));
-    $httpBackend.flush();
+  describe('History Controller', function() {
+    var GlobalMock = {
+      user: {
+        _id: '57ea45dd18be84c20f000001'
+      },
+      authenticated: true
+    };
+    var $controller;
+    var HistoryCtr;
 
-    expect(HistoryFac.getHistory).toHaveBeenCalledWith(userId);
-    expect(HistoryCtr.histories).toEqual(response);
+    beforeEach(inject(function(_$controller_, _HistoryFac_, _$httpBackend_, _$q_){
+      $controller = _$controller_;
+      HistoryFac = _HistoryFac_;
+      HistoryCtr = $controller('HistoryController', {HistoryFac: HistoryFac, Global: GlobalMock});
+      $httpBackend = _$httpBackend_;
+      $q = _$q_;
+    }));
+
+    it('should be defined', function() {
+      expect(HistoryCtr).toBeDefined();
+    });
+
+    it('call the getHistory() function of HistoryFac service', function() {
+      spyOn(HistoryFac, 'getHistory').and.callThrough();
+      HistoryCtr = $controller('HistoryController', {HistoryFac: HistoryFac, Global: GlobalMock});
+      
+      $httpBackend.whenGET(api).respond(200, $q.when(response));
+      $httpBackend.flush();
+
+      expect(HistoryFac.getHistory).toHaveBeenCalledWith(userId);
+      expect(HistoryCtr.histories).toEqual(response);
+    });
   });
 });
