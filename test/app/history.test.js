@@ -195,6 +195,6 @@ describe('History Controller', function() {
     $httpBackend.flush();
 
     expect(HistoryFac.getHistory).toHaveBeenCalledWith(userId);
-    expect(HistoryCtr.history).toEqual(response);
+    expect(HistoryCtr.histories).toEqual(response);
   });
 });
