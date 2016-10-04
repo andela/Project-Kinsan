@@ -1,6 +1,14 @@
+<<<<<<< HEAD
   'use strict';
   var expect = require('chai').expect;
   var request = require('request');
+=======
+(function () {
+  'use strict';
+  var expect = require('chai').expect;
+  var request = require('request');
+  var token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyIkX18iOnsic3RyaWN0TW9kZSI6dHJ1ZSwiZ2V0dGVycyI6e30sIndhc1BvcHVsYXRlZCI6ZmFsc2UsImFjdGl2ZVBhdGhzIjp7InBhdGhzIjp7Il9fdiI6ImluaXQiLCJhZG1pbiI6ImluaXQiLCJwYXNzd29yZCI6ImluaXQiLCJuYW1lIjoiaW5pdCIsIl9pZCI6ImluaXQifSwic3RhdGVzIjp7Imlnbm9yZSI6e30sImRlZmF1bHQiOnt9LCJpbml0Ijp7Il9fdiI6dHJ1ZSwiYWRtaW4iOnRydWUsInBhc3N3b3JkIjp0cnVlLCJuYW1lIjp0cnVlLCJfaWQiOnRydWV9LCJtb2RpZnkiOnt9LCJyZXF1aXJlIjp7fX0sInN0YXRlTmFtZXMiOlsicmVxdWlyZSIsIm1vZGlmeSIsImluaXQiLCJkZWZhdWx0IiwiaWdub3JlIl19LCJlbWl0dGVyIjp7ImRvbWFpbiI6bnVsbCwiX2V2ZW50cyI6e30sIl9ldmVudHNDb3VudCI6MCwiX21heExpc3RlbmVycyI6MH19LCJpc05ldyI6ZmFsc2UsIl9kb2MiOnsiX192IjowLCJhZG1pbiI6dHJ1ZSwicGFzc3dvcmQiOiJzYW1wbGUiLCJuYW1lIjoidXNlciIsIl9pZCI6IjU3ZWJhZjYwYzc3NDhhMzg0MzZlMWI3MSJ9LCJfcHJlcyI6eyIkX19vcmlnaW5hbF9zYXZlIjpbbnVsbCxudWxsXSwiJF9fb3JpZ2luYWxfdmFsaWRhdGUiOltudWxsXSwiJF9fb3JpZ2luYWxfcmVtb3ZlIjpbbnVsbF19LCJfcG9zdHMiOnsiJF9fb3JpZ2luYWxfc2F2ZSI6W10sIiRfX29yaWdpbmFsX3ZhbGlkYXRlIjpbXSwiJF9fb3JpZ2luYWxfcmVtb3ZlIjpbXX0sImlhdCI6MTQ3NTA2NTQ0NywiZXhwIjoxNDc1MTUxODQ3fQ.TleJIly8m1RHNIFGSdLjLECC0QfGLInq0xBMf65bC64';
+>>>>>>> ec04de93feb89e8f1c91359e09746fd047076ef5
 
   describe('Signup', function () {
     var url = 'http://localhost:3000/api/auth/signup';
@@ -9,6 +17,7 @@
       request({url:url, method: 'DELETE', json: {
         name: 'freshclean1'},
         headers: {
+<<<<<<< HEAD
           'Content-Type': 'application/json'
         }}, function (err) {
         if (err) {
@@ -16,12 +25,27 @@
         }
         done();
       });
+=======
+          'Content-Type': 'application/json',
+          'x-access-token': token
+        }}, function (err) {
+        if (err) {
+          throw err;   
+        }
+        done();
+     });
+>>>>>>> ec04de93feb89e8f1c91359e09746fd047076ef5
     });
 
     it('should connect', function (done) {
       request({url: url, method: 'POST',
         headers: {
+<<<<<<< HEAD
           'Content-Type': 'application/json'
+=======
+          'Content-Type': 'application/json',
+          'x-access-token': token
+>>>>>>> ec04de93feb89e8f1c91359e09746fd047076ef5
         }}, function (err, res) {
         if (err) {
           throw err;
@@ -38,7 +62,12 @@
         password: '',
         avatar: 'avatar01'},
         headers: {
+<<<<<<< HEAD
           'Content-Type': 'application/json'
+=======
+          'Content-Type': 'application/json',
+          'x-access-token': token
+>>>>>>> ec04de93feb89e8f1c91359e09746fd047076ef5
         }}, function (err, res, body) {
         if (err) {
           throw err;
@@ -55,7 +84,12 @@
         password: 'lexis',
         avatar: 'avatar01'},
         headers: {
+<<<<<<< HEAD
           'Content-Type': 'application/json'
+=======
+          'Content-Type': 'application/json',
+          'x-access-token': token
+>>>>>>> ec04de93feb89e8f1c91359e09746fd047076ef5
         }}, function (err, res, body) {
         if (err) {
           throw err;
@@ -72,7 +106,12 @@
         password: 'sofreshsoclean1',
         avatar: 'avatar011'},
         headers: {
+<<<<<<< HEAD
           'Content-Type': 'application/json'
+=======
+          'Content-Type': 'application/json',
+          'x-access-token': token
+>>>>>>> ec04de93feb89e8f1c91359e09746fd047076ef5
         }}, function (err, res, body) {
         if (err) {
           throw err;
@@ -83,3 +122,8 @@
       });
     });
   });
+<<<<<<< HEAD
+=======
+
+}());
+>>>>>>> ec04de93feb89e8f1c91359e09746fd047076ef5

@@ -1,9 +1,10 @@
+(function (){
   'use strict';
 
-  let mongoose = require('mongoose');
-  let jwt = require('jsonwebtoken');
-  let config = require('../../config/config');
-  let User = mongoose.model('User');
+  var mongoose = require('mongoose');
+  var jwt = require('jsonwebtoken');
+  var config = require('../../config/config');
+  var User = mongoose.model('User');
 
   exports.signup = function (req, res) {
     User.findOne({
@@ -50,3 +51,4 @@
       res.send({message: 'User deleted!'});
     });
   };
+}());
