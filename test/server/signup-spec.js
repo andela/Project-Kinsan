@@ -1,8 +1,7 @@
-(function () {
   'use strict';
   var expect = require('chai').expect;
   var request = require('request');
-  
+
   describe('Signup', function () {
     var url = 'http://localhost:3000/api/auth/signup';
 
@@ -16,7 +15,7 @@
           throw err;
         }
         done();
-     });
+      });
     });
 
     it('should connect', function (done) {
@@ -84,5 +83,3 @@
       });
     });
   });
-
-}());
