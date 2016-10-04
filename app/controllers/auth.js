@@ -4,6 +4,7 @@ let mongoose = require('mongoose');
 let jwt = require('jsonwebtoken');
 let config = require('../../config/config');
 let User = mongoose.model('User');
+let bcrypt = require('bcryptjs');
 
 let auth = {
 // Function for verifying a users regiatration and
@@ -57,7 +58,7 @@ let auth = {
           var user = new User();
           user.name = body.name;
           user.email = body.email;
-          user.password = body.password;
+          user.password = encryptPassword(body.password);
           user.avatar = body.avatar;
 
           user.save( function (err) {
@@ -88,5 +89,12 @@ let auth = {
     });
   }
 };
+
+function encryptPassword (password) {
+  if (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  }
+  return '';
+}
 
 module.exports = auth;
