@@ -56,13 +56,10 @@ $(document).ready(function() {
             <h3 class="panel-title">Game id: {{history.gameId}}</h3>
           </div>
           <div class="panel-body">
-            <span ng-if="history.completed"><strong>Game winner:</strong> {{history.winner.name | upperFirstLetter}}</span>
+            <span ng-if="history.completed"><strong>Game winner:</strong><p ng-bind="history.winner.name || 'A Stranger'"></p></span>
             <div ng-if="!!history.players">
               <h4>Players</h4>
               <div ng-repeat="player in history.players">{{player.name | upperFirstLetter}}</div>
-              <!--<span ng-repeat="player in history.players">
-                {{player.name}}
-              </span>-->
             </div>
           </div>
         </div>
