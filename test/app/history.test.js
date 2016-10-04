@@ -141,7 +141,7 @@ describe('History factory', function() {
 
     // create a mock http get request and supply it with a sample response
     $httpBackend.whenGET(api).respond(200, $q.when(response));
-    let result = {};
+    result = {};
 
     expect(result).toEqual({});
 
