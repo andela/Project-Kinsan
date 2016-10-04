@@ -3,7 +3,7 @@
 
   angular.module('services.History')
          .controller('HistoryController', [ 'HistoryFac', 'Global', function(HistoryFac, Global) {
-           const vm = this;
+           var vm = this;
            vm.authenticated = Global.authenticated;
            vm.userId = Global.user ? Global.user._id : null;
 
