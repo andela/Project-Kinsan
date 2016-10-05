@@ -8,7 +8,7 @@ var avatars = require('./avatars').all();
 /**
  * Auth callback
  */
-exports.authCallback = function(req, res, next) {
+exports.authCallback = function(req, res) {
   res.redirect('/chooseavatars');
 };
 
@@ -76,7 +76,7 @@ exports.checkAvatar = function(req, res) {
 /**
  * Create user
  */
-exports.create = function(req, res) {
+exports.create = function(req, res, next) {
   if (req.body.name && req.body.password && req.body.email) {
     User.findOne({
       email: req.body.email
@@ -141,7 +141,6 @@ exports.addDonation = function(req, res) {
           }
         }
         if (!duplicate) {
-          console.log('Validated donation');
           user.donations.push(req.body);
           user.premium = 1;
           user.save();

@@ -1,12 +1,12 @@
 var Game = require('./game');
 var Player = require('./player');
-require("console-stamp")(console, "m/dd HH:MM:ss");
+require('console-stamp')(console, 'm/dd HH:MM:ss');
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
 var avatars = require(__dirname + '/../../app/controllers/avatars.js').all();
 // Valid characters to use to generate random private game IDs
-var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+var chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz';
 
 module.exports = function(io) {
 
@@ -21,7 +21,7 @@ module.exports = function(io) {
     socket.emit('id', {id: socket.id});
 
     socket.on('pickCards', function(data) {
-      console.log(socket.id,"picked",data);
+      console.log(socket.id,'picked',data);
       if (allGames[socket.gameID]) {
         allGames[socket.gameID].pickCards(data.cards,socket.id);
       } else {
