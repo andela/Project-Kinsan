@@ -1,13 +1,14 @@
-const mongoose = require('mongoose');
-const jwt = require('jsonwebtoken');
-const config = require('./../../config/config');
+'use strict';
 
-// Load user model
+let mongoose = require('mongoose');
+let jwt = require('jsonwebtoken');
+let config = require('../../config/config');
 let User = mongoose.model('User');
+let bcrypt = require('bcryptjs');
 
 let auth = {
-  // Function for verifying a users regiatration and
-  // generating a JWT on successful login.
+// Function for verifying a users regiatration and
+// generating a JWT on successful login.
   login: function(req, res) {
     User.findOne({
       username: req.body.username
@@ -22,7 +23,7 @@ let auth = {
           message: 'Authentication failed. User not found.'
         });
       } else if (user) {
-        // If user exists but password is wrong 
+        // If user exists but password is wrong
         if (!user.authenticate(req.body.password)) {
           res.json({
             success: false,
@@ -41,7 +42,59 @@ let auth = {
         }
       }
     });
+  },
+
+  signup: function (req, res) {
+    User.findOne({
+      email: req.body.email
+    }, function (err, registeredUser) {
+      if (err) {
+        throw err;
+      }
+
+      if (!registeredUser) {
+        var body = req.body;
+        if (body.name && body.email && body.password) {
+          var user = new User();
+          user.name = body.name;
+          user.email = body.email;
+          user.password = encryptPassword(body.password);
+          user.avatar = body.avatar;
+
+          user.save( function (err) {
+            if (err) {
+              res.send(err);
+            }
+
+            var token = jwt.sign(user, config.secret, {expiresIn: 60*60*24});
+
+            res.json({successful: true, message: 'You have successfully signed up', token: token});
+
+          });
+        } else {
+          res.send({message: 'Signup details are incomplete'});
+        }
+      } else {
+        res.send({message: 'User already exists.'});
+      }
+    });
+  },
+  delete: function (req, res) {
+    User.remove({name: req.body.name}, function (err) {
+      if (err) {
+        res.send(err);
+      }
+
+      res.send({message: 'User deleted!'});
+    });
   }
 };
+
+function encryptPassword (password) {
+  if (password) {
+    return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
+  }
+  return '';
+}
 
 module.exports = auth;
