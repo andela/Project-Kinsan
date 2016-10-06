@@ -53,6 +53,15 @@ describe('History', function () {
       'completed': true,
       'winner': '57e96f012206d8884e000001'
     };
+
+    afterEach(function (done) {
+      api.del('/api/history/qwerty1237k')
+      .set('Accept', 'application/json')
+      .end(function () {
+        done();
+      });
+    });
+
     it('should respond with status code 200', function (done) {
       api.post('/api/history')
       .set('Accept', 'application/x-www-form-urlencoded')
