@@ -99,4 +99,5 @@ module.exports = function(app, passport) {
   var history = require('../app/controllers/history');
   app.get('/api/users/:id/history', history.userHistory);
   app.post('/api/history', history.saveGameHistory);
+  app.delete('/api/history/:id', history.deleteHistory);
 };
