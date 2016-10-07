@@ -23,6 +23,7 @@ module.exports = function(config) {
       'public/lib/angular/angular.js',
       'public/lib/angular-resource/angular-resource.js',
       'public/lib/angular-mocks/angular-mocks.js',
+      'public/lib/jasmine-jquery/lib/jasmine-jquery.js',
       './src/app/**/*.js',
       './src/app/*.js',
       'public/js/**/*.js',
