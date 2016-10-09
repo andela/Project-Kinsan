@@ -47,6 +47,7 @@ a{
 }
 #demo-video{
     width: 100%;
+    padding: 0 80px;
 }
 
 #play-now{
@@ -85,6 +86,7 @@ a{
 }
 .animated-col{
     height: 500px;
+    overflow: hidden;
 }
 
 #donate-title, #how-to-play-title, #site-title{
@@ -156,6 +158,15 @@ a{
 }
 .cards{
     margin-top: 20px;
+    float: left;
+    margin-left: 26px;
+    position: absolute;
+    left: 50%;
+}
+.cards-container{
+    position: relative;
+    left: -50%;
+    width: 500px;
 }
 .cards .card{
     width: 300px;
@@ -165,9 +176,10 @@ a{
     font-size: 23px;
     font-weight: bolder;
     font-family: proxima-bold;
-    /*
-    box-shadow: 0 0 1px 1px rgb(200,200,200);
-    */
+    -webkit-user-select: none;
+    -moz-user-select: -moz-none;
+    -ms-user-select: none;
+    user-select: none;
     border: 2px solid #b2b2b2;
     position: absolute;
     z-index: 2;
@@ -191,7 +203,6 @@ a{
     position: absolute;
     transform: rotate(-6deg);
     z-index: 1;
-    top: 85px;
     left: 90px;
 
 }
@@ -200,6 +211,8 @@ a{
     width: 460px;
     position: relative;
     top: 180px;
+    transform: rotate(6deg) !important;
+    left: -72px;
 }
 
 #slider-left{
@@ -228,8 +241,19 @@ a{
 }
 
 /*Applying user queries*/
+@media (max-width:320px) {
+    .cards {
+        margin-left: 60px;
+    }
+}
 @media (max-width:499px){
+    .card{
+        width:180px !important;
+    }
 
+    #slider-controls{
+        width:330px;
+    }
     .desc-box {
         margin-top: 0;
     }
@@ -263,7 +287,4 @@ a{
         width: auto
     }
 
-    .animated-col{
-        display: none;
-    }
 }
