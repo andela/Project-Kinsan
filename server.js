@@ -22,11 +22,11 @@ var env = process.env.NODE_ENV,
   mongoose = require('mongoose');
 
 //Bootstrap db connection
-mongoose.connect(config.db).then((err) => {
+mongoose.connect(config.db, function(err) {
   if(err) throw err.message;
   //Start the app by listening on <port>
   var port = config.port;
-  var server = app.listen(port);
+
   var ioObj = io.listen(server, { log: false });
   
   //game logic handled here
@@ -40,6 +40,8 @@ mongoose.connect(config.db).then((err) => {
 
   //Initializing logger
   logger.init(app, passport, mongoose);
+
+  var server = app.listen(port);
 });
 
 //Bootstrap models
