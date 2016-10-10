@@ -4,6 +4,6 @@ var path = require('path'),
 module.exports = {
   root: rootPath,
   port: process.env.PORT || 3000,
-  db: process.env.MONGOHQ_URL,
+  db: process.env.MONGODB_URI,
   secret: process.env.SECRET
 };
