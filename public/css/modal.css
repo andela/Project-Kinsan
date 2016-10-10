@@ -14,7 +14,6 @@
   font-family: proxima;
 }
 .modal-backdrop {
-  /* Sets the color of the blurred background */
   background-color: rgba(255,255,255,.75);
 }
 
@@ -22,27 +21,23 @@
   display:table;
   height: 100%;
   width: 100%;
-  pointer-events:none; /* This makes sure that we can still click outside of the modal to close it */
+  pointer-events:none; 
 }
 
 .vertical-align-center {
-  /* To center vertically */
   display: table-cell;
   vertical-align: middle;
   pointer-events:none;
 }
 
 .modal-content {
-  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
   width:inherit;
   height:inherit;
-  /* To center horizontally */
   margin: 0 auto;
   pointer-events: all;
 }
 
 .btn-signin {
-  /* Sets the style for the signin button */
   background-color: rgb(64, 116, 245);
   color: white;
 }
@@ -62,5 +57,9 @@
 
   .signup-modal-width {
     width: 325px;
+  }
+
+  .custom-modal-width {
+    width: 325px; 
   }
 }
