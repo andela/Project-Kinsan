@@ -22,7 +22,7 @@ var env = process.env.NODE_ENV,
   mongoose = require('mongoose');
 
 //Bootstrap db connection
-var db = mongoose.connect(config.db, function(err) {
+mongoose.connect(config.db, function(err) {
   if(err) throw err.message;
   //Start the app by listening on <port>
   var port = config.port;
@@ -30,7 +30,6 @@ var db = mongoose.connect(config.db, function(err) {
   var ioObj = io.listen(server, { log: false });
 //game logic handled here
   require('./config/socket/socket')(ioObj);
-  console.log('Express app started on port ' + port);
 });
 
 //Bootstrap models
