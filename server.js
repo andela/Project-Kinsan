@@ -22,7 +22,7 @@ var env = process.env.NODE_ENV,
   mongoose = require('mongoose');
 
 //Bootstrap db connection
-mongoose.connect(config.db, function(err) {
+mongoose.connect(config.db).then((err) => {
   if(err) throw err.message;
   //Start the app by listening on <port>
   var port = config.port;
