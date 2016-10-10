@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">HOME</a></li>
         <li><a href="#">ABOUT</a></li>
-        <li><a href="#">LOGIN/SIGNUP</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#modal">LOGIN/SIGNUP</a></li>
         <li><a href="#">SHOP</a></li>
         <li id="header-play"><a href="#" class="header-play">PLAY</a></li>
       </ul>
@@ -140,6 +140,37 @@
         with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all
         proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com">crowdrise.</a>
       </p>
+    </div>
+  </div>
+</div>
+
+<!-- Login Modal Dialog -->
+<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center custom-modal-width">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <div class="text-center">
+            <h3 class="center-block">SIGN IN</h3>
+          </div>
+          <form>
+            <div class="form-group">
+              <input type="email" class="form-control" id="email-address" placeholder="email address" />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="password" placeholder="password" />
+            </div>            
+            <input type="button" class="btn btn-signin center-block" id="signin" value="SIGN IN" />
+            <!-- The links out of here -->
+            <br />
+            <div class="text-center">
+              <a href="#" class="anchor">forgot your password?</a>
+              <p>don't have an account? <a href="#" class="anchor">sign up</a></p>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
