@@ -20,13 +20,20 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      'public/lib/jquery/dist/jquery.js',
+      'public/lib/jasmine-jquery/lib/jasmine-jquery.js',
       'public/lib/angular/angular.js',
       'public/lib/angular-resource/angular-resource.js',
       'public/lib/angular-mocks/angular-mocks.js',
       './src/app/**/*.js',
       './src/app/*.js',
+      'public/js/**/*.js',
+      'public/js/controllers/history.ctr.js',
+      'public/js/services/history.fac.js',
       './src/test/**/*.js',
-      './src/test/*.js'
+      './src/test/*.js',
+      'test/app/*.test.js',
+      {pattern: 'test/app/response.json', watched: true, served: true, included: false}
     ],
 
 
