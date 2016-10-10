@@ -28,8 +28,18 @@ mongoose.connect(config.db).then((err) => {
   var port = config.port;
   var server = app.listen(port);
   var ioObj = io.listen(server, { log: false });
-//game logic handled here
+  
+  //game logic handled here
   require('./config/socket/socket')(ioObj);
+
+  //express settings
+  require('./config/express')(app, passport, mongoose);
+
+  //Bootstrap routes
+  require('./config/routes')(app, passport, auth);
+
+  //Initializing logger
+  logger.init(app, passport, mongoose);
 });
 
 //Bootstrap models
@@ -57,17 +67,6 @@ var app = express();
 app.use(function(req, res, next){
   next();
 });
-
-//express settings
-require('./config/express')(app, passport, mongoose);
-
-//Bootstrap routes
-require('./config/routes')(app, passport, auth);
-
-
-
-//Initializing logger
-logger.init(app, passport, mongoose);
 
 //expose app
 exports = module.exports = app;
