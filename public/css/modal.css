@@ -53,21 +53,14 @@
 
 @media screen and (min-width: 768px) {
   .signin-modal-width {
-<<<<<<< HEAD
     width: 550px; 
-=======
-    width: 500px; 
->>>>>>> feature(authentication): adds social buttons and signup modal
   }
 
   .signup-modal-width {
     width: 325px;
-<<<<<<< HEAD
   }
 
   .custom-modal-width {
     width: 325px; 
-=======
->>>>>>> feature(authentication): adds social buttons and signup modal
   }
 }
