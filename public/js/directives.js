@@ -1,11 +1,15 @@
 angular.module('mean.directives', [])
+//my busuness
   .directive('player', function (){
     return{
       restrict: 'EA',
       templateUrl: '/views/player.html',
       link: function(scope){
         scope.colors = ['#7CE4E8', '#FFFFa5', '#FC575E', '#F2ADFF', '#398EC4', '#8CFF95'];
-      }
+      },
+      // controller: function($scope, $element) {
+      //
+      // }
     };
   }).directive('answers', function() {
     return {
@@ -87,5 +91,5 @@ angular.module('mean.directives', [])
           element.modal('hide');
         });
       }
-    }; 
+    };
   });

@@ -62,5 +62,8 @@ angular.module('mean', ['ngRoute', 'ngCookies', 'ngResource', 'ui.bootstrap', 'u
 angular.module('mean.system', []);
 angular.module('mean.directives', []);
 angular.module('services.History', ['mean.system']);
+<<<<<<< 8ef02a13b6bcaab60d8e70dac1a7a24a013fbd9d
 angular.module('mean.gameChat', ['mean.system']);
 angular.module('services.Auth', ['mean.system']);
+=======
+>>>>>>> bug: remove cunflicting css
