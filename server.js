@@ -57,7 +57,9 @@ app.use(function(req, res, next){
   next();
 });
 
-conn.on('error', console.error.bind(console, 'connection error:'));
+conn.on('error', function () {
+  throw 'Error conecting to the database...';
+});
 
 conn.once('open', function () {
   //express settings
@@ -68,7 +70,6 @@ conn.once('open', function () {
 
   //Start the app by listening on <port>
   server = app.listen(port);
-  console.log('Express app started...');
   ioObj = io.listen(server, { log: false });
   //game logic handled here
   require('./config/socket/socket')(ioObj);
