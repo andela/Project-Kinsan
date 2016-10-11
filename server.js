@@ -12,7 +12,7 @@ var express = require('express'),
  * Main application entry file.
  * Please note that the order of loading is important.
  */
-dotenv.config({silent: true});
+dotenv.config();
 //Load configurations
 //if test env, load example file
 process.env.NODE_ENV = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
@@ -22,27 +22,7 @@ var env = process.env.NODE_ENV,
   mongoose = require('mongoose');
 
 //Bootstrap db connection
-mongoose.connect(config.db, function(err) {
-  if(err) throw err.message;
-  //Start the app by listening on <port>
-  var port = config.port;
-
-  var ioObj = io.listen(server, { log: false });
-  
-  //game logic handled here
-  require('./config/socket/socket')(ioObj);
-
-  //express settings
-  require('./config/express')(app, passport, mongoose);
-
-  //Bootstrap routes
-  require('./config/routes')(app, passport, auth);
-
-  //Initializing logger
-  logger.init(app, passport, mongoose);
-
-  var server = app.listen(port);
-});
+mongoose.connect(config.db);
 
 //Bootstrap models
 var models_path = __dirname + '/app/models';
@@ -69,6 +49,27 @@ var app = express();
 app.use(function(req, res, next){
   next();
 });
+
+//express settings
+require('./config/express')(app, passport, mongoose);
+
+//Bootstrap routes
+require('./config/routes')(app, passport, auth);
+
+//Start the app by listening on <port>
+var port = config.port,
+  server,
+  ioObj;
+setTimeout(function () {
+  server = app.listen(port);
+  ioObj = io.listen(server, { log: false });
+  //game logic handled here
+  require('./config/socket/socket')(ioObj);
+
+  //Initializing logger
+  logger.init(app, passport, mongoose);
+}, 5000);
+
 
 //expose app
 exports = module.exports = app;
