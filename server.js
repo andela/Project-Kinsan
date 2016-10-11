@@ -12,7 +12,7 @@ var express = require('express'),
  * Main application entry file.
  * Please note that the order of loading is important.
  */
-dotenv.config();
+dotenv.config({silent: true});
 //Load configurations
 //if test env, load example file
 process.env.NODE_ENV = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
