@@ -15,7 +15,7 @@
 }
 .modal-backdrop {
   /* Sets the color of the blurred background */
-  background-color: rgba(255,255,255,.9);
+  background-color: rgba(255,255,255,.75);
 }
 
 .vertical-alignment-helper {
@@ -47,12 +47,20 @@
   color: white;
 }
 
+.btn-signin:active {
+  color: white;
+}
+
 .anchor {
   color: rgb(64, 144, 224) !important; 
 }
 
 @media screen and (min-width: 768px) {
-  .custom-modal-width {
-    width: 325px; 
+  .signin-modal-width {
+    width: 500px; 
+  }
+
+  .signup-modal-width {
+    width: 325px;
   }
 }
