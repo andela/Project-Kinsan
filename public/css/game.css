@@ -18,7 +18,7 @@
 }
 
 #deck-of-black-cards{
-  box-shadow: -2px -2px 0px 0px  #000000;
+  box-shadow: -2px -2px 0 0  #000000;
   border-top: 1px solid #ebebe0;
   border-left: 1px solid #ebebe0;
   line-height: 200px;
