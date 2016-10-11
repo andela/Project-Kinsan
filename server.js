@@ -25,7 +25,7 @@ var env = process.env.NODE_ENV,
 var port = config.port,
   server,
   ioObj;
-  
+
   console.log('Config.db is: ' + config.db);
 //Bootstrap db connection
 mongoose.connect(config.db).then((err) => {
@@ -36,16 +36,18 @@ mongoose.connect(config.db).then((err) => {
   //Bootstrap routes
   require('./config/routes')(app, passport, auth);
 
-  //Start the app by listening on <port>
+  setTimeout(function() {
+    //Start the app by listening on <port>
 
-  server = app.listen(port);
-  console.log('Express app started...');
-  ioObj = io.listen(server, { log: false });
-  //game logic handled here
-  require('./config/socket/socket')(ioObj);
+    server = app.listen(port);
+    console.log('Express app started...');
+    ioObj = io.listen(server, { log: false });
+    //game logic handled here
+    require('./config/socket/socket')(ioObj);
 
-  //Initializing logger
-  logger.init(app, passport, mongoose);
+    //Initializing logger
+    logger.init(app, passport, mongoose);
+  }, 10000);
 });
 
 //Bootstrap models
