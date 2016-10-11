@@ -9,8 +9,8 @@
   border-radius: 5;
   box-shadow: none;
   background-color: rgba(237,237,237,.9);
-  padding-left: 30px;
-  padding-right: 30px;
+  padding-left: 5px;
+  padding-right: 5px;
   font-family: proxima;
 }
 .modal-backdrop {
@@ -57,7 +57,7 @@
 
 @media screen and (min-width: 768px) {
   .signin-modal-width {
-    width: 500px; 
+    width: 550px; 
   }
 
   .signup-modal-width {
