@@ -3,7 +3,7 @@
     margin: 0 !important;
 }
 
-.cards{
+.game-cards{
   height:200px;
   border: 1px solid black;
   width:150px;
@@ -18,7 +18,7 @@
 }
 
 #deck-of-black-cards{
-  box-shadow: -10px -10px 10px 0px  #000000;
+  box-shadow: -2px -2px 0px 0px  #000000;
   border-top: 1px solid #ebebe0;
   border-left: 1px solid #ebebe0;
   line-height: 200px;
@@ -70,7 +70,7 @@
   color: white;
 }
 
-#name{
+.name{
   width:100px;
   line-height: 50px;
 }
@@ -99,10 +99,11 @@
 
 .white-cards-holder{
   padding: 20px;
+  height: 500px;
 }
 
-.white-cards-holder .cards{
-    float:left;
+.white-cards-holder .game-cards{
+    float: left;
     background-color: white;
     margin: 10px;
     border: 1px solid  #d6d6c2;

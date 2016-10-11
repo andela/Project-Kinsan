@@ -29,6 +29,9 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
           when('/history', {
             templateUrl: '/views/history.tpl.html'
           }).
+          when('/game', {
+            templateUrl: 'views/game.tpl.html'
+          }).
           otherwise({
             redirectTo: '/'
           });
