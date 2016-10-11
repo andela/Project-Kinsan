@@ -145,7 +145,7 @@
 </div>
 
 <!-- Login Modal Dialog -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="login-modal" my-modal tabindex="-1" role="dialog" aria-hidden="true" ng-controller="IndexController">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center signin-modal-width">
       <div class="modal-content">
@@ -155,19 +155,20 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="text-center">
-                  <h3 class="center-block">SIGN IN</h3>
+                  <h3>SIGN IN</h3>
                 </div>
-                <label ng-hide="true" id="lbl_signin_error" class="alert alert-danger">Danger! Bad stuff can happen</label>
+                <label ng-show="show_signin_error" class="alert alert-danger center-block">{{ error.data.message }}</label>
+                <br />
                 <div class="row">
                   <div class="col-sm-6">
                       <form>
                         <div class="form-group">
-                          <input type="email" class="form-control" id="txt_signin_email" placeholder="email address" />
+                          <input type="email" class="form-control" ng-model="signin_email" placeholder="email address" />
                         </div>
                         <div class="form-group">
-                          <input type="password" class="form-control" id="txt_signin_password" placeholder="password" />
+                          <input type="password" class="form-control" ng-model="signin_password" placeholder="password" />
                         </div>           
-                        <button type="submit" class="btn btn-signin center-block" id="btn_signin">SIGN IN</button>
+                        <button type="submit" class="btn btn-signin center-block" ng-click="signin()">SIGN IN</button>
                       </form>
                       <br>
                       <div class="text-center">
@@ -183,7 +184,8 @@
                       </div> 
                       <div class="text-center">
                         <input type="image" src="./../img/google.png" />
-                      </div>      
+                      </div>   
+                      <br />   
                       <div class="text-center">
                         <p>don't have an account? <a href="#" class="anchor" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">sign up</a></p>
                       </div>
@@ -199,28 +201,30 @@
 </div>
 
 <!-- Signup Modal Dialog -->
-<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="signup-modal"  my-modal tabindex="-1" role="dialog" aria-hidden="true" ng-controller="IndexController">
   <div class="vertical-alignment-helper">
     <div class="modal-dialog vertical-align-center signup-modal-width">
       <div class="modal-content">
         <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          </div>
-          <label ng-hide="true" id="lbl_signup_error" class="alert alert-danger">Danger! Bad stuff can happen</label>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>          
           <div class="text-center">
             <h3 class="center-block">SIGN UP</h3>
           </div>
+          <label ng-show="show_signup_error" class="alert alert-danger center-block">{{ error.data.message }}</label>
           <form>
             <div class="form-group">
-              <input type="email" class="form-control" id="signup_email" placeholder="email address" required />
+              <input type="text" class="form-control" ng-model="signup_name" placeholder="full name" required />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="signup_password" placeholder="password" required />
+              <input type="email" class="form-control" ng-model="signup_email" placeholder="email address" required />
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" ng-model="signup_password" placeholder="password" required />
             </div>   
             <div class="form-group">
-              <input type="password" class="form-control" id="signup_password_again" placeholder="password again" required />
+              <input type="password" class="form-control" ng-model="signup_password_again" placeholder="password again" required />
             </div>            
-            <button type="submit" class="btn btn-signin center-block" id="signup">SIGN UP</button>
+            <button type="submit" class="btn btn-signin center-block" ng-click="signup()">SIGN UP</button>
             <br />
           </form>
         </div>
