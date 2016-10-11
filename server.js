@@ -50,17 +50,18 @@ app.use(function(req, res, next){
   next();
 });
 
-//express settings
-require('./config/express')(app, passport, mongoose);
 
-//Bootstrap routes
-require('./config/routes')(app, passport, auth);
 
 //Start the app by listening on <port>
 var port = config.port,
   server,
   ioObj;
 setTimeout(function () {
+  //express settings
+  require('./config/express')(app, passport, mongoose);
+
+//Bootstrap routes
+  require('./config/routes')(app, passport, auth);
   server = app.listen(port);
   ioObj = io.listen(server, { log: false });
   //game logic handled here
