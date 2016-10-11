@@ -1,0 +1,111 @@
+.container{
+    width: 100%;
+    margin: 0 !important;
+}
+
+.cards{
+  height:200px;
+  border: 1px solid black;
+  width:150px;
+  margin: 50px;
+  background-color: black;
+  border-radius: 5px;
+  color: white;
+}
+
+#players-cards{
+  height: 500px;
+}
+
+#deck-of-black-cards{
+  box-shadow: -10px -10px 10px 0px  #000000;
+  border-top: 1px solid #ebebe0;
+  border-left: 1px solid #ebebe0;
+  line-height: 200px;
+  text-align: center;
+  font-size: 30px;
+}
+#black-card{
+  padding: 10px;
+}
+
+#question-holder{
+  padding-left: 100px;
+}
+
+#black-cards-bar{
+  height: 300px;
+  border-bottom: 3px solid #eee;
+}
+
+#white-cards-bar{
+  border-left: 3px solid #eee;
+}
+
+#players-bar{
+
+}
+
+#exit{
+  background: #4074f5;
+  font-size: 18px;
+}
+
+#timer-place{
+  margin-top: 69px;
+}
+
+#timer{
+  padding: 0 10%;
+  font-weight: bolder;
+  font-size: 72px;
+}
+
+#avatar{
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  line-height:50px;
+  background-color: #4074f5;
+  color: white;
+}
+
+#name{
+  width:100px;
+  line-height: 50px;
+}
+
+#score{
+  border-radius: 100%;
+  width: 50px;
+  height: 50px;
+  line-height:50px;
+  background-color: darkgrey;
+}
+.flex-container {
+    display: -webkit-flex;
+    display: flex;
+    max-width: 200px;
+    height: 50px;
+    background-color: #eee;
+    border-radius: 50px;
+    box-shadow: 0px 3px 1px grey;
+    margin: 20px;
+}
+
+.flex-item {
+    text-align: center;
+  }
+
+.white-cards-holder{
+  padding: 20px;
+}
+
+.white-cards-holder .cards{
+    float:left;
+    background-color: white;
+    margin: 10px;
+    border: 1px solid  #d6d6c2;
+    padding: 10px;
+    color: #000000;
+  }
