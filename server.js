@@ -26,30 +26,14 @@ var port = config.port,
   server,
   ioObj;
 
-  console.log('Config.db is: ' + config.db);
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };    
+
+console.log('Config.db is: ' + config.db);
+var mongo = require('mongodb');
 //Bootstrap db connection
-mongoose.connect(config.db).then((err) => {
-  if(err) throw (err.message);
-  //express settings
-  require('./config/express')(app, passport, mongoose);
-
-  //Bootstrap routes
-  require('./config/routes')(app, passport, auth);
-
-  setTimeout(function() {
-    //Start the app by listening on <port>
-
-    server = app.listen(port);
-    console.log('Express app started...');
-    ioObj = io.listen(server, { log: false });
-    //game logic handled here
-    require('./config/socket/socket')(ioObj);
-
-    //Initializing logger
-    logger.init(app, passport, mongoose);
-  }, 10000);
-});
-
+mongoose.connect(config.db, options);
+var conn = mongoose.connection;
 //Bootstrap models
 var models_path = __dirname + '/app/models';
 var walk = function(path) {
@@ -76,5 +60,24 @@ app.use(function(req, res, next){
   next();
 });
 
+conn.on('error', console.error.bind(console, 'connection error:'));
+
+conn.once('open', function () {
+  //express settings
+  require('./config/express')(app, passport, mongoose);
+
+  //Bootstrap routes
+  require('./config/routes')(app, passport, auth);
+
+  //Start the app by listening on <port>
+  server = app.listen(port);
+  console.log('Express app started...');
+  ioObj = io.listen(server, { log: false });
+  //game logic handled here
+  require('./config/socket/socket')(ioObj);
+
+  //Initializing logger
+  logger.init(app, passport, mongoose);
+});
 //expose app
 exports = module.exports = app;
