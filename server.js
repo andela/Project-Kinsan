@@ -8,14 +8,12 @@ var express = require('express'),
   dotenv = require('dotenv'),
   io = require('socket.io');
 
-var port = config.port,
-  server,
-  ioObj;
 /**
  * Main application entry file.
  * Please note that the order of loading is important.
  */
 dotenv.config({silent: true});
+
 //Load configurations
 //if test env, load example file
 process.env.NODE_ENV = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
@@ -24,6 +22,10 @@ var env = process.env.NODE_ENV,
   auth = require('./config/middlewares/authorization'),
   mongoose = require('mongoose');
 
+var port = config.port,
+  server,
+  ioObj;
+  
   console.log('Config.db is: ' + config.db);
 //Bootstrap db connection
 mongoose.connect(config.db).then((err) => {
