@@ -30,10 +30,9 @@ var UserSchema = new Schema({
  * Virtuals
  */
 UserSchema.virtual('password').set(function(password) {
-  this._password = password;
-  this.hashed_password = this.encryptPassword(password);
+  this.hashed_password = password;
 }).get(function() {
-  return this._password;
+  return this.hashed_password;
 });
 
 /**

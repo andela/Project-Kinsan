@@ -1,7 +1,9 @@
 angular.module('mean.system')
-.controller('IndexController', ['$scope', 'Global', '$location', 'socket', 'game', 'AvatarService', function ($scope, Global, $location, socket, game, AvatarService) {
+.controller('IndexController', ['$scope', '$http', 'Global', '$location', 'socket', 'game', 'AvatarService', function ($scope, $http, Global, $location, socket, game, AvatarService) {
   $scope.global = Global;
-
+  $scope.show_signin_error = false;
+  $scope.show_signup_error = false;
+  
   $scope.playAsGuest = function() {
     game.joinGame();
     $location.path('/app');
@@ -75,4 +77,59 @@ angular.module('mean.system')
         }
       }
     });
-  }}]);
+  }
+
+  $scope.signin = function() {
+    var user = {
+      email: $scope.signin_email,
+      password: $scope.signin_password
+    };
+
+    $http.post('/api/auth/login', user).then(function(data) {
+      $scope.user_data = data;
+      $scope.show_signin_error = false;
+      $scope.dismiss();
+    }, function(err) {
+      $scope.error = err;
+      $scope.show_signin_error = true;
+    });
+  };
+
+  $scope.signup = function() {
+    if(!$scope.signup_name || !$scope.signup_email || !$scope.signup_password) {
+      $scope.show_signup_error = true;
+      $scope.error = {
+        data: {
+          message: 'Data incomplete.'
+        }
+      };
+    } else if($scope.signup_password !== $scope.signup_password_again) {
+      $scope.show_signup_error = true;
+      $scope.error = {
+        data: {
+          message: 'Passwords do not match.'
+        }
+      };
+    } else {
+      var newuser = {
+        email: $scope.signup_email,
+        password: $scope.signup_password,
+        name: $scope.signup_name
+      };
+
+      $http.post('/api/auth/signup', newuser).then(function(data) {
+        $scope.user_data = data;
+        $scope.show_signup_error = false;
+        // Clear the controls
+        $scope.signup_email = '';
+        $scope.signup_password = '';
+        $scope.signup_name = '';
+        // Close the modal
+        $scope.dismiss();
+      }, function(err) {
+        $scope.error = err;
+        $scope.show_signup_error = true;
+      });
+    }
+  };
+}]);
