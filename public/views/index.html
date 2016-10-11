@@ -17,7 +17,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#">HOME</a></li>
         <li><a href="#">ABOUT</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#modal">LOGIN/SIGNUP</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#login-modal">LOGIN/SIGNUP</a></li>
         <li><a href="#">SHOP</a></li>
         <li id="header-play"><a href="#" class="header-play">PLAY</a></li>
       </ul>
@@ -145,29 +145,83 @@
 </div>
 
 <!-- Login Modal Dialog -->
-<div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="vertical-alignment-helper">
-    <div class="modal-dialog vertical-align-center custom-modal-width">
+    <div class="modal-dialog vertical-align-center signin-modal-width">
       <div class="modal-content">
         <div class="modal-body">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <div class="container">
+            <div class="row">
+              <div class="col-sm-12">
+                <div class="text-center">
+                  <h3 class="center-block">SIGN IN</h3>
+                </div>
+                <label ng-hide="true" id="lbl_signin_error" class="alert alert-danger">Danger! Bad stuff can happen</label>
+                <div class="row">
+                  <div class="col-sm-6">
+                      <form>
+                        <div class="form-group">
+                          <input type="email" class="form-control" id="txt_signin_email" placeholder="email address" />
+                        </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" id="txt_signin_password" placeholder="password" />
+                        </div>           
+                        <button type="submit" class="btn btn-signin center-block" id="btn_signin">SIGN IN</button>
+                      </form>
+                      <br>
+                      <div class="text-center">
+                        <a href="#" class="anchor">forgot your password?</a>
+                      </div>
+                  </div>
+                  <div class="col-sm-6">
+                      <div class="text-center">
+                        <input type="image" src="./../img/facebook.png" />
+                      </div>  
+                      <div class="text-center">
+                        <input type="image" src="./../img/twitter.png" />
+                      </div> 
+                      <div class="text-center">
+                        <input type="image" src="./../img/google.png" />
+                      </div>      
+                      <div class="text-center">
+                        <p>don't have an account? <a href="#" class="anchor" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">sign up</a></p>
+                      </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>         
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Signup Modal Dialog -->
+<div class="modal fade" id="signup-modal" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center signup-modal-width">
+      <div class="modal-content">
+        <div class="modal-body">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <label ng-hide="true" id="lbl_signup_error" class="alert alert-danger">Danger! Bad stuff can happen</label>
           <div class="text-center">
-            <h3 class="center-block">SIGN IN</h3>
+            <h3 class="center-block">SIGN UP</h3>
           </div>
           <form>
             <div class="form-group">
-              <input type="email" class="form-control" id="email-address" placeholder="email address" />
+              <input type="email" class="form-control" id="signup_email" placeholder="email address" required />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="password" placeholder="password" />
+              <input type="password" class="form-control" id="signup_password" placeholder="password" required />
+            </div>   
+            <div class="form-group">
+              <input type="password" class="form-control" id="signup_password_again" placeholder="password again" required />
             </div>            
-            <input type="button" class="btn btn-signin center-block" id="signin" value="SIGN IN" />
-            <!-- The links out of here -->
+            <button type="submit" class="btn btn-signin center-block" id="signup">SIGN UP</button>
             <br />
-            <div class="text-center">
-              <a href="#" class="anchor">forgot your password?</a>
-              <p>don't have an account? <a href="#" class="anchor">sign up</a></p>
-            </div>
           </form>
         </div>
       </div>
