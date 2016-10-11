@@ -34,6 +34,7 @@
     "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",
     "jade": "~0.35.0",
+    "jquery": "^3.1.1",
     "jsonwebtoken": "^7.1.9",
     "mean-logger": "~0.0.1",
     "mocha": "^3.1.0",

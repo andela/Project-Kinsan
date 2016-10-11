@@ -26,11 +26,8 @@ var port = config.port,
   server,
   ioObj;
 
-var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } }, 
-                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };    
-
-console.log('Config.db is: ' + config.db);
-var mongo = require('mongodb');
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
 //Bootstrap db connection
 mongoose.connect(config.db, options);
 var conn = mongoose.connection;

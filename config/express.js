@@ -46,6 +46,8 @@ module.exports = function(app, passport, mongoose) {
         //express/mongo session storage
     app.use(session({
       secret: 'MEAN',
+      saveUninitialized: false, // don't create session until something stored
+      resave: false, //don't save session if unmodified
       store: new mongoStore({
         url: config.db,
         collection: 'sessions',
