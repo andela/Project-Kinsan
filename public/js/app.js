@@ -1,4 +1,4 @@
-angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives'])
+angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives', 'services.History'])
   .config(['$routeProvider',
       function($routeProvider) {
           $routeProvider.
@@ -22,6 +22,9 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
           }).
           when('/choose-avatar', {
             templateUrl: '/views/choose-avatar.html'
+          }).
+          when('/history', {
+            templateUrl: '/views/history.tpl.html'
           }).
           otherwise({
             redirectTo: '/'
@@ -50,3 +53,4 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
 
 angular.module('mean.system', []);
 angular.module('mean.directives', []);
+angular.module('services.History', ['mean.system']);

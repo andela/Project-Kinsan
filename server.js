@@ -12,7 +12,8 @@ var express = require('express'),
  * Main application entry file.
  * Please note that the order of loading is important.
  */
-dotenv.config();
+dotenv.config({silent: true});
+
 //Load configurations
 //if test env, load example file
 process.env.NODE_ENV = (process.env.NODE_ENV) ? process.env.NODE_ENV : 'development';
@@ -21,9 +22,15 @@ var env = process.env.NODE_ENV,
   auth = require('./config/middlewares/authorization'),
   mongoose = require('mongoose');
 
-//Bootstrap db connection
-var db = mongoose.connect(config.db);
+var port = config.port,
+  server,
+  ioObj;
 
+var options = { server: { socketOptions: { keepAlive: 300000, connectTimeoutMS: 30000 } },
+                replset: { socketOptions: { keepAlive: 300000, connectTimeoutMS : 30000 } } };
+//Bootstrap db connection
+mongoose.connect(config.db, options);
+var conn = mongoose.connection;
 //Bootstrap models
 var models_path = __dirname + '/app/models';
 var walk = function(path) {
@@ -50,22 +57,25 @@ app.use(function(req, res, next){
   next();
 });
 
-//express settings
-require('./config/express')(app, passport, mongoose);
+conn.on('error', function () {
+  throw 'Error conecting to the database...';
+});
 
-//Bootstrap routes
-require('./config/routes')(app, passport, auth);
+conn.once('open', function () {
+  //express settings
+  require('./config/express')(app, passport, mongoose);
 
-//Start the app by listening on <port>
-var port = config.port;
-var server = app.listen(port);
-var ioObj = io.listen(server, { log: false });
-//game logic handled here
-require('./config/socket/socket')(ioObj);
-console.log('Express app started on port ' + port);
+  //Bootstrap routes
+  require('./config/routes')(app, passport, auth);
 
-//Initializing logger
-logger.init(app, passport, mongoose);
+  //Start the app by listening on <port>
+  server = app.listen(port);
+  ioObj = io.listen(server, { log: false });
+  //game logic handled here
+  require('./config/socket/socket')(ioObj);
 
+  //Initializing logger
+  logger.init(app, passport, mongoose);
+});
 //expose app
 exports = module.exports = app;
