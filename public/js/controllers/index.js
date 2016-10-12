@@ -82,7 +82,7 @@ angular.module('mean.system')
   }
 
   $scope.signin = function() {
-    let user = {
+    var user = {
       email: $scope.signin_email,
       password: $scope.signin_password
     };
@@ -119,7 +119,7 @@ angular.module('mean.system')
         }
       };
     } else {
-      let newuser = {
+      var newuser = {
         email: $scope.signup_email,
         password: $scope.signup_password,
         name: $scope.signup_name
