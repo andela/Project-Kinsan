@@ -83,6 +83,9 @@ angular.module('mean.directives', [])
         scope.dismiss = function() {
           element.modal('hide');
         };
+        scope.$on('modalDismiss',function() {
+          element.modal('hide');
+        });
       }
     }; 
   });

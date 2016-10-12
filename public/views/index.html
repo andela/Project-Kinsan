@@ -1,232 +1,235 @@
-<nav class="navbar navbar-default navbar-light">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">C F H</a>
-    </div>
+<div ng-controller="IndexController">
+  <nav class="navbar navbar-default navbar-light" >
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">C F H</a>
+      </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
 
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">ABOUT</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#login-modal">LOGIN/SIGNUP</a></li>
-        <li><a href="#">SHOP</a></li>
-        <li id="header-play"><a href="#" class="header-play">PLAY</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">HOME</a></li>
+          <li><a href="#">ABOUT</a></li>
+          <li ng-show="!show_history"><a href="#" data-toggle="modal" data-target="#signin-modal">LOGIN/SIGNUP</a></li>
+          <li ng-show="show_history"><a href="#">GAME HISTORY</a></li>
+          <li><a href="#">SHOP</a></li>
+          <li id="header-play"><a href="#" class="header-play">PLAY</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
 
-<div class="container" ng-controller="IndexController">
-  <div class="row section">
-    <div class="col-md-12 col-sm-12">
-      <div align="center">
-        <h1 id="site-title">CARDS FOR HUMANITY</h1>
-        <iframe id="demo-video" height="500" src="https://www.youtube.com/embed/GspTc2C2Be4"
-                frameborder="0" allowfullscreen>
-        </iframe>
-        <div id="play-now">
-          <button class="">
-            PLAY NOW
-          </button>
+  <div class="container" >
+    <div class="row section">
+      <div class="col-md-12 col-sm-12">
+        <div align="center">
+          <h1 id="site-title">CARDS FOR HUMANITY</h1>
+          <iframe id="demo-video" height="500" src="https://www.youtube.com/embed/GspTc2C2Be4"
+                  frameborder="0" allowfullscreen>
+          </iframe>
+          <div id="play-now">
+            <button class="">
+              PLAY NOW
+            </button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="row section how-to-play">
-    <div class="col col-md-6 col-lg-7 col-sm-12">
-      <div class="desc-box">
-        <p class="desc-text">
-          A game for horrible people
-          desperately trying to do good
+    <div class="row section how-to-play">
+      <div class="col col-md-6 col-lg-7 col-sm-12">
+        <div class="desc-box">
+          <p class="desc-text">
+            A game for horrible people
+            desperately trying to do good
+          </p>
+          <div class="divider"></div>
+        </div>
+      </div>
+      <div class="col-md-6 col-lg-5 col-sm-12 animated-col">
+
+        <div align="center">
+          <h2 id="how-to-play-title">HOW TO PLAY</h2>
+          <div class="cards">
+            <div class="cards-container">
+
+
+              <div class="card shadow-card">
+                <div id="slider-controls">
+                  <div id="slider-left" class="dead slider-controller">
+                    <i class="glyphicon glyphicon-chevron-left"></i>
+                  </div>
+                  <div id="slider-right" class="not-dead slider-controller">
+                    <i class="glyphicon glyphicon-chevron-right"></i>
+                  </div>
+                </div>
+              </div>
+
+              <div class="real-cards">
+                <div class="card real-card current">
+                  Each player begins with, and will always have, 10 white answer cards.
+                </div>
+
+                <div class="card real-card">
+                  A CZAR randomly picks a black card containing a question to which you submit an answer to.
+                </div>
+
+                <div class="card real-card ">
+                  The CZAR choose an answer submitted
+                </div>
+
+                <div class="card real-card">
+                  The person whose answer get selected by the CZAR scores a point
+                </div>
+
+                <div class="card real-card">
+                  You need five point to win the game.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--END::-->
+
+    <div class="row section donate-row">
+      <div align="center">
+        <h1 id="donate-title">DONATE</h1>
+      </div>
+
+      <div class="col-md-5 col-sm-12">
+        <div align="center">
+          <img src="img/panda.png" class="img-responsive">
+        </div>
+      </div>
+
+      <div class="col-md-7 col-sm-12">
+        <div class="quote">
+          "If you don't give back, no one will
+          like you<sup>TM</sup>" <small class="quote" style="color: #ddd"> - crowdrise.com</small>
+        </div>
+        <p class="donation-text">
+          We're quite sure you feel the same way, so we've integrated
+          donation widgets, along with some not-so-subtle reminders
+          throughout the game to give you the opportunity to donate.
         </p>
+
         <div class="divider"></div>
-      </div>
-    </div>
-    <div class="col-md-6 col-lg-5 col-sm-12 animated-col">
-
-      <div align="center">
-        <h2 id="how-to-play-title">HOW TO PLAY</h2>
-        <div class="cards">
-          <div class="cards-container">
-
-
-            <div class="card shadow-card">
-              <div id="slider-controls">
-                <div id="slider-left" class="dead slider-controller">
-                  <i class="glyphicon glyphicon-chevron-left"></i>
-                </div>
-                <div id="slider-right" class="not-dead slider-controller">
-                  <i class="glyphicon glyphicon-chevron-right"></i>
-                </div>
-              </div>
-            </div>
-
-            <div class="real-cards">
-              <div class="card real-card current">
-                Each player begins with, and will always have, 10 white answer cards.
-              </div>
-
-              <div class="card real-card">
-                A CZAR randomly picks a black card containing a question to which you submit an answer to.
-              </div>
-
-              <div class="card real-card ">
-                The CZAR choose an answer submitted
-              </div>
-
-              <div class="card real-card">
-                The person whose answer get selected by the CZAR scores a point
-              </div>
-
-              <div class="card real-card">
-                You need five point to win the game.
-              </div>
-            </div>
+        <div align="center">
+          <div class="donate-input">
+            <input placeholder="$15.00"/>
+            <button>DONATE</button>
           </div>
-
         </div>
+
+      </div>
+
+    </div>
+
+    <div class="row footer">
+      <div class="col-md-12" align="center">
+        <p>
+          This game is based on the <a href="http://cardsagainsthumanity.com">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated
+          with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all
+          proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com">crowdrise.</a>
+        </p>
       </div>
     </div>
   </div>
-  <!--END::-->
 
-  <div class="row section donate-row">
-    <div align="center">
-      <h1 id="donate-title">DONATE</h1>
-    </div>
-
-    <div class="col-md-5 col-sm-12">
-      <div align="center">
-        <img src="img/panda.png" class="img-responsive">
-      </div>
-    </div>
-
-    <div class="col-md-7 col-sm-12">
-      <div class="quote">
-        "If you don't give back, no one will
-        like you<sup>TM</sup>" <small class="quote" style="color: #ddd"> - crowdrise.com</small>
-      </div>
-      <p class="donation-text">
-        We're quite sure you feel the same way, so we've integrated
-        donation widgets, along with some not-so-subtle reminders
-        throughout the game to give you the opportunity to donate.
-      </p>
-
-      <div class="divider"></div>
-      <div align="center">
-        <div class="donate-input">
-          <input placeholder="$15.00"/>
-          <button>DONATE</button>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-
-  <div class="row footer">
-    <div class="col-md-12" align="center">
-      <p>
-        This game is based on the <a href="http://cardsagainsthumanity.com">Cards Against Humanity</a> card game, which is CC licensed (BY-NC-SA). Cards for Humanity is not affiliated
-        with Cards Against Humanity. In complying with the Creative Commons license of the Cards Against Humanity card game, all
-        proceeds from donations go directly to charity, as managed by <a href="http://crowdrise.com">crowdrise.</a>
-      </p>
-    </div>
-  </div>
-</div>
-
-<!-- Login Modal Dialog -->
-<div class="modal fade" id="login-modal" my-modal tabindex="-1" role="dialog" aria-hidden="true" ng-controller="IndexController">
-  <div class="vertical-alignment-helper">
-    <div class="modal-dialog vertical-align-center signin-modal-width">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-12">
-                <div class="text-center">
-                  <h3>SIGN IN</h3>
-                </div>
-                <label ng-show="show_signin_error" class="alert alert-danger center-block">{{ error.data.message }}</label>
-                <br />
-                <div class="row">
-                  <div class="col-sm-6">
-                      <form>
-                        <div class="form-group">
-                          <input type="email" class="form-control" ng-model="signin_email" placeholder="email address" />
+  <!-- Login Modal Dialog -->
+  <div class="modal fade" id="signin-modal" my-modal tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="vertical-alignment-helper">
+      <div class="modal-dialog vertical-align-center signin-modal-width">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <div class="container">
+              <div class="row">
+                <div class="col-sm-12">
+                  <div class="text-center">
+                    <h3>SIGN IN</h3>
+                  </div>
+                  <label ng-show="show_signin_error" class="alert alert-danger center-block">{{ error.data.message }}</label>
+                  <br />
+                  <div class="row">
+                    <div class="col-sm-6">
+                        <form>
+                          <div class="form-group">
+                            <input type="email" class="form-control" ng-model="signin_email" placeholder="email address" />
+                          </div>
+                          <div class="form-group">
+                            <input type="password" class="form-control" ng-model="signin_password" placeholder="password" />
+                          </div>           
+                          <button type="submit" class="btn btn-signin center-block" ng-click="signin()">SIGN IN</button>
+                        </form>
+                        <br>
+                        <div class="text-center">
+                          <a href="#" class="anchor">forgot your password?</a>
                         </div>
-                        <div class="form-group">
-                          <input type="password" class="form-control" ng-model="signin_password" placeholder="password" />
-                        </div>           
-                        <button type="submit" class="btn btn-signin center-block" ng-click="signin()">SIGN IN</button>
-                      </form>
-                      <br>
-                      <div class="text-center">
-                        <a href="#" class="anchor">forgot your password?</a>
-                      </div>
-                  </div>
-                  <div class="col-sm-6">
-                      <div class="text-center">
-                        <input type="image" src="./../img/facebook.png" />
-                      </div>  
-                      <div class="text-center">
-                        <input type="image" src="./../img/twitter.png" />
-                      </div> 
-                      <div class="text-center">
-                        <input type="image" src="./../img/google.png" />
-                      </div>   
-                      <br />   
-                      <div class="text-center">
-                        <p>don't have an account? <a href="#" class="anchor" data-toggle="modal" data-target="#signup-modal" data-dismiss="modal">sign up</a></p>
-                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="text-center">
+                          <input type="image" src="./../img/facebook.png" />
+                        </div>  
+                        <div class="text-center">
+                          <input type="image" src="./../img/twitter.png" />
+                        </div> 
+                        <div class="text-center">
+                          <input type="image" src="./../img/google.png" />
+                        </div>   
+                        <br />   
+                        <div class="text-center">
+                          <p>don't have an account? <a id="lbl_show_signup" href="#" class="anchor" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal" >sign up</a></p>
+                        </div>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>         
+            </div>         
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Signup Modal Dialog -->
-<div class="modal fade" id="signup-modal"  my-modal tabindex="-1" role="dialog" aria-hidden="true" ng-controller="IndexController">
-  <div class="vertical-alignment-helper">
-    <div class="modal-dialog vertical-align-center signup-modal-width">
-      <div class="modal-content">
-        <div class="modal-body">
-          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button> 
-          <div class="text-center">
-            <h3 class="center-block">SIGN UP</h3>
+  <!-- Signup Modal Dialog -->
+  <div class="modal fade" id="signup-modal"  my-modal tabindex="-1" role="dialog" aria-hidden="true" >
+    <div class="vertical-alignment-helper">
+      <div class="modal-dialog vertical-align-center signup-modal-width">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>          
+            <div class="text-center">
+              <h3 class="center-block">SIGN UP</h3>
+            </div>
+            <label ng-show="show_signup_error" class="alert alert-danger center-block">{{ error.data.message }}</label>
+            <form>
+              <div class="form-group">
+                <input type="text" class="form-control" ng-model="signup_name" placeholder="full name" required />
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" ng-model="signup_email" placeholder="email address" required />
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" ng-model="signup_password" placeholder="password" required />
+              </div>   
+              <div class="form-group">
+                <input type="password" class="form-control" ng-model="signup_password_again" placeholder="password again" required />
+              </div>            
+              <button type="submit" class="btn btn-signin center-block" ng-click="signup()">SIGN UP</button>
+              <br />
+            </form>
           </div>
-          <label ng-show="show_signup_error" class="alert alert-danger center-block">{{ error.data.message }}</label>
-          <form>
-            <div class="form-group">
-              <input type="text" class="form-control" ng-model="signup_name" placeholder="full name" required />
-            </div>
-            <div class="form-group">
-              <input type="email" class="form-control" ng-model="signup_email" placeholder="email address" required />
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" ng-model="signup_password" placeholder="password" required />
-            </div>   
-            <div class="form-group">
-              <input type="password" class="form-control" ng-model="signup_password_again" placeholder="password again" required />
-            </div>            
-            <button type="submit" class="btn btn-signin center-block" ng-click="signup()">SIGN UP</button>
-            <br />
-          </form>
         </div>
       </div>
     </div>
