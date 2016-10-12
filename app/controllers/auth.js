@@ -116,7 +116,6 @@ function encryptPassword (password) {
 }
 
 function verifyPasswords(plainText, hashedPassword) {
-  console.log(plainText, hashedPassword);
   if (!plainText || !hashedPassword) {
     return false;
   }

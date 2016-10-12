@@ -1,8 +1,10 @@
 angular.module('mean.system')
 .controller('IndexController', ['$scope', '$http', 'Global', '$location', 'socket', 'game', 'AvatarService', function ($scope, $http, Global, $location, socket, game, AvatarService) {
   $scope.global = Global;
+  // variables for determining the visibility of certain UI elements
   $scope.show_signin_error = false;
   $scope.show_signup_error = false;
+  $scope.show_history = false;
   
   $scope.playAsGuest = function() {
     game.joinGame();
@@ -80,7 +82,7 @@ angular.module('mean.system')
   }
 
   $scope.signin = function() {
-    var user = {
+    let user = {
       email: $scope.signin_email,
       password: $scope.signin_password
     };
@@ -88,7 +90,13 @@ angular.module('mean.system')
     $http.post('/api/auth/login', user).then(function(data) {
       $scope.user_data = data;
       $scope.show_signin_error = false;
-      $scope.dismiss();
+      // Clear the controls
+      $scope.signup_email = '';
+      $scope.signup_password = '';
+      // Hide login and Show history
+      $scope.show_history = true;
+      // Close the modal
+      $scope.$broadcast('modalDismiss');
     }, function(err) {
       $scope.error = err;
       $scope.show_signin_error = true;
@@ -111,7 +119,7 @@ angular.module('mean.system')
         }
       };
     } else {
-      var newuser = {
+      let newuser = {
         email: $scope.signup_email,
         password: $scope.signup_password,
         name: $scope.signup_name
@@ -123,9 +131,12 @@ angular.module('mean.system')
         // Clear the controls
         $scope.signup_email = '';
         $scope.signup_password = '';
+        $scope.signup_password_again = '';
         $scope.signup_name = '';
         // Close the modal
         $scope.dismiss();
+        // Hide login and Show history
+        $scope.show_history = true;
       }, function(err) {
         $scope.error = err;
         $scope.show_signup_error = true;
