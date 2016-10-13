@@ -18,6 +18,15 @@ script(type='text/javascript', src='https://code.angularjs.org/1.1.5/angular-coo
 script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
 script(type='text/javascript', src='/lib/angular-ui-utils/modules/route/route.js')
 
+//Firebase
+script(type='text/javascript' src='https://www.gstatic.com/firebasejs/3.4.0/firebase.js')
+script.
+      var config = {
+            apiKey: 'AIzaSyAO8Mno98d8V0V0ECnuTxCL4jGIYhHDKDc',
+            authDomain: 'project-kinsan.firebaseapp.com',
+            databaseURL: 'https://project-kinsan.firebaseio.com',
+      };
+      firebase.initializeApp(config);
 //Application Init
 script(type='text/javascript', src='/js/init.js')
 script(type='text/javascript', src='/js/app.js')
@@ -29,12 +38,14 @@ script(type='text/javascript', src='/js/services/global.js')
 script(type='text/javascript', src='/js/services/socket.js')
 script(type='text/javascript', src='/js/services/game.js')
 script(type='text/javascript', src='/js/services/history.fac.js')
+script(type='text/javascript', src='/js/services/game-chat.js')
 
 //Application Controllers
 script(type='text/javascript', src='/js/controllers/index.js')
 script(type='text/javascript', src='/js/controllers/header.js')
 script(type='text/javascript', src='/js/controllers/game.js')
 script(type='text/javascript', src='/js/controllers/history.ctr.js')
+script(type='text/javascript', src='/js/controllers/game-chat.js')
 script(type='text/javascript', src='/js/init.js')
 
 //Socket.io Client Library

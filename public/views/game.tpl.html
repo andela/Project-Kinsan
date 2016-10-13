@@ -1,74 +1,44 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title> In Game </title>
-    <link rel="stylesheet" type="text/css" href="../css/app.css"/>
-  </head>
-  <body>
-    <div class="chatBox" ng-app="chat">
-      <div class="chat" id="chat">
-        <em class="chatSign" id="word">CHAT</em>
-      </div>
-      <div class="box" id="box">
-        <div class="top" id="top">
-          <img src="img/down2.png"/>
-        </div>
-        <div class="messages" ng-controller="messenger">
-          <ul>
-            <li ng-repeat="message in messages">
-              <img ng-src="{{message.avatar}}"/>
-              <div class="sideText">
-              <p class="name"> {{message.sender}} <small class="time">{{message.timestamp | date:h:mma}}</small> </p>
-              <p class="text"> {{message.message}} </p>
-              </div>
-            </li>
-          </ul>
-        </div>
-        <div class ="bottom">
-          <img src="img/smile1.png" style="margin-top:6px;"/>
-          <input id="message" class="message" type="text" placeholder="Message here.."/>
-          <img id="send" src="img/send.png" style="margin-top:6px"/>
-        </div>
-      </div>
+<div class="chatBox" ng-controller="GameChatCtrl">
+  <div class="chat" id="chat">
+    <em class="chatSign" id="word">CHAT</em>
+  </div>
+  <div class="box" id="box">
+    <div class="top" id="top">
+      <img src="img/down2.png"/>
     </div>
+    <div class="messages">
+      <ul>
+        <li ng-repeat="message in messages">
+          <img ng-src="{{message.avatar}}"/>
+          <div class="sideText">
+            <p class="name"> {{message.sender}} <small class="time">{{message.timestamp | date:h:mma}}</small> </p>
+            <p class="text"> {{message.message}} </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class ="bottom">
+      <img src="img/smile1.png" style="margin-top:6px;"/>
+      <input id="message" class="message" type="text" placeholder="Message here.."/>
+      <img id="send" src="img/send.png" style="margin-top:6px"/>
+    </div>
+  </div>
+</div>
 
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script>
-    var app = angular.module('chat', []);
-    app.controller('messenger', function ($scope) {
-      $scope.messages = convo;
-      console.log('abi');
-    });
-    var convo = {
-      "kjwlkfh":{
-        "avatar": "img/user.png",
-        "message": "Hello Jane",
-        "sender": "John Doe",
-        "timestamp": 1476244206435
-      },
-      "kjrl4sh":{
-        "avatar": "img/user3.png",
-        "message": "Hello John",
-        "sender": "Jane Doe",
-        "timestamp": 1476244206333
-      }
-    };
-      $(document).ready( function () {
-        $('#chat').click( function () {
-          $('#word').slideToggle('slow');
-          $('#box').slideToggle('slow');
-          $('#chat').toggleClass('close');
-          $('#chat').toggleClass('chat');
-        });
-
-        $('#top').click( function () {
-          $('#word').slideToggle('slow');
-          $('#box').slideToggle('slow');
-          $('#chat').toggleClass('close');
-          $('#chat').toggleClass('chat');
-        });
+<script>
+    $(document).ready( function () {
+      $('#chat').click( function () {
+        $('#word').slideToggle('slow');
+        $('#box').slideToggle('slow');
+        $('#chat').toggleClass('close');
+        $('#chat').toggleClass('chat');
       });
+
+      $('#top').click( function () {
+        $('#word').slideToggle('slow');
+        $('#box').slideToggle('slow');
+        $('#chat').toggleClass('close');
+        $('#chat').toggleClass('chat');
+      });
+    });
     </script>
-  </body>
-</html>
