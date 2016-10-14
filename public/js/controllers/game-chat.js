@@ -19,7 +19,7 @@ angular.module('mean.gameChat')
     $scope.sendMessage = function(msg, sender){
       GameChat.sendMessage(msg, gameId, sender);
     };
-    
+
     GameChat.sessionExists(gameId)
     .then(function() {
       GameChat.loadMessages(gameId)
@@ -33,8 +33,6 @@ angular.module('mean.gameChat')
       GameChat.startSession(gameId, users).then(function(){
         //now listen for messages
         GameChat.listenForMessage(gameId, newMessage);
-      })
+      });
     });
-
-
-});
+  });

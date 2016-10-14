@@ -1,23 +1,24 @@
+<!DOCTYPE html>
 <div class="chatBox" ng-controller="GameChatCtrl">
   <div class="chat" id="chat">
     <em class="chatSign" id="word">CHAT</em>
   </div>
   <div class="box" id="box">
-    <div class="top" id="top">
+    <div class="chattop" id="top">
       <img src="img/down2.png"/>
     </div>
-    <div class="messages">
-      <ul>
-        <li ng-repeat="message in messages">
+    <div class="chatMessages">
+      <ul class="chatul">
+        <li class="chatli" ng-repeat="message in messages">
           <img ng-src="{{message.avatar}}"/>
-          <div class="sideText">
-            <p class="name"> {{message.sender}} <small class="time">{{message.timestamp | date:h:mma}}</small> </p>
-            <p class="text"> {{message.message}} </p>
+          <div class="chatSideText">
+            <p class="chatName"> {{message.sender}} <small class="chatTime">{{message.timestamp | date:h:mma}}</small> </p>
+            <p class="chatText"> {{message.message}} </p>
           </div>
         </li>
       </ul>
     </div>
-    <div class ="bottom">
+    <div class ="chatbottom">
       <img src="img/smile1.png" style="margin-top:6px;"/>
       <input id="message" class="message" type="text" placeholder="Message here.."/>
       <img id="send" src="img/send.png" style="margin-top:6px"/>
@@ -30,14 +31,14 @@
       $('#chat').click( function () {
         $('#word').slideToggle('slow');
         $('#box').slideToggle('slow');
-        $('#chat').toggleClass('close');
+        $('#chat').toggleClass('closeChat');
         $('#chat').toggleClass('chat');
       });
 
       $('#top').click( function () {
         $('#word').slideToggle('slow');
         $('#box').slideToggle('slow');
-        $('#chat').toggleClass('close');
+        $('#chat').toggleClass('closeChat');
         $('#chat').toggleClass('chat');
       });
     });
