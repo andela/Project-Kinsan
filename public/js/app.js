@@ -1,7 +1,7 @@
-angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives', 'services.History', 'mean.gameChat'])
+angular.module('mean', ['ngCookies', 'ngRoute', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives', 'services.History', 'mean.gameChat'])
   .config(['$routeProvider',
       function($routeProvider) {
-          $routeProvider.
+        $routeProvider.
           when('/', {
             templateUrl: 'views/index.html'
           }).
@@ -38,16 +38,16 @@ angular.module('mean', ['ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', '
       }
   ]).config(['$locationProvider',
     function($locationProvider) {
-        $locationProvider.hashPrefix("!");
+      $locationProvider.hashPrefix("!");
     }
   ]).run(['$rootScope', function($rootScope) {
-  $rootScope.safeApply = function(fn) {
-    var phase = this.$root.$$phase;
-    if(phase == '$apply' || phase == '$digest') {
+    $rootScope.safeApply = function(fn) {
+      var phase = this.$root.$$phase;
+      if(phase == '$apply' || phase == '$digest') {
         if(fn && (typeof(fn) === 'function')) {
-            fn();
+          fn();
         }
-    } else {
+      } else {
         this.$apply(fn);
       }
     };
