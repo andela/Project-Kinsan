@@ -4,7 +4,7 @@ describe('Component: player', function() {
   beforeEach(module('mean.directives'));
 
   // Ralph: load the template module for user directive
-  beforeEach(module('public/views/player.tpl.html'));
+  beforeEach(module('/views/player.tpl.html'));
 
   var element;
   var scope;
