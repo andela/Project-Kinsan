@@ -1,5 +1,5 @@
 angular.module('mean.directives', [])
-  // Ralph: Modify player directive
+  // Ralph: Modify player directive players on the game screen
   .directive('player', function (){
     return{
       restrict: 'E',
