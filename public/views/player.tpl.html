@@ -3,6 +3,6 @@
         <div id="avatar" class = "flex-item avatar"><img ng-src="{{item.avatar}}" height="50px" width="50px"></div>
         <div class="flex-item name">{{item.username}}</div>
         <div id="score" class = "score flex-item">{{item.points}}</div>
-        <span ng-show="currentCzar($index)" class="is-czar"> is czar</span>
+        <span ng-show="vm.currentCzar($index)" class="is-czar"> is czar</span>
     </div>
 </div>
