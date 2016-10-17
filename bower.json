@@ -10,7 +10,9 @@
     "angular": "^1.5.8",
     "angular-mocks": "^1.5.8",
     "angular-resource": "^1.5.8",
-    "jasmine-jquery": "^2.1.1"
+    "jasmine-jquery": "^2.1.1",
+    "ng-facebook": "0.1.6",
+    "hello": "^1.14.0"
   },
   "exportsOverride": {
     "bootstrap": {

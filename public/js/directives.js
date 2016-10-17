@@ -3,7 +3,7 @@ angular.module('mean.directives', [])
     return{
       restrict: 'EA',
       templateUrl: '/views/player.html',
-      link: function(scope, elem, attr){
+      link: function(scope){
         scope.colors = ['#7CE4E8', '#FFFFa5', '#FC575E', '#F2ADFF', '#398EC4', '#8CFF95'];
       }
     };
@@ -11,14 +11,14 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/answers.html',
-      link: function(scope, elem, attr) {
+      link: function(scope) {
 
         scope.$watch('game.state', function() {
           if (scope.game.state === 'winner has been chosen') {
             var curQ = scope.game.curQuestion;
             var curQuestionArr = curQ.text.split('_');
-            var startStyle = "<span style='color: "+scope.colors[scope.game.players[scope.game.winningCardPlayer].color]+"'>";
-            var endStyle = "</span>";
+            var startStyle = '<span style="color: '+scope.colors[scope.game.players[scope.game.winningCardPlayer].color]+'">';
+            var endStyle = '</span>';
             var shouldRemoveQuestionPunctuation = false;
             var removePunctuation = function(cardIndex) {
               var cardText = scope.game.table[scope.game.winningCard].card[cardIndex].text;
@@ -56,19 +56,19 @@ angular.module('mean.directives', [])
     return {
       restrict: 'EA',
       templateUrl: '/views/question.html',
-      link: function(scope, elem, attr) {}
+      link: function() {}
     };
   })
   .directive('timer', function(){
     return{
       restrict: 'EA',
       templateUrl: '/views/timer.html',
-      link: function(scope, elem, attr){}
+      link: function(){}
     };
   }).directive('landing', function() {
     return {
       restrict: 'EA',
-      link: function(scope, elem, attr) {
+      link: function(scope) {
         scope.showOptions = true;
 
         if (scope.$$childHead.global.authenticated === true) {
@@ -79,7 +79,7 @@ angular.module('mean.directives', [])
   }).directive('myModal', function() {
     return {
       restrict: 'A',
-      link: function(scope, element, attr) {
+      link: function(scope, element) {
         scope.dismiss = function() {
           element.modal('hide');
         };

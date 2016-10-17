@@ -21,6 +21,7 @@
           <li ng-show="!show_history"><a href="#" data-toggle="modal" data-target="#signin-modal">LOGIN/SIGNUP</a></li>
           <li ng-show="show_history"><a href="#">GAME HISTORY</a></li>
           <li><a href="#">SHOP</a></li>
+          <li ng-show="show_history" ng-click="signout()"><a href="#">SIGNOUT</a></li>
           <li id="header-play"><a href="#" class="header-play">PLAY</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
@@ -161,36 +162,39 @@
                   </div>
                   <label ng-show="show_signin_error" class="alert alert-danger center-block">{{ error.data.message }}</label>
                   <br />
-                  <div class="row">
+                  <div class="row vertical-divider">
                     <div class="col-sm-6">
-                        <form>
-                          <div class="form-group">
-                            <input type="email" class="form-control" ng-model="signin_email" placeholder="email address" />
-                          </div>
-                          <div class="form-group">
-                            <input type="password" class="form-control" ng-model="signin_password" placeholder="password" />
-                          </div>           
-                          <button type="submit" class="btn btn-signin center-block" ng-click="signin()">SIGN IN</button>
-                        </form>
-                        <br>
-                        <div class="text-center">
-                          <a href="#" class="anchor">forgot your password?</a>
+                      <form>
+                        <div class="form-group">
+                          <input type="email" class="form-control" ng-model="signin_email" placeholder="email address" />
                         </div>
+                        <div class="form-group">
+                          <input type="password" class="form-control" ng-model="signin_password" placeholder="password" />
+                        </div>           
+                        <button type="submit" class="btn btn-signin center-block" ng-click="signin()">SIGN IN</button>
+                      </form>
+                      <br>
+                      <div class="text-center">
+                        <a href="#" class="anchor">forgot your password?</a>
+                      </div>
                     </div>
                     <div class="col-sm-6">
-                        <div class="text-center">
-                          <input type="image" src="./../img/facebook.png" />
-                        </div>  
-                        <div class="text-center">
-                          <input type="image" src="./../img/twitter.png" />
-                        </div> 
-                        <div class="text-center">
-                          <input type="image" src="./../img/google.png" />
-                        </div>   
-                        <br />   
-                        <div class="text-center">
-                          <p>don't have an account? <a id="lbl_show_signup" href="#" class="anchor" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal" >sign up</a></p>
-                        </div>
+                      <div class="text-center">
+                        <input type="image" src="./../img/facebook.png" ng-click="facebookSignIn()" />
+                      </div>  
+                      <div class="text-center">
+                        <input type="image" src="./../img/twitter.png" ng-click="twitterSignIn()" />
+                      </div> 
+                      <div class="text-center" style="margin: 2.5px 0 0 35px; border-radius: 5px;">
+                        <span id="googleSignIn" style="border-radius: 5px;">
+                          <span id="signInButton"></span>
+                        </span>
+                        <!--<input type="image" src="./../img/google.png" ng-click="googleSignIn()" />-->
+                      </div>   
+                      <br />   
+                      <div class="text-center">
+                        <p>don't have an account? <a id="lbl_show_signup" href="#" class="anchor" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal" >sign up</a></p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -234,4 +238,6 @@
       </div>
     </div>
   </div>
+
+  <div id="fb-root"></div>
 </div>

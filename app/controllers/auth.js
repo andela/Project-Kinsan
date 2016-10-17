@@ -40,7 +40,8 @@ let auth = {
           res.status(200).json({
             success: true,
             message: 'Authentication successful.',
-            token: token
+            token: token,
+            user: user
           });
         }
       }
@@ -80,7 +81,8 @@ let auth = {
             res.status(200).json({
               successful: true, 
               message: 'You have successfully signed up.', 
-              token: token
+              token: token,
+              user: user
             });
           });
         } else {
@@ -104,6 +106,16 @@ let auth = {
       res.send({
         message: 'User deleted!'
       });
+    });
+  },
+
+  social: function(req, res) {
+    var token = jwt.sign(req.body, config.secret, { expiresIn: '24h' });
+    res.status(200).json({
+      successful: true, 
+      message: 'You have successfully signed in.', 
+      token: token,
+      user: req.body
     });
   }
 };

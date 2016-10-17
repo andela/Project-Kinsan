@@ -57,10 +57,27 @@
 
 @media screen and (min-width: 768px) {
   .signin-modal-width {
-    width: 550px; 
+    width: 650px; 
   }
 
   .signup-modal-width {
     width: 325px;
   }
+}
+
+.row.vertical-divider {
+  overflow: hidden;
+}
+.row.vertical-divider > div[class^="col-"] {
+  text-align: center;
+  padding-bottom: 100px;
+  margin-bottom: -100px;
+  border-left: 1px solid #757375;
+  border-right: 1px solid #757375;
+}
+.row.vertical-divider div[class^="col-"]:first-child {
+  border-left: none;
+}
+.row.vertical-divider div[class^="col-"]:last-child {
+  border-right: none;
 }
