@@ -60,19 +60,9 @@ module.exports = function(config) {
       'public/views/*.tpl.html': 'ng-html2js' // Ralph: add ng-html2js to watch the template files
     },
 
-<<<<<<< 4e440bc8117d7f52d0b3269a330a4adf93aa6e91
     ngHtml2JsPreprocessor: {
-<<<<<<< c513bfc660ff3552e2d9cdc42d2a4fd9421cd090
-      stripPrefix: 'public' //Ralph: strip public away from the link of the template
-=======
       stripPrefix: 'public/' //Ralph: strip public away from the link of the template
->>>>>>> Feature(add-ng-html2js-to-karma): Add ng-html2js preprocessor to karma
     },
-=======
-    // ngHtml2JsPreprocessor: {
-    //   stripPrefix: 'public/' //Ralph: strip public away from the link of the template
-    // },
->>>>>>> Feature(player-test): Add test for player component
 
     coverageReporter: {
       type : 'lcov',
