@@ -55,9 +55,9 @@ module.exports = function(config) {
       'public/views/*.tpl.html': 'ng-html2js' // Ralph: add ng-html2js to watch the template files
     },
 
-    // ngHtml2JsPreprocessor: {
-    //   stripPrefix: 'public/' //Ralph: strip public away from the link of the template
-    // },
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'public' //Ralph: strip public away from the link of the template
+    },
 
     coverageReporter: {
       type : 'lcov',
