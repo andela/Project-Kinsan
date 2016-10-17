@@ -2,13 +2,8 @@
   width: 100%;
   margin: 0; }
 
-<<<<<<< 6a99515662679436ac7e88910e11e5a916e6c456
 .game-cards {
   height: 180px;
-=======
-.game-cards{
-  height:200px;
->>>>>>> bug: remove cunflicting css
   border: 1px solid black;
   width: 130px;
   margin: 50px;
@@ -22,13 +17,8 @@
   height: 500px;
 }
 
-<<<<<<< 6a99515662679436ac7e88910e11e5a916e6c456
 .deck-of-black-cards {
   box-shadow: -2px -2px 0 0  #000000;
-=======
-#deck-of-black-cards{
-  box-shadow: -2px -2px 0px 0px  #000000;
->>>>>>> bug: remove cunflicting css
   border-top: 1px solid #ebebe0;
   border-left: 1px solid #ebebe0;
   line-height: 180px;
