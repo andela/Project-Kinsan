@@ -1,5 +1,9 @@
+<<<<<<< e7661d88d477d0f661d957bab83f4a80439ab972
 /* globals document, window */
 angular.module('mean', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives', 'services.History', 'mean.gameChat', 'services.Auth'])
+=======
+angular.module('mean', ['ngCookies', 'ngRoute', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives', 'services.History', 'mean.gameChat'])
+>>>>>>> Feature(add-angular-route): Add angular-route to the project
   .config(['$routeProvider',
       function($routeProvider) {
         $routeProvider.
