@@ -8,8 +8,9 @@ angular.module('mean.directives', [])
         players: '=players'
       },
       bindToController: true,
-      controller: function() {
+      controller: function($scope) {
         var vm = this;
+        vm.currentCzar = $scope.$parent.currentCzar;
       },
       controllerAs: 'vm'
     };
