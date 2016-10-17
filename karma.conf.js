@@ -61,7 +61,11 @@ module.exports = function(config) {
     },
 
     ngHtml2JsPreprocessor: {
+<<<<<<< c513bfc660ff3552e2d9cdc42d2a4fd9421cd090
       stripPrefix: 'public' //Ralph: strip public away from the link of the template
+=======
+      stripPrefix: 'public/' //Ralph: strip public away from the link of the template
+>>>>>>> Feature(add-ng-html2js-to-karma): Add ng-html2js preprocessor to karma
     },
 
     coverageReporter: {
