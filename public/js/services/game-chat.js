@@ -44,7 +44,8 @@ angular.module('mean.gameChat')
       },
 
       sendMessage: function (msg, gameId, sender) {
-        var timestamp =  Date.parse(new Date()) / 1000;
+        var date = new Date();
+        var timestamp =  date.getTime();
         database.ref(messagesRef + '/'+ gameId).push({
           'sender': sender.name,
           'avatar': sender.avatar,
@@ -57,7 +58,7 @@ angular.module('mean.gameChat')
         return new Promise(function(fufill, fail){
           database.ref(messagesRef + '/' + gameId).once('value', function(messages){
             fufill(messages.val());
-          })
+          });
         });
       },
 
@@ -67,4 +68,4 @@ angular.module('mean.gameChat')
         });
       }
     };
-});
+  });

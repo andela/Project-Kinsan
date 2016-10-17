@@ -17,6 +17,7 @@ angular.module('mean.gameChat')
     };
 
     $scope.sendMessage = function(msg, sender){
+      sender = users[1];
       GameChat.sendMessage(msg, gameId, sender);
     };
 
@@ -35,4 +36,5 @@ angular.module('mean.gameChat')
         GameChat.listenForMessage(gameId, newMessage);
       });
     });
+
   });

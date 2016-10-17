@@ -7,39 +7,67 @@
     <div class="chattop" id="top">
       <img src="img/down2.png"/>
     </div>
-    <div class="chatMessages">
+    <div class="chatMessages" id="chatMessages">
       <ul class="chatul">
-        <li class="chatli" ng-repeat="message in messages">
-          <img ng-src="{{message.avatar}}"/>
+        <li class="chatli" ng-repeat="newMessage in messages">
+          <img ng-src="{{newMessage.avatar}}"/>
           <div class="chatSideText">
-            <p class="chatName"> {{message.sender}} <small class="chatTime">{{message.timestamp | date:h:mma}}</small> </p>
-            <p class="chatText"> {{message.message}} </p>
+            <p class="chatName"> {{newMessage.sender}} <small class="chatTime">{{newMessage.timestamp | date:'h:mma'}}</small> </p>
+            <p class="chatText"> {{newMessage.message}} </p>
           </div>
         </li>
       </ul>
     </div>
+    <p class="isTyping" id="isTyping"></p>
     <div class ="chatbottom">
-      <img src="img/smile1.png" style="margin-top:6px;"/>
-      <input id="message" class="message" type="text" placeholder="Message here.."/>
-      <img id="send" src="img/send.png" style="margin-top:6px"/>
+      <img src="img/smile1.png"/>
+      <input id="message" class="message" type="text" placeholder="Message here.." ng-model="message" ng-keyup="$event.keyCode == 13 ? sendMessage(message, 'Abisoye') : null"/>
+      <img id="send" src="img/send.png" style="float:right;margin-top:6px;" ng-click="sendMessage(message, 'Abisoye')"/>
     </div>
   </div>
 </div>
-
 <script>
-    $(document).ready( function () {
-      $('#chat').click( function () {
-        $('#word').slideToggle('slow');
-        $('#box').slideToggle('slow');
-        $('#chat').toggleClass('closeChat');
-        $('#chat').toggleClass('chat');
-      });
+$(document).ready( function () {
+  var scrolled = 100000;
 
-      $('#top').click( function () {
-        $('#word').slideToggle('slow');
-        $('#box').slideToggle('slow');
-        $('#chat').toggleClass('closeChat');
-        $('#chat').toggleClass('chat');
-      });
+  $('#chat').click( function () {
+    $('#word').slideToggle('slow');
+    $('#box').slideToggle('slow');
+    $('#chat').toggleClass('closeChat');
+    $('#chat').toggleClass('chat');
+    $('#chatMessages').animate({
+      scrollTop: scrolled
     });
-    </script>
+  });
+
+  $('#top').click( function () {
+    $('#word').slideToggle('slow');
+    $('#box').slideToggle('slow');
+    $('#chat').toggleClass('closeChat');
+    $('#chat').toggleClass('chat');
+  });
+
+  $('#message').focusin( function () {
+    $('#isTyping').text('I am typing....');
+    $('#message').focusout( function () {
+      $('#isTyping').text('');
+    });
+  });
+
+  $('#send').click( function () {
+    $('#message').val('');
+    $('#chatMessages').animate({
+      scrollTop: scrolled
+    });
+  });
+
+  $('#message').keypress( function (e) {
+    if(e.which == 13) {
+      $('#message').val('');
+      $('#chatMessages').animate({
+        scrollTop: scrolled
+      });
+    }
+  });
+});
+</script>
