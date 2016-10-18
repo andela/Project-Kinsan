@@ -4,13 +4,17 @@
 }
 
 .game-cards{
-  height:200px;
+  height:180px;
   border: 1px solid black;
-  width:150px;
+  width: 130px;
   margin: 50px;
   background-color: black;
   border-radius: 5px;
   color: white;
+}
+
+.game-cards p{
+  font-size: smaller;
 }
 
 #players-cards{
@@ -21,12 +25,20 @@
   box-shadow: -2px -2px 0 0  #000000;
   border-top: 1px solid #ebebe0;
   border-left: 1px solid #ebebe0;
-  line-height: 200px;
+  line-height: 180px;
   text-align: center;
-  font-size: 30px;
+  font-size: 25px;
 }
 #black-card{
   padding: 10px;
+}
+
+#start-game, #awaiting-players{
+  margin-top: 100px;
+}
+
+#start-game p {
+  margin-left: 10px;
 }
 
 #question-holder{
@@ -47,7 +59,6 @@
 }
 
 #exit{
-  background: #4074f5;
   font-size: 18px;
 }
 
@@ -72,7 +83,6 @@
 
 .name{
   width:100px;
-  /*line-height: 50px;*/
   margin:auto;
 }
 
@@ -83,6 +93,7 @@
   line-height:50px;
   background-color: darkgrey;
 }
+
 .flex-container {
     display: -webkit-flex;
     display: flex;
@@ -118,11 +129,13 @@
 
   .is-czar{
     position: absolute;
+    text-align: center;
+    font-weight: 800;
     left: 70px;
     top: 50px;
-    width: 51px;
+    width: 49px;
     background-color: #3498db;
-    padding:4px;
+    padding:2px;
     border-bottom-left-radius: 2px;
     border-bottom-right-radius: 2px;
     box-shadow: 0px 2px 1px grey;
