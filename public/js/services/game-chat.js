@@ -45,8 +45,10 @@ angular.module('mean.gameChat')
           database.ref(that.membersRef + '/' + gameId).set({})
             .then(function(){
               var member;
-              for (member of members) {
-                database.ref(that.membersRef + '/' + gameId).push(member);
+              for (member in members) {
+                if (members.hasOwnProperty(member)) {
+                    database.ref(that.membersRef + '/' + gameId).push(member);
+                }
               }
               database.ref(that.messagesRef + '/' + gameId).set({});
               fufill(true);
