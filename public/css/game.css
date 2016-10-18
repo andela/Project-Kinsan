@@ -31,6 +31,9 @@
 }
 #black-card{
   padding: 10px;
+  height:200px;
+  width:150px;
+  font-size: medium;
 }
 
 #start-game, #awaiting-players{
