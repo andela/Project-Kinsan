@@ -77,7 +77,7 @@ describe('Game chat test', function(){
       });
 
       it('should be able to create a game session', function(done){
-        GameChat.startSession(validGameId, users).then(function(data){
+        GameChat.startSession(validGameId, users).then(function(){
           GameChat.sessionExists(validGameId).then(function(data){
             expect(data).toBe(true);
             done();
@@ -99,7 +99,7 @@ describe('Game chat test', function(){
           }).catch(function(){
             expect(false).toBe(true);
             done();
-          })
+          });
         });
       });
     });
@@ -117,7 +117,7 @@ describe('Game chat test', function(){
             expect(data).toBe(true);
             done();
           })
-          .catch(function(error){
+          .catch(function(){
             expect(false).toBe(true);
             done();
           });
@@ -131,7 +131,6 @@ describe('Game chat test', function(){
       it('should detect new data changes to firebase', function(done){
         var listener = {
           listen : function () {
-            console.log('New message detected!');
           }
         };
         spyOn(listener, 'listen');
@@ -154,13 +153,13 @@ describe('Game chat test', function(){
         var sentMessages = ['Hello world', 'Hey'];
         GameChat.loadMessages(validGameId).then(function(data){
           expect(Object.keys(data).length).toBe(sentMessages.length);
-         for(var i in data){
-           if(data.hasOwnProperty(i)){
-            expect(sentMessages.indexOf(data[i].message))
-            .toBeGreaterThanOrEqual(0);
-           }
-         }
-        done();
+          for(var i in data){
+            if (data.hasOwnProperty(i)) {
+              expect(sentMessages.indexOf(data[i].message))
+              .toBeGreaterThanOrEqual(0);
+            }
+          }
+          done();
         }).catch(function(){
           expect(false).toBe(true);
           done();
@@ -170,7 +169,6 @@ describe('Game chat test', function(){
     describe('Typing watcher', function(){
       var listener = {
         isTyping : function(){
-          console.log('You are typing');
         }
       };
       it('should expect triggerIsTyping to be a defined function', function(){
@@ -191,7 +189,7 @@ describe('Game chat test', function(){
         }).catch(function(){
           expect(false).toBe(true);
           done();
-        })
+        });
 
       });
       //
@@ -201,13 +199,12 @@ describe('Game chat test', function(){
 
   describe('Test for GameChatCtrl', function(){
 
-    var $scope, controller, service;
+    var $scope;
     beforeEach(function(){
       $scope = {};
-      controller = $controller('GameChatCtrl', {$scope: $scope});
-      service = $factoryProvider.get('GameChat');
-      console.log('Yo',service);
-      $scope.GameChat.sessionStoreRef = 'test-game-sessions'
+      $controller('GameChatCtrl', {$scope: $scope});
+      $factoryProvider.get('GameChat');
+      $scope.GameChat.sessionStoreRef = 'test-game-sessions';
     });
 
     describe('Scope properties check', function(){

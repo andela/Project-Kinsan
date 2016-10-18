@@ -1,14 +1,15 @@
-/**
- * Created by cyrielo on 10/11/16.
- */
 'use strict';
 angular.module('mean.gameChat')
   .controller('GameChatCtrl', function ($scope, GameChat) {
-
-      var gameId = 'rkhu3yj4',
-          users = [{name:'john_doe', avatar:'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_male_dark_on_clear_200x200.png'}, {name:'jane_doe',avatar:'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_female_dark_on_clear_200x200.png'}],
-          currentUser = users[0];
-
+    var gameId = 'rkhu3yj4',
+      users = [{
+        name:'John Doe', 
+        avatar:'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_male_dark_on_clear_200x200.png'
+      },{
+        name:'Jane Doe',
+        avatar:'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_female_dark_on_clear_200x200.png'
+      }],
+      currentUser = users[0];
       // var gameId = game.gameID,
       //   users = game.players;
       
@@ -30,13 +31,12 @@ angular.module('mean.gameChat')
     };
 
     $scope.hideIsTyping = function(){
-      var ele = document.getElementById('isTyping');
-      ele.display = 'none';
+      $('#isTyping').hide();
     };
 
-    $scope.typingListener = function(typist){
-      var ele = document.getElementById('isTyping');
-       // ele.innerHTML =  'someone is typing....';
+    $scope.typingListener = function(){
+      //typist = '';
+      $('#isTyping').html('');
     };
 
     /*
@@ -49,7 +49,6 @@ angular.module('mean.gameChat')
       .then(function(messages) {
         $scope.messages = messages;
         $scope.$apply();
-        console.log($scope.messages);
         //Listen for new incoming message
         $scope.GameChat.listenForMessage(gameId, function(messages){
           $scope.newMessage(messages);
@@ -57,70 +56,23 @@ angular.module('mean.gameChat')
 
         //Listen for user typing
         $scope.GameChat.listenForTyping(gameId,function (typist) {
-            $scope.typingListener(typist);
+          $scope.typingListener(typist);
         });
       });
     })
     .catch(function(){
       //No game chat session existed before
       $scope.GameChat.startSession(gameId, users).then(function(){
-      //now listen for messages
-      $scope.GameChat.listenForMessage(gameId, function(){
-        $scope.newMessage(messages);
+        //now listen for messages
+        $scope.GameChat.listenForMessage(gameId, function(messages){ 
+          $scope.newMessage(messages);
+        });
+
+        //Listen for user typing
+        $scope.GameChat.
+        listenForTyping(gameId, $scope.typingListener(function (typist) {
+          $scope.typingListener(typist);
+        }));
       });
-
-      //Listen for user typing
-      $scope.GameChat.listenForTyping(gameId, $scope.typingListener(function (typist) {
-          $scope.typingListener(typist)
-      }));
-    })
-  });
-
-  /*Manipulate the DOM */
-  $(document).ready( function () {
-  var scrolled = 100000;
-
-  $('#chat').click( function () {
-    $('#word').slideToggle('slow');
-    $('#box').slideToggle('slow');
-    $('#chat').toggleClass('closeChat');
-    $('#chat').toggleClass('chat');
-    $('#chatMessages').animate({
-      scrollTop: scrolled
     });
   });
-
-  $('#top').click( function () {
-    $('#word').slideToggle('slow');
-    $('#box').slideToggle('slow');
-    $('#chat').toggleClass('closeChat');
-    $('#chat').toggleClass('chat');
-  });
-
-/*  $('#message').focusin( function () {
-    $('#isTyping').text('I am typing....');
-    $('#message').focusout( function () {
-      $('#isTyping').text('');
-    });
-  });*/
-
-  $('#send').click( function () {
-
-    $('#message').val('');
-    $('#chatMessages').animate({
-      scrollTop: scrolled
-    });
-  });
-
-  $('#message').keypress( function (e) {
-    if(e.which == 13) {
-      $scope.sendMessage();
-      $('#message').val('');
-      $('#chatMessages').animate({
-        scrollTop: scrolled
-      });
-    }
-  });
-});
-      
-});
