@@ -2,7 +2,6 @@
 
     <!-- Hide this entire section if the game has either not started or has ended-->
     <div ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'">
-
         <!--Show this div if the player is the czar and no answer has been chosen-->
         <div ng-show="isCzar() && game.table.length===0 && game.state !== 'game dissolved' && game.state !== 'awaiting players'">
             <p class="instruction-text">Waiting for players to pick a card</p>
@@ -30,7 +29,6 @@
         <div ng-hide="showTable || isCzar()">
             <p class="instruction-text">Pick your answer</p>
             <div class = "white-cards-holder">
-
                 <!-- Display the cards in a players deck -->
                 <div class = "game-cards" ng-click="pickCard(card)"
                 ng-repeat="card in game.players[game.playerIndex].hand"
