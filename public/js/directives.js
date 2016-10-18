@@ -60,4 +60,13 @@ angular.module('mean.directives', [])
         var vm = this;
       }
     };
+  }).directive('infoModal', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '/views/info-modal.tpl.html',
+      controllerAs: 'vm',
+      controller: function(){
+        var vm = this;
+      }
+    };
   });
