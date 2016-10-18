@@ -141,6 +141,18 @@ angular.module('mean.system')
     $location.path('/');
   };
 
+  $scope.gamePage = function() {
+    $('#myModal').modal('hide');
+    game.joinGame('joinNewGame');
+  };
+
+  $scope.homePage = function() {
+    $('#myModal').modal('hide');
+    setTimeout(function() {
+      $location.path('/');
+    }, 200);
+  };
+
     // Catches changes to round to update when no players pick card
     // (because game.state remains the same)
   $scope.$watch('game.round', function() {
