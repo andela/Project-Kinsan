@@ -70,4 +70,13 @@ angular.module('mean.directives', [])
       controller: function(){
       }
     };
+  }).directive('chat', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '/views/chat.tpl.html',
+      controllerAs: 'vm',
+      controller: {
+        
+      }
+    };
   });
