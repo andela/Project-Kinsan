@@ -13,6 +13,7 @@
     "jasmine-jquery": "^2.1.1",
     "firebase": "^3.4.1",
     "hello": "^1.14.0",
+    "angular-sanitize": "^1.5.8",
     "angular-route": "^1.5.8"
   },
   "exportsOverride": {
