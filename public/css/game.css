@@ -36,6 +36,17 @@
   font-size: medium;
 }
 
+#black-card u{
+  position: relative;
+  content: '';
+  display: inline-block;
+  width: 25%;
+  text-decoration: none;
+  height: 1em;
+  border-bottom: 0.125em solid white;
+  margin-bottom: -0.125em;
+}
+
 #start-game, #awaiting-players{
   margin-top: 100px;
 }
