@@ -17,7 +17,7 @@ angular.module('mean.gameChat')
 
     $scope.newMessage = function(messages) {
       $scope.messages = messages;
-      //$scope.$apply();
+      $scope.$apply();
     };
 
     $scope.sendMessage = function() {
@@ -114,6 +114,7 @@ angular.module('mean.gameChat')
 
   $('#message').keypress( function (e) {
     if(e.which == 13) {
+      $scope.sendMessage();
       $('#message').val('');
       $('#chatMessages').animate({
         scrollTop: scrolled
