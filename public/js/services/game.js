@@ -166,7 +166,7 @@ angular.module('mean.system')
     } else if (data.state === 'awaiting players') {
       joinOverrideTimeout = $timeout(function() {
         game.joinOverride = true;
-      }, 15000);
+      }, 5000);
     } else if (data.state === 'game dissolved' || data.state === 'game ended') {
       game.players[game.playerIndex].hand = [];
       game.time = 0;
