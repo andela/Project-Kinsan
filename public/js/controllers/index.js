@@ -1,3 +1,5 @@
+/* globals gapi, hello */
+
 angular.module('mean.system')
 .controller('IndexController', ['$scope', '$http', 'Global', '$location', 'socket', 'game', 'AvatarService', 'authFactory', function ($scope, $http, Global, $location, socket, game, AvatarService, authFactory) {
   $scope.global = Global;
@@ -154,7 +156,7 @@ angular.module('mean.system')
       hello($scope.user_data.provider, false, function() {
         $scope.show_history = false;
         $scope.user_data = null;
-      })
+      });
     }
   };
 
@@ -180,18 +182,18 @@ angular.module('mean.system')
     });
   };
 
-  $scope.googleSignIn = function() {
-    const google = hello('google');
-    google.login({response_type: 'code'}).then(
-      function(data) {
-        console.log(data);
-      },
-      function(err)
-      {
-        console.log(err);
-      }
-    );
-  };
+  // $scope.googleSignIn = function() {
+  //   const google = hello('google');
+  //   google.login({response_type: 'code'}).then(
+  //     function(data) {
+  //       console.log(data);
+  //     },
+  //     function(err)
+  //     {
+  //       console.log(err);
+  //     }
+  //   );
+  // };
 
   $scope.facebookSignIn = function() {
     const facebook = hello('facebook');
