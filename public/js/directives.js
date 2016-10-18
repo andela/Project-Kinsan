@@ -51,6 +51,13 @@ angular.module('mean.directives', [])
         scope.$on('modalDismiss',function() {
           element.modal('hide');
         });
+  }).directive('chat', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '/views/chat.tpl.html',
+      controllerAs: 'vm',
+      controller: {
+
       }
     };
   });
