@@ -182,19 +182,6 @@ angular.module('mean.system')
     });
   };
 
-  // $scope.googleSignIn = function() {
-  //   const google = hello('google');
-  //   google.login({response_type: 'code'}).then(
-  //     function(data) {
-  //       console.log(data);
-  //     },
-  //     function(err)
-  //     {
-  //       console.log(err);
-  //     }
-  //   );
-  // };
-
   $scope.facebookSignIn = function() {
     const facebook = hello('facebook');
     facebook.login({ scope: 'email' }).then( 
@@ -255,7 +242,7 @@ angular.module('mean.system')
       twitter: '0sJtZF1PpD66LtwNvTwY1C8XS',
       google: '1029392787108-9gdnkcp2qlfcakf5inoamjji6eqrr2cq.apps.googleusercontent.com',
       facebook: '1400661746618229'
-    }, {redirect_uri: 'http://localhost:3000'});
+    }, {});
   };
 
   $scope.start();

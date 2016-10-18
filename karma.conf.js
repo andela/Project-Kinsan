@@ -33,7 +33,8 @@ module.exports = function(config) {
       './src/test/**/*.js',
       './src/test/*.js',
       'test/app/*.test.js',
-      {pattern: 'test/app/response.json', watched: true, served: true, included: false}
+      {pattern: 'test/app/response.json', watched: true, served: true, included: false},
+      {pattern: 'test/app/token.json', watched: true, served: true, included: false}
     ],
 
 

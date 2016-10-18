@@ -78,7 +78,7 @@ let auth = {
 
             var token = jwt.sign(user, config.secret, {expiresIn: 60*60*24});
 
-            res.status(200).json({
+            res.status(201).json({
               successful: true, 
               message: 'You have successfully signed up.', 
               token: token,
