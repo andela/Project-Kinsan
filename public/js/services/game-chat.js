@@ -44,7 +44,8 @@ angular.module('mean.gameChat')
             //save the members for the session
           database.ref(that.membersRef + '/' + gameId).set({})
             .then(function(){
-              for (var member of members) {
+              var member;
+              for (member of members) {
                 database.ref(that.membersRef + '/' + gameId).push(member);
               }
               database.ref(that.messagesRef + '/' + gameId).set({});
