@@ -11,22 +11,26 @@ angular.module('mean.directives', [])
       controller: function($scope) {
         var vm = this;
         vm.currentCzar = $scope.$parent.currentCzar;
+        vm.isPlayer = $scope.$parent.isPlayer;
       },
       controllerAs: 'vm'
     };
   })
   .directive('question', function() {
     return {
-      restrict: 'EA',
-      templateUrl: '/views/question.html',
-      link: function() {}
+      restrict: 'E',
+      templateUrl: '/views/question.tpl.html',
+      controllerAs: 'vm',
+      scope: true,
+      controller: function(){
+        var vm = this;
+      }
     };
   })
   .directive('timer', function(){
     return{
       restrict: 'EA',
-      templateUrl: '/views/timer.html',
-      link: function(){}
+      templateUrl: '/views/timer.tpl.html'
     };
   }).directive('landing', function() {
     return {
