@@ -75,8 +75,7 @@ angular.module('mean.directives', [])
       restrict: 'E',
       templateUrl: '/views/chat.tpl.html',
       controllerAs: 'vm',
-      controller: {
-        
+      controller: function(){
       }
     };
   });
