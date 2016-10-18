@@ -9,7 +9,7 @@ angular.module('mean.system')
   var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
   $scope.makeAWishFact = makeAWishFacts.pop();
   $scope.showModal = false;
-  
+
   $scope.pickCard = function(card) {
     if (!$scope.hasPickedCards) {
       if ($scope.pickedCards.indexOf(card.id) < 0) {
@@ -173,6 +173,7 @@ angular.module('mean.system')
         $scope.showModal = false;
       }, 2500);
     }
+
   });
 
   $scope.$watch('game.gameID', function() {

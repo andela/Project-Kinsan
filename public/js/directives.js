@@ -78,4 +78,13 @@ angular.module('mean.directives', [])
       controller: function(){
       }
     };
+  }).directive('infoModal', function(){
+    return {
+      restrict: 'E',
+      templateUrl: '/views/info-modal.tpl.html',
+      controllerAs: 'vm',
+      controller: function(){
+        var vm = this;
+      }
+    };
   });
