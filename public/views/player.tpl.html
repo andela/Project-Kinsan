@@ -1,7 +1,7 @@
 <div class = "col-sm-3" id = "players-bar">
     <div ng-repeat="item in vm.players" id="" class = "flex-container player-holder">
         <div id="avatar" class = "flex-item avatar"><img ng-src="{{item.avatar}}" height="50px" width="50px"></div>
-        <div class="flex-item name">{{item.username}}</div>
+        <div class="flex-item name">{{item.username}} <i ng-show="vm.isPlayer($index)" class="glyphicon glyphicon-user" aria-hidden="true"></i></div>
         <div id="score" class = "score flex-item">{{item.points}}</div>
         <span ng-show="vm.currentCzar($index)" class="is-czar"> is czar</span>
     </div>
