@@ -32,15 +32,13 @@ angular.module('mean.directives', [])
       restrict: 'EA',
       templateUrl: '/views/timer.tpl.html'
     };
-  }).directive('landing', function() {
+  }).directive('answer', function(){
     return {
-      restrict: 'EA',
-      link: function(scope) {
-        scope.showOptions = true;
-
-        if (scope.$$childHead.global.authenticated === true) {
-          scope.showOptions = false;
-        }
+      restrict: 'E',
+      templateUrl: '/views/answers.tpl.html',
+      controllerAs: 'vm',
+      controller: function(){
+        var vm = this;
       }
     };
   }).directive('myModal', function() {
