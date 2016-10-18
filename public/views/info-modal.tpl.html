@@ -8,10 +8,18 @@
           <div ng-show="game.state === 'game ended'">
             <p>Game ended</p>
             <p><img ng-src="{{game.players[game.gameWinner].avatar}}">{{game.players[game.gameWinner].username}} won the game</p>
+            <div>
+                <a class="btn btn-primary" ng-click="homePage()">Go to home page</a>
+                <a class="btn btn-primary" ng-click="gamePage()">Play another game</a>
+            </div>
           </div>
           <div ng-show="game.state === 'game dissolved'">
             <p>Game Ended</p>
             <p>schucks too many players left the game</p>
+            <div>
+                <a class="btn btn-primary" ng-click="homePage()">Go to home page</a>
+                <a class="btn btn-primary" ng-click="gamePage()">Play another game</a>
+            </div>
           </div>
         </div>
       </div>
