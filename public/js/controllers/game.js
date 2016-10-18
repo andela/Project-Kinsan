@@ -146,7 +146,22 @@ angular.module('mean.system')
   $scope.$watch('game.state', function() {
     if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
       $scope.showTable = true;
+    } else if (game.state === 'winner has been chosen') {
+      $('#myModal').modal('show');
+    } else if (game.state === 'game ended') {
+      $('#myModal').modal('show');
+    } else if (game.state === 'game dissolved') {
+      if($location.url() !== '/') {
+        $('#myModal').modal('show');
+      }
     }
+
+    if(game.state === 'winner has been chosen') {
+      setTimeout(function() {
+        $('#myModal').modal('hide');
+      }, 2500);
+    }
+
   });
 
   $scope.$watch('game.gameID', function() {
