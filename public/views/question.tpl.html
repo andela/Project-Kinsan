@@ -7,8 +7,8 @@
     </div>
 </div>
   <div class = "game-cards" id = "black-card" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'">
-    <p class="text">
-      The Five Stages of Grief: denial, anger, bargaining, __________, acceptance.
+    <p class="text" ng-bind-html="game.curQuestion.text">
+      <!--The Five Stages of Grief: denial, anger, bargaining, __________, acceptance.-->
     </p>
   </div>
 </div>
