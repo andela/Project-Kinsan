@@ -60,11 +60,6 @@ $url-1: url("../img/chatnone.png");
     z-index: 2;
   }
 
-  .chat-sign {
-    display: block;
-    padding: 6px;
-  }
-
   .chat-bottom {
     background-color: $main-color;
     bottom: 5px;
@@ -160,4 +155,9 @@ ul {
   color: $secondary-text;
   float: left;
   font-size: 10px;
+}
+
+.chat-sign {
+  display: block;
+  padding: 2px;
 }
