@@ -39,7 +39,8 @@ module.exports = function(config) {
 
 
     // list of files to exclude
-    exclude: [
+    plugins: [
+      'ng-html2js'
     ],
 
     // test results reporter to use
