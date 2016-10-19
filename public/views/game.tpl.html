@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <div class="chat-box" ng-controller="GameChatCtrl">
-  <div class="chat" id="chat">
-    <em class="chat-sign" id="word">CHAT</em>
+  <div class="close-chat" id="chat">
   </div>
   <div class="box" id="box">
     <div class="chat-top" id="top">
-      <img src="img/down2.png"/>
+      <em class="chat-sign">CHAT</em>
     </div>
     <div class="chat-messages" id="chatMessages">
       <ul class="chat-ul">
@@ -20,7 +19,7 @@
     </div>
     <p class="is-typing" id="isTyping"></p>
     <div class ="chat-bottom">
-      <img src="img/smile1.png"/>
+      <img src="img/smile1.png" style="margin-right:2px;"/>
       <input id="message" class="message" type="text" placeholder="Message here.." ng-model="message" ng-keyup="$event.keyCode == 13 ? sendMessage(message, 'Abisoye') : null"/>
       <img id="send" src="img/send.png" style="float:right;margin-top:6px;" ng-click="sendMessage(message, 'Abisoye')"/>
     </div>
@@ -29,23 +28,6 @@
 <script>
 $(document).ready( function () {
   var scrolled = 100000;
-
-  $('#chat').click( function () {
-    $('#word').slideToggle('slow');
-    $('#box').slideToggle('slow');
-    $('#chat').toggleClass('close-chat');
-    $('#chat').toggleClass('chat');
-    $('#chatMessages').animate({
-      scrollTop: scrolled
-    });
-  });
-
-  $('#top').click( function () {
-    $('#word').slideToggle('slow');
-    $('#box').slideToggle('slow');
-    $('#chat').toggleClass('close-chat');
-    $('#chat').toggleClass('chat');
-  });
 
   $('#message').focusin( function () {
     $('#isTyping').text('I am typing....');

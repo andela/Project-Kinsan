@@ -4,34 +4,31 @@ $secondary-text: #444;
 $ascent: #006ce5;
 $secondary-light: #d6d6d6;
 $black-shadow-radius: 0 -2px 5px 0;
-$black-shadow-75: rgba(0, 0, 0, .75);
+$black-shadow-75: rgba(0, 0, 0, 0.75);
 $grey-shadow-radius: 0 -1px 2px 0;
-$grey-shadow-75: rgba(65, 65, 65, .75);
+$grey-shadow-75: rgba(65, 65, 65, 0.75);
 $box-radius: 5px 5px 0 0;
+$chat-bottom-padding: 0 5px 0 10px;
 
-$url-0: url('../img/chatnone1.png');
-$url-1: url('../img/chatnone.png');
+$url-0: url("../img/chatnone1.png");
+$url-1: url("../img/chatnone.png");
 
 .chat-box {
   background: $main-color;
   bottom: 0;
   color: $primary-text;
-  height: 550px;
-  min-height: 35px;
+  height: 100%;
   position: absolute;
   right: 0;
   text-align: center;
-  width: 300px;
+  width: 100%;
 
   .box {
     background: $main-color;
-    border-color: $secondary-text;
+    border: thin solid $ascent;
     border-radius: $box-radius;
-    border-style: solid;
-    border-width: thin;
-    bottom: 30px;
-    display: none;
-    height: 350px;
+    bottom: 2px;
+    height: 360px;
     position: absolute;
     width: 300px;
     z-index: 1;
@@ -42,7 +39,7 @@ $url-1: url('../img/chatnone.png');
     }
 
     .chat-top {
-      background: $secondary-text;
+      background: $ascent;
       border-color: $secondary-text;
       color: $main-color;
       height: 20px;
@@ -52,10 +49,9 @@ $url-1: url('../img/chatnone.png');
 
   .chat {
     background: $url-0;
+    border: thin solid;
     border-bottom: 0;
     border-radius: $box-radius;
-    border-style: solid;
-    border-width: thin;
     bottom: 0;
     color: $primary-text;
     height: 35px;
@@ -71,12 +67,11 @@ $url-1: url('../img/chatnone.png');
 
   .chat-bottom {
     background-color: $main-color;
-    bottom: 0;
+    bottom: 5px;
     box-shadow: ($grey-shadow-radius, $grey-shadow-75);
     display: inline-block;
     height: 35px;
-    padding-left: 10px;
-    padding-right: 5px;
+    padding: $chat-bottom-padding;
     position: absolute;
     right: 0;
     text-align: left;
@@ -94,17 +89,12 @@ $url-1: url('../img/chatnone.png');
   }
 }
 
-
-
 .close-chat {
-  background: $secondary-text;
-  border-bottom: 0;
-  border-color: $secondary-text;
-  border-style: solid;
+  background: $ascent;
+  border: thin solid $ascent;
   border-width: thin;
   bottom: 0;
-  color: $main-color;
-  height: 35px;
+  height: 2px;
   position: absolute;
   width: 300px;
   z-index: 1;
@@ -112,11 +102,9 @@ $url-1: url('../img/chatnone.png');
 
 .new-message {
   background: $url-1;
+  border: thin solid $ascent;
   border-bottom: 0;
-  border-color: $ascent;
   border-radius: $box-radius;
-  border-style: solid;
-  border-width: thin;
   bottom: 0;
   box-shadow: ($black-shadow-radius, $black-shadow-75);
   color: $main-color;

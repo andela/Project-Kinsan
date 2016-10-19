@@ -2,21 +2,17 @@
   background: #fff;
   bottom: 0;
   color: #000;
-  height: 550px;
-  min-height: 35px;
+  height: 100%;
   position: absolute;
   right: 0;
   text-align: center;
-  width: 300px; }
+  width: 100%; }
   .chat-box .box {
     background: #fff;
-    border-color: #444;
+    border: thin solid #006ce5;
     border-radius: 5px 5px 0 0;
-    border-style: solid;
-    border-width: thin;
-    bottom: 30px;
-    display: none;
-    height: 350px;
+    bottom: 2px;
+    height: 360px;
     position: absolute;
     width: 300px;
     z-index: 1; }
@@ -24,17 +20,16 @@
       height: 280px;
       overflow-y: scroll; }
     .chat-box .box .chat-top {
-      background: #444;
+      background: #006ce5;
       border-color: #444;
       color: #fff;
       height: 20px;
       top: 0; }
   .chat-box .chat {
     background: url("../img/chatnone1.png");
+    border: thin solid;
     border-bottom: 0;
     border-radius: 5px 5px 0 0;
-    border-style: solid;
-    border-width: thin;
     bottom: 0;
     color: #000;
     height: 35px;
@@ -46,12 +41,11 @@
       padding: 6px; }
   .chat-box .chat-bottom {
     background-color: #fff;
-    bottom: 0;
+    bottom: 5px;
     box-shadow: 0 -1px 2px 0, rgba(65, 65, 65, 0.75);
     display: inline-block;
     height: 35px;
-    padding-left: 10px;
-    padding-right: 5px;
+    padding: 0 5px 0 10px;
     position: absolute;
     right: 0;
     text-align: left;
@@ -66,25 +60,20 @@
       width: 220px; }
 
 .close-chat {
-  background: #444;
-  border-bottom: 0;
-  border-color: #444;
-  border-style: solid;
+  background: #006ce5;
+  border: thin solid #006ce5;
   border-width: thin;
   bottom: 0;
-  color: #fff;
-  height: 35px;
+  height: 2px;
   position: absolute;
   width: 300px;
   z-index: 1; }
 
 .new-message {
   background: url("../img/chatnone.png");
+  border: thin solid #006ce5;
   border-bottom: 0;
-  border-color: #006ce5;
   border-radius: 5px 5px 0 0;
-  border-style: solid;
-  border-width: thin;
   bottom: 0;
   box-shadow: 0 -2px 5px 0, rgba(0, 0, 0, 0.75);
   color: #fff;
