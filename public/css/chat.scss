@@ -100,21 +100,6 @@ $url-1: url("../img/chatnone.png");
   z-index: 1;
 }
 
-.new-message {
-  background: $url-1;
-  border: thin solid $ascent;
-  border-bottom: 0;
-  border-radius: $box-radius;
-  bottom: 0;
-  box-shadow: ($black-shadow-radius, $black-shadow-75);
-  color: $main-color;
-  height: 35px;
-  position: absolute;
-  width: 300px;
-  z-index: 2;
-}
-
-
 li {
   &.chat-li {
     border-bottom: 1px;
