@@ -1,9 +1,8 @@
 describe('Component: timer', function() {
 
-  // Ralph: load the module for the directive
+
   beforeEach(module('mean.directives'));
 
-  // Ralph: load the template module for user directive
   beforeEach(module('/views/timer.tpl.html'));
 
   var element;
