@@ -32,19 +32,19 @@ $url-1: url("../img/chatnone.png");
     position: absolute;
     width: 300px;
     z-index: 1;
+  }
 
-    .chat-messages {
-      height: 280px;
-      overflow-y: scroll;
-    }
+  .chat-messages {
+    height: 280px;
+    overflow-y: scroll;
+  }
 
-    .chat-top {
-      background: $ascent;
-      border-color: $secondary-text;
-      color: $main-color;
-      height: 20px;
-      top: 0;
-    }
+  .chat-top {
+    background: $ascent;
+    border-color: $secondary-text;
+    color: $main-color;
+    height: 20px;
+    top: 0;
   }
 
   .chat {
@@ -58,11 +58,11 @@ $url-1: url("../img/chatnone.png");
     position: absolute;
     width: 300px;
     z-index: 2;
+  }
 
-    .chat-sign {
-      display: block;
-      padding: 6px;
-    }
+  .chat-sign {
+    display: block;
+    padding: 6px;
   }
 
   .chat-bottom {
@@ -76,16 +76,16 @@ $url-1: url("../img/chatnone.png");
     right: 0;
     text-align: left;
     width: 297px;
+  }
 
-    .message {
-      display: inline-block;
-      height: 35px;
-      padding-left: 5px;
-      padding-right: 5px;
-      position: relative;
-      top: 0;
-      width: 220px;
-    }
+  .message {
+    display: inline-block;
+    height: 35px;
+    padding-left: 5px;
+    padding-right: 5px;
+    position: relative;
+    top: 0;
+    width: 220px;
   }
 }
 
@@ -110,12 +110,12 @@ li {
     margin-bottom: 5px;
     min-height: 50px;
     width: 270px;
+  }
 
-    img {
-      float: left;
-      margin-right: 10px;
-      width: 42px;
-    }
+  img {
+    float: left;
+    margin-right: 10px;
+    width: 42px;
   }
 }
 
