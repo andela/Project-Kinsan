@@ -1,12 +1,13 @@
 /* globals gapi, hello */
 
 angular.module('mean.system')
-.controller('IndexController', ['$scope', '$http', 'Global', '$location', 'socket', 'game', 'AvatarService', 'authFactory', function ($scope, $http, Global, $location, socket, game, AvatarService, authFactory) {
+.controller('IndexController', ['$scope', '$http', 'Global', '$location', '$cookies', 'socket', 'game', 'AvatarService', 'authFactory', function ($scope, $http, Global, $location, $cookies, socket, game, AvatarService, authFactory) {
   $scope.global = Global;
   // variables for determining the visibility of certain UI elements
   $scope.show_signin_error = false;
   $scope.show_signup_error = false;
   $scope.show_history = false;
+  $scope.userData = {};
   
   $scope.playAsGuest = function() {
     game.joinGame();
@@ -83,6 +84,58 @@ angular.module('mean.system')
     });
   }
 
+  function signInComplete(data) {
+    $scope.show_signup_error = false;
+    $scope.userData = data;
+    $scope.show_history = true;
+    $scope.$broadcast('modalDismiss');
+
+    var expiryDate = new Date();
+    expiryDate.setDate(expiryDate.getDate() + 1);
+    $cookies.putObject('_userData', $scope.userData, { expires: expiryDate }); 
+
+    redirectToGame();   
+  }
+
+  function redirectToGame() {
+    $location.path('/game');
+  }
+
+  function signOutComplete() {
+    $scope.show_history = false;
+    $scope.userData = null;
+  }
+
+  function showSignInErrors(error) {
+    $scope.error = error;
+    $scope.show_signin_error = true;
+  }
+
+  function showSignUpErrors(error) {
+    $scope.error = error;
+    $scope.show_signup_error = true;
+  }
+
+  function clearSignInControls() {
+    $scope.signup_email = '';
+    $scope.signup_password = '';
+  }
+
+  function clearSignUpControls() {
+    $scope.signup_email = '';
+    $scope.signup_password = '';
+    $scope.signup_password_again = '';
+    $scope.signup_name = '';
+  }
+
+  function checkAuthStatus() {
+    const userData = $cookies.getObject('_userData');
+    if (userData) {
+      $scope.userData = userData;
+      redirectToGame();
+    }
+  }
+
   $scope.signin = function() {
     var user = {
       email: $scope.signin_email,
@@ -90,36 +143,24 @@ angular.module('mean.system')
     };
 
     authFactory.signIn(user).then(function(data) {
-      $scope.user_data = data;
-      $scope.show_signin_error = false;
-      // Clear the controls
-      $scope.signup_email = '';
-      $scope.signup_password = '';
-      // Hide login and Show history
-      $scope.show_history = true;
-      // Close the modal
-      $scope.$broadcast('modalDismiss');
+      clearSignInControls();
+      signInComplete(data);
     }, function(err) {
-      $scope.error = err;
-      $scope.show_signin_error = true;
+      showSignInErrors(err);
     });
   };
 
   $scope.signup = function() {
     if(!$scope.signup_name || !$scope.signup_email || !$scope.signup_password) {
-      $scope.show_signup_error = true;
-      $scope.error = {
-        data: {
-          message: 'Data incomplete.'
-        }
+      const error = {
+        data: { message: 'Data incomplete.' }
       };
+      showSignUpErrors(error);
     } else if($scope.signup_password !== $scope.signup_password_again) {
-      $scope.show_signup_error = true;
-      $scope.error = {
-        data: {
-          message: 'Passwords do not match.'
-        }
+      const error = {
+        data: { message: 'Passwords do not match.' }
       };
+      showSignUpErrors(error);
     } else {
       var newuser = {
         email: $scope.signup_email,
@@ -128,34 +169,23 @@ angular.module('mean.system')
       };
 
       authFactory.signUp(newuser).then(function(data) {
-        $scope.user_data = data;
-        $scope.show_signup_error = false;
-        // Clear the controls
-        $scope.signup_email = '';
-        $scope.signup_password = '';
-        $scope.signup_password_again = '';
-        $scope.signup_name = '';
-        // Hide login and Show history
-        $scope.show_history = true;
-        // Close the modal
-        $scope.$broadcast('modalDismiss');
+        clearSignUpControls();
+        signInComplete(data);
       }, function(err) {
-        $scope.error = err;
-        $scope.show_signup_error = true;
+        showSignUpErrors(err);
       });
     }
   };
 
   $scope.signout = function() {
-    if($scope.user_data.data.user.provider === 'google') {
+    if($scope.userData.data.user.provider === 'google') {
       const auth2 = gapi.auth2.getAuthInstance();
       auth2.signOut().then(function () {
-        $scope.show_history = false;
+        signOutComplete();
       });
     } else {
-      hello($scope.user_data.provider, false, function() {
-        $scope.show_history = false;
-        $scope.user_data = null;
+      hello($scope.userData.provider, false, function() {
+        signOutComplete();
       });
     }
   };
@@ -172,13 +202,10 @@ angular.module('mean.system')
           name: response.authResponse.screen_name
         };
         authFactory.socialSignIn(user).then(function(data) {
-          $scope.user_data = data;
-          $scope.show_history = true;
-          $scope.$broadcast('modalDismiss');
+          signInComplete(data);
         });
       }, function(error) {
-      $scope.error = error;
-      $scope.show_signin_error = true;
+      showSignInErrors(error);
     });
   };
 
@@ -192,13 +219,10 @@ angular.module('mean.system')
           provider: 'facebook'
         };
         authFactory.socialSignIn(user).then(function(data) {
-          $scope.user_data = data;
-          $scope.show_history = true;
-          $scope.$broadcast('modalDismiss');
+          signInComplete(data);
         });
       }, function(error) {
-      $scope.error = error;
-      $scope.show_signin_error = true;
+      showSignInErrors(error);
     });
   };
 
@@ -211,15 +235,12 @@ angular.module('mean.system')
       provider: 'google'
     };
     authFactory.socialSignIn(user).then(function(data) {
-      $scope.user_data = data;
-      $scope.show_history = true;
-      $scope.$broadcast('modalDismiss');
+      signInComplete(data);
     });
   };
 
   $scope.googleSignInFailure = function(error) {
-    $scope.error = error;
-    $scope.show_signin_error = true;
+    showSignInErrors(error);
   };
 
   $scope.start = function() {
@@ -229,7 +250,7 @@ angular.module('mean.system')
         'scope': 'profile email',
         'width': 200,
         'height': 40,
-        'longtitle': false,
+        'longtitle': true,
         'theme': 'light',
         'onsuccess': $scope.googleSignInSuccess,
         'onfailure': $scope.googleSignInFailure,
@@ -243,6 +264,8 @@ angular.module('mean.system')
       google: '1029392787108-9gdnkcp2qlfcakf5inoamjji6eqrr2cq.apps.googleusercontent.com',
       facebook: '1400661746618229'
     }, {});
+
+    checkAuthStatus();
   };
 
   $scope.start();

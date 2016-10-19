@@ -81,4 +81,44 @@ describe('Authentication functionality test', function() {
       expect(AuthFactory.socialSignIn).toHaveBeenCalledWith(socialUser);
     });
   });
+
+  describe('Index Controller (Authentication section)', function() {
+    var $controller;
+    var IndexController;
+    var $location;
+    var socketMock;
+    var game;
+    var AvatarService;
+
+
+    beforeEach(inject(function(_$controller_, _authFactory_, _$httpBackend_, _$q_, _$location_, _game_, _AvatarService_){
+      $controller = _$controller_;
+      AuthFactory = _authFactory_;
+      $location = _$location_;
+      socketMock = {
+        socket: {}
+      };
+      game = _game_;
+      AvatarService = _AvatarService_;
+      $httpBackend = _$httpBackend_;
+      IndexController = $controller('IndexController', { authFactory: AuthFactory, socket: socketMock});
+      $q = _$q_;
+    }));
+
+    it('should be defined', function() {
+      expect(IndexController).toBeDefined();
+    });
+
+    it('call the socialSignIn function of AuthFactory service', function() {
+      spyOn(AuthFactory, 'socialSignIn').and.callThrough();
+      IndexController = $controller('IndexController', { authFactory: AuthFactory, socket: socketMock });
+      
+      const api = '/api/auth/social';
+
+      $httpBackend.whenPOST(api).respond(200, $q.when(socialResponse));
+      $httpBackend.flush();
+      expect(AuthFactory.socialSignIn).toHaveBeenCalled();
+      expect(IndexController.userData).toEqual(socialResponse);
+    });
+  });
 });
