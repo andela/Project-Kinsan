@@ -1,6 +1,7 @@
 .container {
   width: 100%;
-  margin: 0 !important; }
+  margin: 0 !important;
+}
 
 .game-cards {
   height: 180px;
@@ -9,28 +10,31 @@
   margin: 50px;
   background-color: black;
   border-radius: 5px;
-  color: white; }
-  .game-cards p {
-    font-size: smaller; }
+  color: white;
+  p {
+    font-size: smaller;
+  }
+}
 
-#players-cards{
+#players-cards {
   height: 500px;
 }
 
-#deck-of-black-cards{
-  box-shadow: -2px -2px 0 0  #000000;
+#deck-of-black-cards {
+  box-shadow: -2px -2px 0px 0px  #000000;
   border-top: 1px solid #ebebe0;
   border-left: 1px solid #ebebe0;
   line-height: 180px;
   text-align: center;
-  font-size: 25px; }
+  font-size: 25px;
+}
 
 #black-card {
   padding: 10px;
   height: 200px;
   width: 150px;
-  font-size: medium; }
-  #black-card u {
+  font-size: medium;
+  u {
     position: relative;
     content: '';
     display: inline-block;
@@ -38,34 +42,46 @@
     text-decoration: none;
     height: 1em;
     border-bottom: 0.125em solid white;
-    margin-bottom: -0.125em; }
+    margin-bottom: -0.125em;
+  }
+}
 
 #start-game, #awaiting-players {
-  margin-top: 100px; }
+  margin-top: 100px;
+}
 
 #start-game p {
-  margin-left: 10px; }
+  margin-left: 10px;
+}
 
 #question-holder {
-  padding-left: 100px; }
+  padding-left: 100px;
+}
 
 #black-cards-bar {
   height: 300px;
-  border-bottom: 3px solid #eee; }
+  border-bottom: 3px solid #eee;
+}
 
 #white-cards-bar {
-  border-left: 3px solid #eee; }
+  border-left: 3px solid #eee;
+}
+
+#players-bar {}
 
 #exit {
-  font-size: 18px; }
+  font-size: 18px;
+}
 
 #timer-place {
-  margin-top: 69px; }
+  margin-top: 69px;
+}
 
 #timer {
   padding: 0 10%;
   font-weight: bolder;
-  font-size: 72px; }
+  font-size: 72px;
+}
 
 #avatar {
   border-radius: 100%;
@@ -73,18 +89,21 @@
   height: 50px;
   line-height: 50px;
   background-color: #4074f5;
-  color: white; }
+  color: white;
+}
 
 .name {
   width: 100px;
-  margin: auto; }
+  margin: auto;
+}
 
 #score {
   border-radius: 100%;
   width: 50px;
   height: 50px;
   line-height: 50px;
-  background-color: darkgrey; }
+  background-color: darkgrey;
+}
 
 .flex-container {
   display: -webkit-flex;
@@ -94,23 +113,28 @@
   background-color: #eee;
   border-radius: 50px;
   box-shadow: 0px 3px 1px grey;
-  margin: 30px 0px; }
+  margin: 30px 0px;
+}
 
 .flex-item {
-  text-align: center; }
+  text-align: center;
+}
 
 .white-cards-holder {
-  height: 500px; }
-  .white-cards-holder .game-cards {
+  height: 500px;
+  .game-cards {
     float: left;
     background-color: white;
     margin: 10px;
     border: 1px solid  #d6d6c2;
     padding: 10px;
-    color: #000000; }
+    color: #000000;
+  }
+}
 
 .player-holder {
-  position: relative; }
+  position: relative;
+}
 
 .is-czar {
   position: absolute;
@@ -123,14 +147,17 @@
   padding: 2px;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
-  box-shadow: 0px 2px 1px grey; }
+  box-shadow: 0px 2px 1px grey;
+}
 
 .instruction-text {
   width: auto;
   text-align: center;
   font-weight: 800;
   padding: 10px;
-  font-size: 20px; }
+  font-size: 20px;
+}
 
 #myModal {
-  text-align: center; }
+  text-align: center;
+}
