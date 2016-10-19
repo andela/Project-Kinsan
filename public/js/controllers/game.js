@@ -8,6 +8,7 @@ angular.module('mean.system')
   $scope.pickedCards = [];
   var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
   $scope.makeAWishFact = makeAWishFacts.pop();
+  $scope.showModal = false;
 
   $scope.pickCard = function(card) {
     if (!$scope.hasPickedCards) {
@@ -136,9 +137,8 @@ angular.module('mean.system')
 
   $scope.homePage = function() {
     $('#myModal').modal('hide');
-    setTimeout(function() {
-      $location.path('/');
-    }, 200);
+    game.leaveGame();
+    $location.path('/');
   };
 
     // Catches changes to round to update when no players pick card
@@ -159,22 +159,25 @@ angular.module('mean.system')
     if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
       $scope.showTable = true;
     } else if (game.state === 'winner has been chosen') {
-      $('#myModal').modal('show');
+      $scope.showModal = true;
     } else if (game.state === 'game ended') {
-      $('#myModal').modal('show');
+      $scope.showModal = true;
     } else if (game.state === 'game dissolved') {
-      if($location.url() !== '/') {
-        $('#myModal').modal('show');
-      }
+      $scope.showModal = true;
+    } else if (game.state === 'awaiting players') {
+      $scope.showModal = false;
     }
 
     if(game.state === 'winner has been chosen') {
       setTimeout(function() {
-        $('#myModal').modal('hide');
+        $scope.showModal = false;
       }, 2500);
     }
-
   });
+  
+  this.$onInit = function(){
+    $scope.game.state = 'awaiting players';
+  };
 
   $scope.$watch('game.gameID', function() {
     if (game.gameID && game.state === 'awaiting players') {
@@ -206,5 +209,4 @@ angular.module('mean.system')
   } else {
     game.joinGame();
   }
-
 }]);
