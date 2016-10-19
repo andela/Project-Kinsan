@@ -13,9 +13,8 @@
   .game-cards p {
     font-size: smaller; }
 
-.game-cards p{
-  font-size: smaller;
-}
+#players-cards {
+  height: 500px; }
 
 #players-cards{
   height: 500px;
