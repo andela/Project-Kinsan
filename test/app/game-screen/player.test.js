@@ -28,7 +28,7 @@ describe('Component: player', function() {
   it('should have a div.name with text "Rotten tomato"', function() {
     var div_username = element[0].getElementsByClassName('name');
     expect(div_username[0].innerHTML).toBeDefined();
-    expect(div_username[0].innerHTML).toBe('Rotten tomato');
+    expect(div_username[0].innerHTML.indexOf('Rotten tomato')).not.toBe(-1);
   });
 
   it('should have a div.score with text 2', function(){
