@@ -1,0 +1,190 @@
+$main-color: #fff;
+$primary-text: #000;
+$secondary-text: #444;
+$ascent: #006ce5;
+$secondary-light: #d6d6d6;
+$black-shadow-radius: 0 -2px 5px 0;
+$black-shadow-75: rgba(0, 0, 0, .75);
+$grey-shadow-radius: 0 -1px 2px 0;
+$grey-shadow-75: rgba(65, 65, 65, .75);
+$box-radius: 5px 5px 0 0;
+
+$url-0: url('../img/chatnone1.png');
+$url-1: url('../img/chatnone.png');
+
+.chat-box {
+  background: $main-color;
+  bottom: 0;
+  color: $primary-text;
+  height: 550px;
+  min-height: 35px;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  width: 300px;
+
+  .box {
+    background: $main-color;
+    border-color: $secondary-text;
+    border-radius: $box-radius;
+    border-style: solid;
+    border-width: thin;
+    bottom: 30px;
+    display: none;
+    height: 350px;
+    position: absolute;
+    width: 300px;
+    z-index: 1;
+
+    .chat-messages {
+      height: 280px;
+      overflow-y: scroll;
+    }
+
+    .chat-top {
+      background: $secondary-text;
+      border-color: $secondary-text;
+      color: $main-color;
+      height: 20px;
+      top: 0;
+    }
+  }
+
+  .chat {
+    background: $url-0;
+    border-bottom: 0;
+    border-radius: $box-radius;
+    border-style: solid;
+    border-width: thin;
+    bottom: 0;
+    color: $primary-text;
+    height: 35px;
+    position: absolute;
+    width: 300px;
+    z-index: 2;
+
+    .chat-sign {
+      display: block;
+      padding: 6px;
+    }
+  }
+
+  .chat-bottom {
+    background-color: $main-color;
+    bottom: 0;
+    box-shadow: ($grey-shadow-radius, $grey-shadow-75);
+    display: inline-block;
+    height: 35px;
+    padding-left: 10px;
+    padding-right: 5px;
+    position: absolute;
+    right: 0;
+    text-align: left;
+    width: 297px;
+
+    .message {
+      display: inline-block;
+      height: 35px;
+      padding-left: 5px;
+      padding-right: 5px;
+      position: relative;
+      top: 0;
+      width: 220px;
+    }
+  }
+}
+
+
+
+.close-chat {
+  background: $secondary-text;
+  border-bottom: 0;
+  border-color: $secondary-text;
+  border-style: solid;
+  border-width: thin;
+  bottom: 0;
+  color: $main-color;
+  height: 35px;
+  position: absolute;
+  width: 300px;
+  z-index: 1;
+}
+
+.new-message {
+  background: $url-1;
+  border-bottom: 0;
+  border-color: $ascent;
+  border-radius: $box-radius;
+  border-style: solid;
+  border-width: thin;
+  bottom: 0;
+  box-shadow: ($black-shadow-radius, $black-shadow-75);
+  color: $main-color;
+  height: 35px;
+  position: absolute;
+  width: 300px;
+  z-index: 2;
+}
+
+
+li {
+  &.chat-li {
+    border-bottom: 1px;
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    border-color: $secondary-light;
+    display: inline-block;
+    margin-bottom: 5px;
+    min-height: 50px;
+    width: 270px;
+
+    img {
+      float: left;
+      margin-right: 10px;
+      width: 42px;
+    }
+  }
+}
+
+ul {
+  &.chat-ul {
+    padding-left: 10px;
+    padding-right: 5px;
+    text-align: left;
+  }
+}
+
+.chat-side-text {
+  text-align: left;
+  width: 270px;
+}
+
+
+.chat-name {
+  font-size: 15px;
+  font-style: oblique;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.chat-text {
+  color: $secondary-text;
+  font-size: 12px;
+  margin: 0;
+  overflow-x: auto;
+  padding: 0;
+  text-align: left;
+}
+
+.chat-time {
+  color: $secondary-text;
+  font-size: 10px;
+  margin-left: 5px;
+}
+
+.is-typing {
+  color: $secondary-text;
+  float: left;
+  font-size: 10px;
+}
