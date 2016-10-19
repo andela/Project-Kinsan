@@ -40,7 +40,6 @@ module.exports = function(config) {
 
     // list of files to exclude
     plugins: [
-      'ng-html2js',
       'karma-jasmine',
       'karma-chrome-launcher',
       'karma-coverage',
