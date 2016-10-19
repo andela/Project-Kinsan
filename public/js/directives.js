@@ -84,7 +84,6 @@ angular.module('mean.directives', [])
       templateUrl: '/views/info-modal.tpl.html',
       controllerAs: 'vm',
       controller: function(){
-        var vm = this;
       }
     };
   });
