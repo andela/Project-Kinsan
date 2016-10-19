@@ -148,9 +148,8 @@ angular.module('mean.system')
 
   $scope.homePage = function() {
     $('#myModal').modal('hide');
-    setTimeout(function() {
-      $location.path('/');
-    }, 200);
+    game.leaveGame();
+    $location.path('/');
   };
 
     // Catches changes to round to update when no players pick card
@@ -185,8 +184,11 @@ angular.module('mean.system')
         $scope.showModal = false;
       }, 2500);
     }
-
   });
+  
+  this.$onInit = function(){
+    $scope.game.state = 'awaiting players';
+  };
 
   $scope.$watch('game.gameID', function() {
     if (game.gameID && game.state === 'awaiting players') {
@@ -218,5 +220,4 @@ angular.module('mean.system')
   } else {
     game.joinGame();
   }
-
 }]);
