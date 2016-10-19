@@ -42,7 +42,12 @@ module.exports = function(config) {
 
     // list of files to exclude
     plugins: [
-      'ng-html2js'
+      'ng-html2js',
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-coverage',
+      'karma-jasmine-html-reporter',
+      'karma-ng-html2js-preprocessor'
     ],
 
     // test results reporter to use
