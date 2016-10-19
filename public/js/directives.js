@@ -23,7 +23,6 @@ angular.module('mean.directives', [])
       controllerAs: 'vm',
       scope: true,
       controller: function(){
-        var vm = this;
       }
     };
   })
@@ -38,7 +37,6 @@ angular.module('mean.directives', [])
       templateUrl: '/views/answers.tpl.html',
       controllerAs: 'vm',
       controller: function(){
-        var vm = this;
       }
     };
   }).directive('chat', function(){
@@ -47,7 +45,6 @@ angular.module('mean.directives', [])
       templateUrl: '/views/chat.tpl.html',
       controllerAs: 'vm',
       controller: function(){
-        var vm = this;
       }
     };
   }).directive('infoModal', function(){
@@ -56,7 +53,6 @@ angular.module('mean.directives', [])
       templateUrl: '/views/info-modal.tpl.html',
       controllerAs: 'vm',
       controller: function(){
-        var vm = this;
       }
     };
   });
