@@ -32,7 +32,7 @@ angular.module('mean', ['ngRoute', 'ngCookies', 'ngResource', 'ui.bootstrap', 'u
             templateUrl: '/views/history.tpl.html'
           }).
           when('/game', {
-            templateUrl: '/views/game.html'
+            templateUrl: '/views/game.tpl.html'
           }).
           otherwise({
             redirectTo: '/'
