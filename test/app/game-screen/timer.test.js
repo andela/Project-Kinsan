@@ -1,8 +1,6 @@
 describe('Component: timer', function() {
 
-
   beforeEach(module('mean.directives'));
-
   beforeEach(module('/views/timer.tpl.html'));
 
   var element;
