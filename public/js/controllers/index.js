@@ -24,12 +24,14 @@ angular.module('mean.system')
     Global.user = $scope.userData.user;
     Global.authenticated = $scope.userData.authenticated;
     $scope.show_history = true;
-    $location.path('/game');
+    // $location.path('/game');
   }
 
   function signOutComplete() {
     $scope.show_history = false;
     $scope.userData = null;
+    Global.user = null;
+    Global.authenticated = false;
 
     $cookies.remove('_userData');
     $location.path('/');
@@ -107,16 +109,10 @@ angular.module('mean.system')
   };
 
   $scope.signout = function() {
-    if($scope.userData.user.provider === 'google') {
-      const auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
+    hello($scope.userData.user.provider).logout().then(
+      function() {
         signOutComplete();
       });
-    } else {
-      hello($scope.userData.provider, false, function() {
-        signOutComplete();
-      });
-    }
   };
 
   $scope.twitterSignIn = function() {
