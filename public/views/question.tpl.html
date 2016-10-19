@@ -1,14 +1,14 @@
 <div class = "col-sm-6 col-xs-6" id = "question-holder">
   <div id = "awaiting-players" ng-show="game.state === 'awaiting players'">
-    <p ng-show = "game.players.length < game.playerMinLimit "> Waiting for more players to join game ...</p>
+    <p class = "ptext" ng-show = "game.players.length < game.playerMinLimit "> Waiting for more players to join game ...</p>
     <div id = "start-game" ng-show = "(game.playerIndex === 0 || game.joinOverride) && game.players.length >=  game.playerMinLimit">
       <button type="button" class="btn btn-primary btn-lg" id = "exit" ng-click = "startGame()" >Start Game</button>
-      <p>with {{game.players.length}} players</p>
+      <p class = "ptext">with {{game.players.length}} players</p>
     </div>
 </div>
   <div class = "game-cards" id = "black-card" ng-hide="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'">
-    <p class="text" ng-bind-html="game.curQuestion.text">
-      <!--The Five Stages of Grief: denial, anger, bargaining, __________, acceptance.-->
+    <p class = "text" ng-bind-html="game.curQuestion.text">
+
     </p>
   </div>
 </div>
