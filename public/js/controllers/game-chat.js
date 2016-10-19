@@ -1,40 +1,78 @@
-/**
- * Created by cyrielo on 10/11/16.
- */
 'use strict';
 angular.module('mean.gameChat')
   .controller('GameChatCtrl', function ($scope, GameChat) {
-    var gameId = 'rkhu3yj4';
-    var users = [{name:'john_doe', avatar:'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_male_dark_on_clear_200x200.png'}, {name:'jane_doe',avatar:'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_female_dark_on_clear_200x200.png'}];
-
-    $scope.hi = 'Hello';
+    var gameId = 'rkhu3yj4',
+      users = [{
+        name:'John Doe', 
+        avatar:'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_male_dark_on_clear_200x200.png'
+      },{
+        name:'Jane Doe',
+        avatar:'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_female_dark_on_clear_200x200.png'
+      }],
+      currentUser = users[0];
+      // var gameId = game.gameID,
+      //   users = game.players;
+      
     $scope.GameChat = GameChat;
     $scope.messages = {};
 
-    var newMessage = function(messages) {
+    $scope.newMessage = function(messages) {
       $scope.messages = messages;
       $scope.$apply();
     };
 
-    $scope.sendMessage = function(msg, sender){
-      sender = users[1];
-      GameChat.sendMessage(msg, gameId, sender);
+    $scope.sendMessage = function() {
+      $scope.GameChat.sendMessage($scope.message, gameId, currentUser);
     };
 
+    //triggerIsTyping : function(gameId, typist){
+    $scope.showIsTyping = function(){
+      $scope.GameChat.triggerIsTyping(gameId, currentUser);
+    };
+
+    $scope.hideIsTyping = function(){
+      $('#isTyping').hide();
+    };
+
+    $scope.typingListener = function(){
+      //typist = '';
+      $('#isTyping').html('');
+    };
+
+    /*
+    *Checks if a game chat session already exists
+    */
     GameChat.sessionExists(gameId)
     .then(function() {
-      GameChat.loadMessages(gameId)
-      .then(function(messages){
+      // Loads message from that section
+      $scope.GameChat.loadMessages(gameId)
+      .then(function(messages) {
         $scope.messages = messages;
         $scope.$apply();
-        GameChat.listenForMessage(gameId, newMessage);
+        //Listen for new incoming message
+        $scope.GameChat.listenForMessage(gameId, function(messages){
+          $scope.newMessage(messages);
+        });
+
+        //Listen for user typing
+        $scope.GameChat.listenForTyping(gameId,function (typist) {
+          $scope.typingListener(typist);
+        });
       });
     })
     .catch(function(){
-      GameChat.startSession(gameId, users).then(function(){
+      //No game chat session existed before
+      $scope.GameChat.startSession(gameId, users).then(function(){
         //now listen for messages
-        GameChat.listenForMessage(gameId, newMessage);
+        $scope.GameChat.listenForMessage(gameId, function(messages){ 
+          $scope.newMessage(messages);
+        });
+
+        //Listen for user typing
+        $scope.GameChat.
+        listenForTyping(gameId, $scope.typingListener(function (typist) {
+          $scope.typingListener(typist);
+        }));
       });
     });
-
   });

@@ -10,7 +10,8 @@
     "angular": "^1.5.8",
     "angular-mocks": "^1.5.8",
     "angular-resource": "^1.5.8",
-    "jasmine-jquery": "^2.1.1"
+    "jasmine-jquery": "^2.1.1",
+    "firebase": "^3.4.1"
   },
   "exportsOverride": {
     "bootstrap": {
