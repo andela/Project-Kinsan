@@ -21,7 +21,9 @@
   <div class="row">
     <div class = "col-sm-12 col-xs-12" id = "players-cards">
       <div class = "row">
-        <player players="game.players"></player>
+        <player players="game.players"
+        ng-if="!(game.state === 'game dissolved' || game.state === 'game ended')">
+        </player>
         <answer></answer>
         <chat></chat>
       </div>
