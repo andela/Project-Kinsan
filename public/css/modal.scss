@@ -1,0 +1,86 @@
+.modal-open .section {
+  /* To blur the backgound when the modal is opened */
+  -webkit-filter: blur(20px);
+  -moz-filter: blur(20px);
+  filter: blur(20px);
+}
+
+.modal-dialog .modal-content {
+  /* Sets the features of the modal */
+  border-radius: 5;
+  box-shadow: none;
+  background-color: rgba(237, 237, 237, 0.9);
+  padding-left: 5px;
+  padding-right: 5px;
+  font-family: proxima;
+}
+
+.modal-backdrop {
+  /* Sets the color of the blurred background */
+  background-color: rgba(255, 255, 255, 0.75);
+}
+
+.vertical-alignment-helper {
+  display: table;
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  /* This makes sure that we can still click outside of the modal to close it */
+}
+
+.vertical-align-center {
+  /* To center vertically */
+  display: table-cell;
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+.modal-content {
+  /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+  width: inherit;
+  height: inherit;
+  /* To center horizontally */
+  margin: 0 auto;
+  pointer-events: all;
+}
+
+.btn-signin {
+  /* Sets the style for the signin button */
+  background-color: rgb(64, 116, 245);
+  color: white;
+  &:active {
+    color: white;
+  }
+}
+
+.anchor {
+  color: rgb(64, 144, 224) !important;
+}
+
+@media screen and (min-width: 768px) {
+  .signin-modal-width {
+    width: 650px;
+  }
+  .signup-modal-width {
+    width: 325px;
+  }
+}
+
+.row.vertical-divider {
+  overflow: hidden;
+  > div[class^="col-"] {
+    text-align: center;
+    padding-bottom: 100px;
+    margin-bottom: -100px;
+    border-left: 1px solid #757375;
+    border-right: 1px solid #757375;
+  }
+  div[class^="col-"] {
+    &:first-child {
+      border-left: none;
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
