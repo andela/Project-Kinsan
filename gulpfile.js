@@ -22,7 +22,7 @@ gulp.task('karma',function (done) {
 });
 
 gulp.task('sass', function(){
-  return gulp.src('public/css/common.scss')
+  return gulp.src('public/css/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('public/css/'));
 });
