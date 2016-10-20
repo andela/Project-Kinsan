@@ -47,6 +47,7 @@ $modal-background-color: rgba(237, 237, 237, 0.9);
 .btn-signin {
   background-color: $button-color;
   color: $button-highlight;
+  
   &:active {
     color: $button-highlight;
   }
