@@ -47,9 +47,9 @@
 .btn-signin {
   /* Sets the style for the signin button */
   background-color: rgb(64, 116, 245);
-  color: white;
+  color: #ffffff;
   &:active {
-    color: white;
+    color: #ffffff;
   }
 }
 
@@ -61,6 +61,7 @@
   .signin-modal-width {
     width: 650px;
   }
+
   .signup-modal-width {
     width: 325px;
   }
@@ -75,6 +76,7 @@
     border-left: 1px solid #757375;
     border-right: 1px solid #757375;
   }
+  
   div[class^="col-"] {
     &:first-child {
       border-left: none;
