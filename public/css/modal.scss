@@ -5,7 +5,7 @@ $link-color: rgb(64, 144, 224);
 $modal-backdrop-color: rgba(255, 255, 255, 0.75);
 $modal-background-color: rgba(237, 237, 237, 0.9);
 
-// scss-lint:disable ImportantRule, QualifyingElement
+// scss-lint:disable ImportantRule, QualifyingElement, TrailingWhitespace
 
 .modal-open .section {
   filter: blur(20px);
@@ -47,7 +47,7 @@ $modal-background-color: rgba(237, 237, 237, 0.9);
 .btn-signin {
   background-color: $button-color;
   color: $button-highlight;
-  
+
   &:active {
     color: $button-highlight;
   }
