@@ -31,10 +31,16 @@ $andela-blue: #4074f5;
 }
 
 .deck-of-black-cards {
+<<<<<<< 3b525b184c03d473ffe823058420a7e7d354f178
   border-left: 1px solid $deck-of-black-cards;
   border-top: 1px solid $deck-of-black-cards;
   box-shadow: -2px -2px 0 0  $white;
   font-size: 25px;
+=======
+  box-shadow: -2px -2px 0 0  #000000;
+  border-top: 1px solid #ebebe0;
+  border-left: 1px solid #ebebe0;
+>>>>>>> Refctor(Fix hound issues): Refactor to fix hound issues
   line-height: 180px;
   text-align: center;
 }
