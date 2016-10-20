@@ -50,6 +50,7 @@ describe('Authentication controller test', function() {
 
     it('should set the signin error when called', function() {
       const error = { message: 'Sample error' };
+      // eslint-disable-next-line
       var IndexController = createController();
       expect(scope['showSignInErrors']).toBeDefined();
       scope.showSignInErrors(error);
@@ -59,6 +60,7 @@ describe('Authentication controller test', function() {
 
     it('should set the signup error when called', function() {
       const error = { message: 'Sample error' };
+      // eslint-disable-next-line
       var IndexController = createController();
       expect(scope['showSignUpErrors']).toBeDefined();
       scope.showSignUpErrors(error);
@@ -67,6 +69,7 @@ describe('Authentication controller test', function() {
     });
 
     it('should set the cookies on signin completion', function() {
+      // eslint-disable-next-line
       var IndexController = createController();
       expect(scope['signInComplete']).toBeDefined();
       const sampleData = { data: {} };
@@ -78,6 +81,7 @@ describe('Authentication controller test', function() {
     });
 
     it('should redirect the user to a game screen', function() {
+      // eslint-disable-next-line
       var IndexController = createController();
       expect(scope['redirectToGame']).toBeDefined();
       scope.redirectToGame();
@@ -85,6 +89,7 @@ describe('Authentication controller test', function() {
     });
 
     it('should set the cookies on signout completion', function() {
+      // eslint-disable-next-line
       var IndexController = createController();
       expect(scope['signOutComplete']).toBeDefined();
       scope.signOutComplete();
@@ -94,6 +99,7 @@ describe('Authentication controller test', function() {
     });
 
     it('should clear signin models', function() {
+      // eslint-disable-next-line
       var IndexController = createController();
       expect(scope['clearSignInControls']).toBeDefined();
       scope.clearSignInControls();
@@ -102,6 +108,7 @@ describe('Authentication controller test', function() {
     });
 
     it('should clear signin models', function() {
+      // eslint-disable-next-line
       var IndexController = createController();
       expect(scope['clearSignUpControls']).toBeDefined();
       scope.clearSignUpControls();
