@@ -1,5 +1,5 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$window', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, $window) {
   $scope.hasPickedCards = false;
   $scope.winningCardPicked = false;
   $scope.showTable = false;
@@ -9,7 +9,7 @@ angular.module('mean.system')
   var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
   $scope.makeAWishFact = makeAWishFacts.pop();
   $scope.showModal = false;
-
+  
   $scope.pickCard = function(card) {
     if (!$scope.hasPickedCards) {
       if ($scope.pickedCards.indexOf(card.id) < 0) {
@@ -127,17 +127,17 @@ angular.module('mean.system')
 
   $scope.abandonGame = function() {
     game.leaveGame();
+    $window.location.reload();
     $location.path('/');
   };
 
   $scope.gamePage = function() {
-    $('#myModal').modal('hide');
+    $window.location.reload();
     game.joinGame('joinNewGame');
   };
 
   $scope.homePage = function() {
-    $('#myModal').modal('hide');
-    game.leaveGame();
+    $window.location.reload();
     $location.path('/');
   };
 
@@ -174,10 +174,6 @@ angular.module('mean.system')
       }, 2500);
     }
   });
-  
-  this.$onInit = function(){
-    $scope.game.state = 'awaiting players';
-  };
 
   $scope.$watch('game.gameID', function() {
     if (game.gameID && game.state === 'awaiting players') {
@@ -209,4 +205,5 @@ angular.module('mean.system')
   } else {
     game.joinGame();
   }
+
 }]);
