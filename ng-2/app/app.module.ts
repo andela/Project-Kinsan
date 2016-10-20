@@ -9,6 +9,7 @@ import { AnswerComponent }          from './components/answer/answer.component';
 import { TimerComponent }           from './components/timer/timer.component';
 import { PlayerComponent }          from './components/player/player.component';
 import { InfoModalComponent }       from './components/info-modal/info-modal.component';
+import { ChatComponent }            from './components/chat/chat.component';
 
 @NgModule({
   imports:      [ 
@@ -26,9 +27,10 @@ import { InfoModalComponent }       from './components/info-modal/info-modal.com
       AnswerComponent,
       TimerComponent,
       PlayerComponent,
-      InfoModalComponent 
+      InfoModalComponent,
+      ChatComponent
   ],
-
+  bootstrap: [ GameComponent ]
 })
 export class AppModule 
 { 
