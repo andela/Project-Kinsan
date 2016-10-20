@@ -1,3 +1,8 @@
+$button-color: rgb(64, 116, 245);
+$button-highlight: #ffffff;
+$divider-color: #757375;
+$link-color: rgb(64, 144, 224);
+
 .modal-open .section {
   -webkit-filter: blur(20px);
   -moz-filter: blur(20px);
@@ -20,8 +25,8 @@
 .vertical-alignment-helper {
   display: table;
   height: 100%;
-  width: 100%;
   pointer-events: none;
+  width: 100%;
 }
 
 .vertical-align-center {
@@ -31,22 +36,22 @@
 }
 
 .modal-content {
-  width: inherit;
   height: inherit;
   margin: 0 auto;
   pointer-events: all;
+  width: inherit;
 }
 
 .btn-signin {
-  background-color: rgb(64, 116, 245);
-  color: #ffffff;
+  background-color: $button-color;
+  color: $button-highlight;
   &:active {
-    color: #ffffff;
+    color: $button-highlight;
   }
 }
 
 .anchor {
-  color: rgb(64, 144, 224) !important;
+  color: $link-color !important;
 }
 
 @media screen and (min-width: 768px) {
@@ -65,8 +70,8 @@
     text-align: center;
     padding-bottom: 100px;
     margin-bottom: -100px;
-    border-left: 1px solid #757375;
-    border-right: 1px solid #757375;
+    border-left: 1px solid $divider-color;
+    border-right: 1px solid $divider-color;
   }
 
   div[class^="col-"] {
