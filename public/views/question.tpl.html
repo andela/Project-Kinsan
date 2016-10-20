@@ -2,7 +2,7 @@
   <div class = "awaiting-players" ng-show="game.state === 'awaiting players'">
     <p class = "ptext" ng-show = "game.players.length < game.playerMinLimit "> Waiting for more players to join game ...</p>
     <div class = "start-game" ng-show = "(game.playerIndex === 0 || game.joinOverride) && game.players.length >=  game.playerMinLimit">
-      <button type="button" class="btn btn-primary btn-lg" id = "exit" ng-click = "startGame()" >Start Game</button>
+      <button type = "button" class = "btn btn-primary btn-lg" class = "exit" ng-click = "startGame()" >Start Game</button>
       <p class = "ptext">with {{game.players.length}} players</p>
     </div>
 </div>
