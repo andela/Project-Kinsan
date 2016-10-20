@@ -2,13 +2,13 @@
 
 angular.module('mean.system')
 .controller('IndexController', ['$scope', 'Global', '$location', '$cookies', 'authFactory', function ($scope, Global, $location, $cookies, authFactory) {
-  // variables for determining the visibility of certain UI elements
   $scope.show_signin_error = false;
   $scope.show_signup_error = false;
   $scope.show_history = false;
   $scope.userData = {};  
 
-  function signInComplete(data) {
+  $scope.signInComplete = function signInComplete(data) {
+    $scope.show_signin_error = false;
     $scope.show_signup_error = false;
     $scope.userData = data.data;
     $scope.$broadcast('modalDismiss');
@@ -17,17 +17,17 @@ angular.module('mean.system')
     expiryDate.setDate(expiryDate.getDate() + 1);
     $cookies.putObject('_userData', $scope.userData, { expires: expiryDate }); 
 
-    redirectToGame();   
-  }
+    $scope.redirectToGame();   
+  };
 
-  function redirectToGame() {
+  $scope.redirectToGame = function redirectToGame() {
     Global.user = $scope.userData.user;
     Global.authenticated = $scope.userData.authenticated;
     $scope.show_history = true;
-    // $location.path('/game');
-  }
+    $location.path('/game');
+  };
 
-  function signOutComplete() {
+  $scope.signOutComplete = function signOutComplete() {
     $scope.show_history = false;
     $scope.userData = null;
     Global.user = null;
@@ -35,35 +35,35 @@ angular.module('mean.system')
 
     $cookies.remove('_userData');
     $location.path('/');
-  }
+  };
 
-  function showSignInErrors(error) {
+  $scope.showSignInErrors = function showSignInErrors(error) {
     $scope.error = error;
     $scope.show_signin_error = true;
-  }
+  };
 
-  function showSignUpErrors(error) {
+  $scope.showSignUpErrors = function showSignUpErrors(error) {
     $scope.error = error;
     $scope.show_signup_error = true;
-  }
+  };
 
-  function clearSignInControls() {
-    $scope.signup_email = '';
-    $scope.signup_password = '';
-  }
+  $scope.clearSignInControls = function clearSignInControls() {
+    $scope.signin_email = '';
+    $scope.signin_password = '';
+  };
 
-  function clearSignUpControls() {
+  $scope.clearSignUpControls = function clearSignUpControls() {
     $scope.signup_email = '';
     $scope.signup_password = '';
     $scope.signup_password_again = '';
     $scope.signup_name = '';
-  }
+  };
 
   function checkAuthStatus() {
     const userData = $cookies.getObject('_userData');
     if (userData) {
       $scope.userData = userData;
-      redirectToGame();
+      $scope.redirectToGame();
     }
   }
 
@@ -74,10 +74,10 @@ angular.module('mean.system')
     };
 
     authFactory.signIn(user).then(function(data) {
-      clearSignInControls();
-      signInComplete(data);
+      $scope.clearSignInControls();
+      $scope.signInComplete(data);
     }, function(err) {
-      showSignInErrors(err);
+      $scope.showSignInErrors(err);
     });
   };
 
@@ -86,12 +86,12 @@ angular.module('mean.system')
       const error = {
         data: { message: 'Data incomplete.' }
       };
-      showSignUpErrors(error);
+      $scope.showSignUpErrors(error);
     } else if($scope.signup_password !== $scope.signup_password_again) {
       const error = {
         data: { message: 'Passwords do not match.' }
       };
-      showSignUpErrors(error);
+      $scope.showSignUpErrors(error);
     } else {
       var newuser = {
         email: $scope.signup_email,
@@ -100,10 +100,10 @@ angular.module('mean.system')
       };
 
       authFactory.signUp(newuser).then(function(data) {
-        clearSignUpControls();
-        signInComplete(data);
+        $scope.clearSignUpControls();
+        $scope.signInComplete(data);
       }, function(err) {
-        showSignUpErrors(err);
+        $scope.showSignUpErrors(err);
       });
     }
   };
@@ -111,7 +111,7 @@ angular.module('mean.system')
   $scope.signout = function() {
     hello($scope.userData.user.provider).logout().then(
       function() {
-        signOutComplete();
+        $scope.signOutComplete();
       });
   };
 
@@ -126,11 +126,11 @@ angular.module('mean.system')
             provider: 'twitter'
           };
           authFactory.socialSignIn(userDetails).then(function(data) {
-            signInComplete(data);
+            $scope.signInComplete(data);
           });
         });
       }, function(error) {
-      showSignInErrors(error);
+      $scope.showSignInErrors(error);
     });
   };
 
@@ -145,11 +145,11 @@ angular.module('mean.system')
             provider: 'facebook'
           };        
           authFactory.socialSignIn(userDetails).then(function(data) {
-            signInComplete(data);
+            $scope.signInComplete(data);
           });
         });
       }, function(error) {
-      showSignInErrors(error);
+      $scope.showSignInErrors(error);
     });
   };
 
@@ -164,11 +164,11 @@ angular.module('mean.system')
             provider: 'google'
           };        
           authFactory.socialSignIn(userDetails).then(function(data) {
-            signInComplete(data);
+            $scope.signInComplete(data);
           });
         });
       }, function(error) {
-      showSignInErrors(error);
+      $scope.showSignInErrors(error);
     });
   };
 

@@ -1,78 +1,114 @@
-describe('Authentication functionality test', function() {
-  // and history factory
+describe('Authentication controller test', function() {
   beforeEach(
     angular.mock.module('services.Auth')
   );
-
-  // load angular module for Global service
   beforeEach(
     angular.mock.module('mean.system')
   );
 
-  describe('Index Controller (Authentication section)', function() {
-    var controller;
-    var IndexController;
-    var location;
-    var scope;
-    var cookies;
-    var httpBackend;
-    var AuthFactory;
-    var q;
+  describe('Index Controller', function() {
+    var  createController, location, scope, AuthFactory, $q, Global;
     var $cookies = {
-      getObject: function(cookieName) {
-        return {
-          data: {
-            user: {
-              id: 'Bleh'
-            }
-          }
-        };
+      _cookies: {},
+      getObject: function(key) {
+        return this._cookies[key];
+      },
+      putObject: function(key, data) {
+        this._cookies[key] = data;
+      },
+      remove: function(key) {
+        this._cookies[key] = undefined;
       }
-    };  
+    };
 
-    jasmine.getJSONFixtures().fixturesPath = 'base/test/app';
-    var signupResponse = getJSONFixture('token.json')[0];
-    var signinResponse = getJSONFixture('token.json')[1];
-    var socialResponse = getJSONFixture('token.json')[2];
 
-    beforeEach(inject(function(_$controller_, _$q_, _$location_, _$rootScope_, _$httpBackend_, _authFactory_, _$q_){
-      httpBackend = _$httpBackend_;
-      controller = _$controller_;
+    beforeEach(inject(function($controller, _$q_, _$location_, $rootScope, _authFactory_) { 
       AuthFactory = _authFactory_;
       location = _$location_;
-      scope = _$rootScope_.$new();
-      q = _$q_;
-      //cookies = _$cookies_;
+      scope = $rootScope.$new();
+      $q = _$q_;
+      Global = {};
 
-      IndexController = controller('IndexController', { 
-        authFactory: AuthFactory,
-        $scope: scope, 
-        $location: location,
-        $cookies: $cookies,
-        $q : q
-      });
+
+      createController = function() {
+        return $controller('IndexController', { 
+          authFactory: AuthFactory,
+          $scope: scope, 
+          $location: location,
+          $cookies: $cookies,
+          $q : $q,
+          Global: Global
+        });
+      };
     }));
 
+
     it('should be defined', function() {
+      var IndexController = createController();
       expect(IndexController).toBeDefined();
     });
 
-    it('call the social function of AuthFactory service', function() {
-      spyOn(AuthFactory, 'socialSignIn').and.callThrough();
-      IndexController = controller('IndexController', { 
-        authFactory: AuthFactory,
-        $scope: scope, 
-        $location: location,
-        $cookies: $cookies,
-        $q : q
-      });
-      
-      const api = '/api/auth/social';
+    it('should set the signin error when called', function() {
+      const error = { message: 'Sample error' };
+      var IndexController = createController();
+      expect(scope['showSignInErrors']).toBeDefined();
+      scope.showSignInErrors(error);
+      expect(scope.error).toEqual(error);
+      expect(scope.show_signin_error).toEqual(true);
+    });
 
-      httpBackend.whenPOST(api).respond(200, q.when(socialResponse));
-      IndexController.$scope.socialSignIn();
-      expect(AuthFactory.social).toHaveBeenCalled();
-      expect(IndexController.$scope.userData).toEqual(socialResponse);
+    it('should set the signup error when called', function() {
+      const error = { message: 'Sample error' };
+      var IndexController = createController();
+      expect(scope['showSignUpErrors']).toBeDefined();
+      scope.showSignUpErrors(error);
+      expect(scope.error).toEqual(error);
+      expect(scope.show_signup_error).toEqual(true);
+    });
+
+    it('should set the cookies on signin completion', function() {
+      var IndexController = createController();
+      expect(scope['signInComplete']).toBeDefined();
+      const sampleData = { data: {} };
+      scope.signInComplete(sampleData);
+      expect(scope.show_signin_error).toBe(false);
+      expect(scope.show_signup_error).toBe(false);
+      expect(scope.userData).toEqual(sampleData.data);
+      expect(scope.userData).toEqual($cookies.getObject('_userData'));
+    });
+
+    it('should redirect the user to a game screen', function() {
+      var IndexController = createController();
+      expect(scope['redirectToGame']).toBeDefined();
+      scope.redirectToGame();
+      expect(location.path()).toEqual('/game');
+    });
+
+    it('should set the cookies on signout completion', function() {
+      var IndexController = createController();
+      expect(scope['signOutComplete']).toBeDefined();
+      scope.signOutComplete();
+      expect(scope.show_history).toBe(false);
+      expect(scope.userData).toEqual(null);
+      expect($cookies.getObject('_userData')).toEqual(undefined);
+    });
+
+    it('should clear signin models', function() {
+      var IndexController = createController();
+      expect(scope['clearSignInControls']).toBeDefined();
+      scope.clearSignInControls();
+      expect(scope.signin_email).toEqual('');
+      expect(scope.signin_password).toEqual('');
+    });
+
+    it('should clear signin models', function() {
+      var IndexController = createController();
+      expect(scope['clearSignUpControls']).toBeDefined();
+      scope.clearSignUpControls();
+      expect(scope.signup_email).toEqual('');
+      expect(scope.signup_password).toEqual('');
+      expect(scope.signup_name).toEqual('');
+      expect(scope.signup_password_again).toEqual('');
     });
   });
 });

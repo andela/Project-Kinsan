@@ -25,6 +25,7 @@ module.exports = function(config) {
       'public/lib/angular/angular.js',
       'public/lib/angular-resource/angular-resource.js',
       'public/lib/angular-mocks/angular-mocks.js',
+      'public/lib/hello/dist/hello.all.min.js',
       'public/js/**/*.js',
       'public/js/controllers/*.js',
       'public/js/services/*.js',
