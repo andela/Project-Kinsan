@@ -1,17 +1,26 @@
-// scss-lint:disable IdSelector, PropertySortOrder, ColorVariable, StringQuotes, HexValidation, HexNotation
+$black: #000;
+$white: #fff;
+$dark-grey: #eee;
+$border: #d6d6c2;
+$deck-of-black-cards: #ebebe0;
+$score-bg: #a9a9a9;
+$box-shadow: #808080;
+$andela-blue: #4074f5;
+
 .container {
-  width: 100%;
   margin: 0;
+  width: 100%;
 }
 
 .game-cards {
-  height: 180px;
-  border: 1px solid black;
-  width: 130px;
-  margin: 50px;
-  background-color: black;
+  background-color: $black;
+  border: 1px solid $black;
   border-radius: 5px;
-  color: white;
+  color: $white;
+  height: 180px;
+  margin: 50px;
+  width: 130px;
+
   p {
     font-size: smaller;
   }
@@ -22,29 +31,29 @@
 }
 
 .deck-of-black-cards {
-  box-shadow: -2px -2px 0 0  #000000;
-  border-top: 1px solid #ebebe0;
-  border-left: 1px solid #ebebe0;
+  border-left: 1px solid $deck-of-black-cards;
+  border-top: 1px solid $deck-of-black-cards;
+  box-shadow: -2px -2px 0 0  $white;
+  font-size: 25px;
   line-height: 180px;
   text-align: center;
-  font-size: 25px;
 }
 
-$solid-white: #ffffff;
 .black-card {
-  padding: 10px;
-  height: 200px;
-  width: 150px;
   font-size: medium;
+  height: 200px;
+  padding: 10px;
+  width: 150px;
+
   u {
-    position: relative;
+    border-bottom: .125em solid $white;
     content: '';
     display: inline-block;
-    width: 25%;
-    text-decoration: none;
     height: 1em;
-    border-bottom: 0.125em solid $solid-white;
-    margin-bottom: -0.125em;
+    margin-bottom: -.125em;
+    position: relative;
+    text-decoration: none;
+    width: 25%;
   }
 }
 
@@ -53,7 +62,7 @@ $solid-white: #ffffff;
   margin-top: 100px;
 }
 
-#start-game p {
+.start-game p {
   margin-left: 10px;
 }
 
@@ -62,12 +71,12 @@ $solid-white: #ffffff;
 }
 
 .black-cards-bar {
+  border-bottom: 3px solid $dark-grey;
   height: 300px;
-  border-bottom: 3px solid #eee;
 }
 
-#white-cards-bar {
-  border-left: 3px solid #eee;
+.white-cards-bar {
+  border-left: 3px solid $dark-grey;
 }
 
 .exit {
@@ -79,40 +88,37 @@ $solid-white: #ffffff;
 }
 
 .time {
-  padding: 0 10%;
-  font-weight: bolder;
   font-size: 72px;
+  font-weight: bolder;
+  padding: 0 10%;
 }
 
 .avatar {
+  background-color: $andela-blue;
   border-radius: 100%;
-  width: 50px;
+  color: $solid-white;
   height: 50px;
   line-height: 50px;
-  background-color: #4074f5;
-  color: $solid-white;
+  width: 50px;
 }
 
 .name {
-  width: 100px;
   margin: auto;
+  width: 100px;
 }
 
-$score-bg: #a9a9a9;
+
 
 .score {
+  background-color: $score-bg;
   border-radius: 100%;
-  width: 50px;
   height: 50px;
   line-height: 50px;
-  background-color: $score-bg;
+  width: 50px;
 }
 
-$box-shadow: #808080;
-$bgc: #eeeeee;
-
 .flex-container {
-  background-color: $bgc;
+  background-color: $dark-grey;
   border-radius: 50px;
   box-shadow: 0 3px 1px $box-shadow;
   display: flex;
@@ -125,15 +131,11 @@ $bgc: #eeeeee;
   text-align: center;
 }
 
-$white: #000000;
-$border: #d6d6c2;
-$bg: #ffffff;
-
 .white-cards-holder {
   height: 500px;
 
   .game-cards {
-    background-color: $bg;
+    background-color: $white;
     border: 1px solid $border;
     color: $white;
     float: left;
@@ -157,7 +159,7 @@ $darkgrey: #3498db;
 .is-czar {
   @include bottom-radius(2px);
   background-color: $darkgrey;
-  box-shadow: 0 2px 1px #808080;
+  box-shadow: 0 2px 1px $box-shadow;
   font-weight: 800;
   left: 70px;
   padding: 2px;
