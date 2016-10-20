@@ -1,3 +1,4 @@
+// scss-lint:disable IdSelector, PropertySortOrder, ColorVariable
 .container {
   width: 100%;
   margin: 0 !important;
@@ -16,11 +17,11 @@
   }
 }
 
-#players-cards {
+.players-cards {
   height: 500px;
 }
 
-#deck-of-black-cards {
+.deck-of-black-cards {
   box-shadow: -2px -2px 0px 0px  #000000;
   border-top: 1px solid #ebebe0;
   border-left: 1px solid #ebebe0;
@@ -29,7 +30,7 @@
   font-size: 25px;
 }
 
-#black-card {
+.black-card {
   padding: 10px;
   height: 200px;
   width: 150px;
@@ -46,7 +47,7 @@
   }
 }
 
-#start-game, #awaiting-players {
+.start-game, .awaiting-players {
   margin-top: 100px;
 }
 
@@ -54,11 +55,11 @@
   margin-left: 10px;
 }
 
-#question-holder {
+.question-holder {
   padding-left: 100px;
 }
 
-#black-cards-bar {
+.black-cards-bar {
   height: 300px;
   border-bottom: 3px solid #eee;
 }
@@ -67,23 +68,23 @@
   border-left: 3px solid #eee;
 }
 
-#players-bar {}
+.players-bar {}
 
-#exit {
+.exit {
   font-size: 18px;
 }
 
-#timer-place {
+.timer-place {
   margin-top: 69px;
 }
 
-#timer {
+.time {
   padding: 0 10%;
   font-weight: bolder;
   font-size: 72px;
 }
 
-#avatar {
+.avatar {
   border-radius: 100%;
   width: 50px;
   height: 50px;
@@ -99,7 +100,7 @@
 
 $score-bg: #a9a9a9;
 
-#score {
+.score {
   border-radius: 100%;
   width: 50px;
   height: 50px;
@@ -154,8 +155,8 @@ $bg: #ffffff;
 $darkgrey: #3498db;
 
 .is-czar {
-  background-color: $darkgrey;
   @include bottom-radius(2px);
+  background-color: $darkgrey;
   box-shadow: 0 2px 1px #808080;
   font-weight: 800;
   left: 70px;
