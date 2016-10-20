@@ -13,6 +13,7 @@ angular.module('mean.directives', [])
         vm.currentCzar = $scope.$parent.currentCzar;
         vm.isPlayer = $scope.$parent.isPlayer;
       },
+      // eslint-disable-next-line
       controllerAs: 'vm'
     };
   })
@@ -20,6 +21,7 @@ angular.module('mean.directives', [])
     return {
       restrict: 'E',
       templateUrl: '/views/question.tpl.html',
+      // eslint-disable-next-line
       controllerAs: 'vm',
       scope: true,
       controller: function(){
@@ -35,6 +37,7 @@ angular.module('mean.directives', [])
     return {
       restrict: 'E',
       templateUrl: '/views/answers.tpl.html',
+      // eslint-disable-next-line
       controllerAs: 'vm',
       controller: function(){
       }
@@ -53,6 +56,7 @@ angular.module('mean.directives', [])
     return {
       restrict: 'E',
       templateUrl: '/views/chat.tpl.html',
+      // eslint-disable-next-line
       controllerAs: 'vm',
       controller: function(){
       }
@@ -61,6 +65,7 @@ angular.module('mean.directives', [])
     return {
       restrict: 'E',
       templateUrl: '/views/info-modal.tpl.html',
+      // eslint-disable-next-line
       controllerAs: 'vm',
       controller: function(){
       }
