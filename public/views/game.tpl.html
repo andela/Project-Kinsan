@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <div class="chat-box" ng-controller="GameChatCtrl">
   <div class="close-chat" id="chat">
   </div>
@@ -20,36 +19,8 @@
     <p class="is-typing" id="isTyping"></p>
     <div class ="chat-bottom">
       <img src="img/smile1.png" style="margin-right:2px;"/>
-      <input id="message" class="message" type="text" placeholder="Message here.." ng-model="message" ng-keyup="$event.keyCode == 13 ? sendMessage(message, 'Abisoye') : null"/>
+      <input id="message" class="message" type="text" placeholder="Message here.." ng-model="message" />
       <img id="send" src="img/send.png" style="float:right;margin-top:6px;" ng-click="sendMessage(message, 'Abisoye')"/>
     </div>
   </div>
 </div>
-<script>
-$(document).ready( function () {
-  var scrolled = 100000;
-
-  $('#message').focusin( function () {
-    $('#isTyping').text('I am typing....');
-    $('#message').focusout( function () {
-      $('#isTyping').text('');
-    });
-  });
-
-  $('#send').click( function () {
-    $('#message').val('');
-    $('#chatMessages').animate({
-      scrollTop: scrolled
-    });
-  });
-
-  $('#message').keypress( function (e) {
-    if(e.which == 13) {
-      $('#message').val('');
-      $('#chatMessages').animate({
-        scrollTop: scrolled
-      });
-    }
-  });
-});
-</script>

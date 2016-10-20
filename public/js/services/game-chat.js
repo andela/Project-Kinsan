@@ -105,10 +105,10 @@ angular.module('mean.gameChat')
 
       triggerIsTyping : function(gameId, typist){
         var that = this;
-        return new Promise(function(fufill, fail){
+        return new Promise(function(fulfill, fail){
           database.ref(that.isTypingRef + '/' + gameId).set(typist)
           .then(function(){
-            fufill(true);
+            fulfill(true);
           }).catch(function(error){
             fail(error);
           });
