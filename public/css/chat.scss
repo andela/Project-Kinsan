@@ -1,17 +1,4 @@
-$main-color: #fff;
-$primary-text: #000;
-$secondary-text: #444;
-$ascent: #006ce5;
-$secondary-light: #d6d6d6;
-$black-shadow-radius: 0 -2px 5px 0;
-$black-shadow-75: rgba(0, 0, 0, 0.75);
-$grey-shadow-radius: 0 -1px 2px 0;
-$grey-shadow-75: rgba(65, 65, 65, 0.75);
-$box-radius: 5px 5px 0 0;
-$chat-bottom-padding: 0 5px 0 10px;
-
-$url-0: url("../img/chatnone1.png");
-$url-1: url("../img/chatnone.png");
+@import "variable.scss";
 
 .chat-box {
   background: $main-color;
