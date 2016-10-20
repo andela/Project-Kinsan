@@ -29,8 +29,8 @@ exports.saveGameHistory = function (req, res) {
   });
 };
 
-exports.deleteHistory  = function (req, res) {
-  History.remove({gameId: req.params.id}, function (err, history) {
+exports.deleteHistory = function (req, res) {
+  History.remove({gameId: req.params.id}, function (err) {
     if (err) {
       res.json(err);
     }
