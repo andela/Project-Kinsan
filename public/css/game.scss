@@ -1,7 +1,7 @@
-// scss-lint:disable IdSelector, PropertySortOrder, ColorVariable, StringQuotes, HexValidation, ImportantRule, HexNotation
+// scss-lint:disable IdSelector, PropertySortOrder, ColorVariable, StringQuotes, HexValidation, HexNotation
 .container {
   width: 100%;
-  margin: 0 !important;
+  margin: 0;
 }
 
 .game-cards {
@@ -30,6 +30,7 @@
   font-size: 25px;
 }
 
+$solid-white: #ffffff;
 .black-card {
   padding: 10px;
   height: 200px;
@@ -42,7 +43,7 @@
     width: 25%;
     text-decoration: none;
     height: 1em;
-    border-bottom: 0.125em solid white;
+    border-bottom: 0.125em solid $solid-white;
     margin-bottom: -0.125em;
   }
 }
@@ -89,7 +90,7 @@
   height: 50px;
   line-height: 50px;
   background-color: #4074f5;
-  color: white;
+  color: $solid-white;
 }
 
 .name {
