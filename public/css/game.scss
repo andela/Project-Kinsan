@@ -34,12 +34,11 @@ $andela-blue: #4074f5;
   border-left: 1px solid $deck-of-black-cards;
   border-top: 1px solid $deck-of-black-cards;
   box-shadow: -2px -2px 0 0  $white;
-  font-size: 25px; Refactor to fix hound issues
+  font-size: 25px;
   line-height: 180px;
   text-align: center;
 }
 
-$solid-white: #ffffff;
 .black-card {
   font-size: medium;
   height: 200px;
@@ -108,7 +107,7 @@ $solid-white: #ffffff;
   width: 100px;
 }
 
-$score-bg: #a9a9a9;
+
 
 .score {
   background-color: $score-bg;
@@ -117,9 +116,6 @@ $score-bg: #a9a9a9;
   line-height: 50px;
   width: 50px;
 }
-
-$box-shadow: #808080;
-$bgc: #eeeeee;
 
 .flex-container {
   background-color: $dark-grey;
@@ -134,10 +130,6 @@ $bgc: #eeeeee;
 .flex-item {
   text-align: center;
 }
-
-$white: #000000;
-$border: #d6d6c2;
-$bg: #ffffff;
 
 .white-cards-holder {
   height: 500px;
