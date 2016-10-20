@@ -1,4 +1,4 @@
-describe('Authentication functionality test', function() {
+describe('Authentication service test', function() {
   var AuthFactory;
   var $httpBackend;
   var $q;

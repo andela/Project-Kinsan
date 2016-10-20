@@ -27,6 +27,7 @@ module.exports = function(config) {
       'public/lib/angular-mocks/angular-mocks.js',
       'public/lib/firebase/firebase.js',
       'public/js/socket.io.js',
+      'public/lib/hello/dist/hello.all.min.js',
       'public/js/**/*.js',
       'public/js/controllers/*.js',
       'public/js/services/*.js',
