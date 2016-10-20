@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  margin: 0 !important; }
+  margin: 0; }
 
 .game-cards {
   height: 180px;
@@ -37,7 +37,7 @@
     width: 25%;
     text-decoration: none;
     height: 1em;
-    border-bottom: 0.125em solid white;
+    border-bottom: 0.125em solid #ffffff;
     margin-bottom: -0.125em; }
 
 .start-game,
@@ -74,7 +74,7 @@
   height: 50px;
   line-height: 50px;
   background-color: #4074f5;
-  color: white; }
+  color: #ffffff; }
 
 .name {
   width: 100px;
