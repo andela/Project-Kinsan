@@ -2,6 +2,8 @@ $button-color: rgb(64, 116, 245);
 $button-highlight: #ffffff;
 $divider-color: #757375;
 $link-color: rgb(64, 144, 224);
+$modal-backdrop-color: rgba(255, 255, 255, 0.75);
+$modal-background-color: rgba(237, 237, 237, 0.9);
 
 .modal-open .section {
   -webkit-filter: blur(20px);
@@ -12,14 +14,14 @@ $link-color: rgb(64, 144, 224);
 .modal-dialog .modal-content {
   border-radius: 5;
   box-shadow: none;
-  background-color: rgba(237, 237, 237, 0.9);
+  background-color: $modal-background-color;
   padding-left: 5px;
   padding-right: 5px;
   font-family: proxima;
 }
 
 .modal-backdrop {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: $modal-backdrop-color;
 }
 
 .vertical-alignment-helper {
