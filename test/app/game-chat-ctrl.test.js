@@ -1,6 +1,6 @@
 'use strict';
 describe('Test for GameChatCtrl', function(){
-  var $scope, $controller, GameChat;
+  var $scope, $controller, GameChat, mockGame;
 
   beforeEach(
     angular.mock.module('mean.gameChat')
@@ -15,7 +15,12 @@ describe('Test for GameChatCtrl', function(){
 
   beforeEach(function(){
     $scope = {};
-    $controller('GameChatCtrl', {$scope: $scope});
+    mockGame = {
+      id: 789456, // This player's socket ID, so we know who this player is
+      gameID: '123456789',
+      players: [],
+    };
+    $controller('GameChatCtrl', {$scope: $scope, game: mockGame});
 
     $scope.gameId = 'qwertyuiop';
     $scope.users = [
