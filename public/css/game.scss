@@ -1,4 +1,4 @@
-// scss-lint:disable IdSelector, PropertySortOrder, ColorVariable
+// scss-lint:disable IdSelector, PropertySortOrder, ColorVariable, StringQuotes, HexValidation, ImportantRule, HexNotation
 .container {
   width: 100%;
   margin: 0 !important;
@@ -22,7 +22,7 @@
 }
 
 .deck-of-black-cards {
-  box-shadow: -2px -2px 0px 0px  #000000;
+  box-shadow: -2px -2px 0 0  #000000;
   border-top: 1px solid #ebebe0;
   border-left: 1px solid #ebebe0;
   line-height: 180px;
@@ -47,7 +47,8 @@
   }
 }
 
-.start-game, .awaiting-players {
+.start-game,
+.awaiting-players {
   margin-top: 100px;
 }
 
@@ -67,8 +68,6 @@
 #white-cards-bar {
   border-left: 3px solid #eee;
 }
-
-.players-bar {}
 
 .exit {
   font-size: 18px;
