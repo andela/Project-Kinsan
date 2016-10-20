@@ -5,13 +5,9 @@ describe('Game chat test', function(){
     angular.mock.module('mean.gameChat')
   );
 
-  var $controller, $factoryProvider, GameChat;
+  var  $factoryProvider, GameChat;
 
   beforeEach(function(){
-    inject(function(_$controller_){
-      $controller = _$controller_;
-    });
-
     inject(function($injector){
       $factoryProvider = $injector;
     });
@@ -197,50 +193,4 @@ describe('Game chat test', function(){
 
   });
 
-  describe('Test for GameChatCtrl', function(){
-
-    var $scope;
-    beforeEach(function(){
-      $scope = {};
-      $controller('GameChatCtrl', {$scope: $scope});
-      $factoryProvider.get('GameChat');
-      $scope.GameChat.sessionStoreRef = 'test-game-sessions';
-    });
-
-    describe('Scope properties check', function(){
-      it('should expect property "GameChat" to be defined', function(){
-        expect($scope.GameChat).toEqual(GameChat);
-      });
-
-      it('should expect property "messages" to be an empty object', function(){
-        expect($scope.messages).toEqual({});
-      });
-
-      it('should expect newMessage method to be a defined function', function(){
-        expect(typeof $scope.newMessage).toEqual('function');
-      });
-
-      it('should expect sendMessage method to be a defined function', function(){
-        expect(typeof $scope.sendMessage).toEqual('function');
-      });
-
-    });
-
-
-    it('should expect newMessage to receive an object as parameter',function () {
-      //expect( typeof $scope.newMessage.calls.argsFor(0)[0] ).toEqual('object');
-    });
-
-
-
-  });
 });
-
-
-//assert if a game session is active
-//test if gameId is defined and exists?
-//test if users other than yourself exists in the game sessions
-//test if message to send is not empty
-//given some sent messages, those exact sent messages should be retrieved by another user as received messages
-//messages should persist
-//should assert if there are unread messages
