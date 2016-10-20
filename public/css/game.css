@@ -116,9 +116,9 @@
   position: relative; }
 
 .is-czar {
+  background-color: #3498db;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
-  background-color: #3498db;
   box-shadow: 0 2px 1px #808080;
   font-weight: 800;
   left: 70px;

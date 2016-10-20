@@ -106,8 +106,6 @@ $andela-blue: #4074f5;
   width: 100px;
 }
 
-
-
 .score {
   background-color: $score-bg;
   border-radius: 100%;
@@ -115,6 +113,9 @@ $andela-blue: #4074f5;
   line-height: 50px;
   width: 50px;
 }
+
+$box-shadow: #808080;
+$bgc: #eeeeee;
 
 .flex-container {
   background-color: $dark-grey;
@@ -129,6 +130,10 @@ $andela-blue: #4074f5;
 .flex-item {
   text-align: center;
 }
+
+$white: #000000;
+$border: #d6d6c2;
+$bg: #ffffff;
 
 .white-cards-holder {
   height: 500px;
