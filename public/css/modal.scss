@@ -8,8 +8,6 @@ $modal-background-color: rgba(237, 237, 237, 0.9);
 // scss-lint:disable ImportantRule, QualifyingElement
 
 .modal-open .section {
-  -moz-filter: blur(20px);
-  -webkit-filter: blur(20px);
   filter: blur(20px);
 }
 
