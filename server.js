@@ -53,10 +53,6 @@ require('./config/passport')(passport);
 
 var app = express();
 
-app.use(function(req, res, next){
-  next();
-});
-
 conn.on('error', function () {
   throw 'Error conecting to the database...';
 });

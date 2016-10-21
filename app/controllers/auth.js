@@ -7,37 +7,41 @@ let User = mongoose.model('User');
 let bcrypt = require('bcryptjs');
 
 let auth = {
-// Function for verifying a users regiatration and
+// Function for verifying a users registration and
 // generating a JWT on successful login.
   login: function(req, res) {
     User.findOne({
-      username: req.body.username
+      email: req.body.email
     }, function(err, user) {
       if(err) {
-        res.send(err);
+        res.status(500).json({
+          authenticated: false,
+          error: err,
+          message: 'Sorry, there was a server error.'
+        });
       }
       // If user does not exist
       if (!user) {
-        res.json({
-          success: false,
+        res.status(404).json({
+          authenticated: false,
           message: 'Authentication failed. User not found.'
         });
       } else if (user) {
         // If user exists but password is wrong
-        if (!user.authenticate(req.body.password)) {
-          res.json({
-            success: false,
+        if (!verifyPasswords(req.body.password, user.password)) {
+          res.status(404).json({
+            authenticated: false,
             message: 'Authentication failed. Wrong password.'
           });
         } else {  // If everything checks out
           let token = jwt.sign(user, config.secret, {
             expiresIn: '24h'
           });
-
-          res.json({
-            success: true,
+          res.status(200).json({
+            authenticated: true,
             message: 'Authentication successful.',
-            token: token
+            token: token,
+            user: user
           });
         }
       }
@@ -49,7 +53,11 @@ let auth = {
       email: req.body.email
     }, function (err, registeredUser) {
       if (err) {
-        throw err;
+        res.status(500).json({
+          authenticated: false,
+          error: err,
+          message: 'Sorry, there was a server error.'
+        });
       }
 
       if (!registeredUser) {
@@ -60,32 +68,102 @@ let auth = {
           user.email = body.email;
           user.password = encryptPassword(body.password);
           user.avatar = body.avatar;
+          user.provider = body.provider;
 
           user.save( function (err) {
             if (err) {
-              res.send(err);
+              res.status(500).json({
+                authenticated: false,
+                error: err,
+                message: 'Sorry, there was a server error.'
+              });
             }
+            var token = jwt.sign(user, config.secret, { expiresIn: '24h' });
 
-            var token = jwt.sign(user, config.secret, {expiresIn: 60*60*24});
-
-            res.json({successful: true, message: 'You have successfully signed up', token: token});
-
+            res.status(201).json({
+              authenticated: true, 
+              message: 'You have successfully signed up.', 
+              token: token,
+              user: user
+            });
           });
         } else {
-          res.send({message: 'Signup details are incomplete'});
+          res.status(400).json({
+            authenticated: false,
+            message: 'Signup details are incomplete.'
+          });
         }
       } else {
-        res.send({message: 'User already exists.'});
+        res.status(400).json({
+          authenticated: false,
+          message: 'User already exists.'
+        });
       }
     });
   },
+
   delete: function (req, res) {
     User.remove({name: req.body.name}, function (err) {
       if (err) {
-        res.send(err);
+        res.json(err);
+      }
+      res.json({
+        message: 'User deleted!'
+      });
+    });
+  },
+
+  social: function(req, res) {
+    User.findOne({
+      email: req.body.email
+    }, function (err, registeredUser) {
+      if (err) {
+        res.status(500).json({
+          authenticated: false,
+          error: err,
+          message: 'Sorry, there was a server error.'
+        });
       }
 
-      res.send({message: 'User deleted!'});
+      if (!registeredUser) {
+        var body = req.body;
+        if (body.name && body.email && body.provider) {
+          var user = new User();
+          user.name = body.name;
+          user.email = body.email;
+          user.password = encryptPassword(body.password);
+          user.provider = body.provider;
+          user.save( function (err, savedUser) {
+            if (err) {
+              res.status(500).json({
+                authenticated: false,
+                error: err,
+                message: 'Sorry, there was a server error.'
+              });
+            }
+            var token = jwt.sign(savedUser, config.secret, { expiresIn: '24h' });
+            res.status(200).json({
+              authenticated: true, 
+              message: 'You have successfully signed up.', 
+              token: token,
+              user: savedUser
+            });
+          });
+        } else {
+          res.status(400).json({
+            authenticated: false,
+            message: 'Signup details are incomplete.'
+          });
+        }
+      } else {
+        var token = jwt.sign(registeredUser, config.secret, { expiresIn: '24h' });
+        res.status(200).json({
+          authenticated: true, 
+          message: 'You have been authenticated.', 
+          token: token,
+          user: registeredUser
+        });
+      }
     });
   }
 };
@@ -95,6 +173,13 @@ function encryptPassword (password) {
     return bcrypt.hashSync(password, bcrypt.genSaltSync(10));
   }
   return '';
+}
+
+function verifyPasswords(plainText, hashedPassword) {
+  if (!plainText || !hashedPassword) {
+    return false;
+  }
+  return bcrypt.compareSync(plainText, hashedPassword);
 }
 
 module.exports = auth;

@@ -1,0 +1,90 @@
+$button-color: rgb(64, 116, 245);
+$button-highlight: #ffffff;
+$divider-color: #757375;
+$link-color: rgb(64, 144, 224);
+$modal-backdrop-color: rgba(255, 255, 255, 0.75);
+$modal-background-color: rgba(237, 237, 237, 0.9);
+
+// scss-lint:disable ImportantRule, QualifyingElement
+
+.modal-open .section {
+  filter: blur(20px);
+}
+
+.modal-dialog .modal-content {
+  background-color: $modal-background-color;
+  border-radius: 5;
+  box-shadow: none;
+  font-family: proxima;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+.modal-backdrop {
+  background-color: $modal-backdrop-color;
+}
+
+.vertical-alignment-helper {
+  display: table;
+  height: 100%;
+  pointer-events: none;
+  width: 100%;
+}
+
+.vertical-align-center {
+  display: table-cell;
+  pointer-events: none;
+  vertical-align: middle;
+}
+
+.modal-content {
+  height: inherit;
+  margin: 0 auto;
+  pointer-events: all;
+  width: inherit;
+}
+
+.btn-signin {
+  background-color: $button-color;
+  color: $button-highlight;
+
+  &:active {
+    color: $button-highlight;
+  }
+}
+
+.anchor {
+  color: $link-color !important;
+}
+
+@media screen and (min-width: 768px) {
+  .signin-modal-width {
+    width: 650px;
+  }
+
+  .signup-modal-width {
+    width: 325px;
+  }
+}
+
+.row.vertical-divider {
+  overflow: hidden;
+
+  > div[class^="col-"] {
+    border-left: 1px solid $divider-color;
+    border-right: 1px solid $divider-color;
+    margin-bottom: -100px;
+    padding-bottom: 100px;
+    text-align: center;
+  }
+
+  div[class^="col-"] {
+    &:first-child {
+      border-left: 0;
+    }
+
+    &:last-child {
+      border-right: 0;
+    }
+  }
+}

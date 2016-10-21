@@ -1,4 +1,4 @@
-describe('History functionality test', function(){
+describe('History functionality test', function() {
   var HistoryFac;
   var $httpBackend;
   var $q;

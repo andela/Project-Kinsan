@@ -1,9 +1,10 @@
+/* globals window */
 angular.module('mean.system')
   .factory('Global', [function() {
     var _this = this;
     _this._data = {
-        user: window.user,
-        authenticated: !! window.user
+      user: window.user,
+      authenticated: !! window.user
     };
 
     return _this._data;
@@ -26,8 +27,8 @@ angular.module('mean.system')
         return $q.all([
           $http.post('/donations', donationObject)
         ])
-        .then(function(results) {
-          //console.log('userDonated success', results);
+        .then(function() {
+          
         });
       }
     };

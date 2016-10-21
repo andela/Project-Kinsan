@@ -90,10 +90,11 @@ module.exports = function(app, passport) {
   app.get('/play', index.play);
   app.get('/', index.render);
 
-   // Setting up new login route
+   // Setting up new authentication routes
   app.post('/api/auth/login', authorize.login);
   app.post('/api/auth/signup', authorize.signup);
   app.delete('/api/auth/signup', authorize.delete);
+  app.post('/api/auth/social', authorize.social);
 
   //history routes
   var history = require('../app/controllers/history');

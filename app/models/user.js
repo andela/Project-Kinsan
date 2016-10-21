@@ -15,7 +15,7 @@ var UserSchema = new Schema({
   name: String,
   email: String,
   username: String,
-  provider: String,
+  provider: { type: String, default: 'custom' },
   avatar: String,
   premium: Number, // null or 0 for non-donors, 1 for everyone else (for now)
   donations: [],
@@ -30,10 +30,9 @@ var UserSchema = new Schema({
  * Virtuals
  */
 UserSchema.virtual('password').set(function(password) {
-  this._password = password;
-  this.hashed_password = this.encryptPassword(password);
+  this.hashed_password = password;
 }).get(function() {
-  return this._password;
+  return this.hashed_password;
 });
 
 /**
