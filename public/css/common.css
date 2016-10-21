@@ -21,6 +21,7 @@
   .card.how-to {
     font-size: 1.4rem; }
   .card #selection-number {
+    color: black;
     position: absolute;
     bottom: 1px;
     left: 7px;

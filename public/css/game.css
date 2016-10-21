@@ -8,19 +8,20 @@
   border-radius: 5px;
   color: #000;
   height: 180px;
-  margin: 50px;
+  margin: 20px 50px;
   width: 130px; }
   .game-cards p {
-    font-size: smaller;
-    color: #000; }
+    color: #000;
+    font-size: smaller; }
 
 .players-cards {
-  height: 500px; }
+  height: auto; }
 
 .deck-of-black-cards {
   border-left: 1px solid #ebebe0;
   border-top: 1px solid #ebebe0;
   box-shadow: -2px -2px 0 0 #fff;
+  color: #fff;
   font-size: 25px;
   line-height: 180px;
   text-align: center; }
@@ -46,7 +47,6 @@
 .awaiting-players {
   margin-top: 100px; }
 
-
 .start-game p {
   margin-left: 10px; }
 
@@ -55,7 +55,7 @@
 
 .black-cards-bar {
   border-bottom: 3px solid #eee;
-  height: 300px; }
+  padding-bottom: 10px; }
 
 .white-cards-bar {
   border-left: 3px solid #eee; }
@@ -103,13 +103,13 @@
   text-align: center; }
 
 .white-cards-holder {
-  height: 500px; }
+  height: auto; }
   .white-cards-holder .game-cards {
     background-color: #fff;
     border: 1px solid #d6d6c2;
     color: #fff;
     float: left;
-    margin: 10px;
+    margin: 5px;
     padding: 10px; }
 
 .player-holder {

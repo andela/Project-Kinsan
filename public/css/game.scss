@@ -18,7 +18,7 @@ $andela-blue: #4074f5;
   border-radius: 5px;
   color: $black;
   height: 180px;
-  margin: 50px;
+  margin: 20px 50px;
   width: 130px;
 
   p {
@@ -28,13 +28,14 @@ $andela-blue: #4074f5;
 }
 
 .players-cards {
-  height: 500px;
+  height: auto;
 }
 
 .deck-of-black-cards {
   border-left: 1px solid $deck-of-black-cards;
   border-top: 1px solid $deck-of-black-cards;
   box-shadow: -2px -2px 0 0  $white;
+  color: $white;
   font-size: 25px;
   line-height: 180px;
   text-align: center;
@@ -77,7 +78,7 @@ $andela-blue: #4074f5;
 
 .black-cards-bar {
   border-bottom: 3px solid $dark-grey;
-  height: 300px;
+  padding-bottom:10px;
 }
 
 .white-cards-bar {
@@ -137,14 +138,14 @@ $andela-blue: #4074f5;
 }
 
 .white-cards-holder {
-  height: 500px;
+  height: auto;
 
   .game-cards {
     background-color: $white;
     border: 1px solid $border;
     color: $white;
     float: left;
-    margin: 10px;
+    margin: 5px;
     padding: 10px;
 
   }

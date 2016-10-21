@@ -4,25 +4,21 @@
   background: $main-color;
   bottom: 0;
   color: $primary-text;
-  height: 100%;
-  position: absolute;
+  position: fixed;
   right: 0;
   text-align: center;
-  width: 100%;
 
   .box {
     background: $main-color;
     border: thin solid $ascent;
-    border-radius: $box-radius;
-    bottom: 2px;
-    height: 360px;
-    position: absolute;
+    height: auto;
+    position: relative;
     width: 300px;
-    z-index: 1;
   }
 
   .chat-messages {
-    height: 280px;
+    min-height: 280px;
+    height: 1vh;
     overflow-y: scroll;
   }
 
@@ -44,17 +40,16 @@
     height: 35px;
     position: absolute;
     width: 300px;
-    z-index: 2;
   }
 
   .chat-bottom {
     background-color: $main-color;
     bottom: 5px;
-    box-shadow: ($grey-shadow-radius, $grey-shadow-75);
+    box-shadow: ($grey-shadow-radius $grey-shadow-75);
     display: inline-block;
     height: 35px;
     padding: $chat-bottom-padding;
-    position: absolute;
+    position: relative;
     right: 0;
     text-align: left;
     width: 297px;
@@ -79,7 +74,6 @@
   height: 2px;
   position: absolute;
   width: 300px;
-  z-index: 1;
 }
 
 li {
