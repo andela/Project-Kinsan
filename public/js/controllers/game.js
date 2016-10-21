@@ -1,5 +1,5 @@
 angular.module('mean.system')
-.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog) {
+.controller('GameController', ['$scope', 'game', '$timeout', '$location', 'MakeAWishFactsService', '$dialog', '$window', function ($scope, game, $timeout, $location, MakeAWishFactsService, $dialog, $window) {
   $scope.hasPickedCards = false;
   $scope.winningCardPicked = false;
   $scope.showTable = false;
@@ -8,7 +8,8 @@ angular.module('mean.system')
   $scope.pickedCards = [];
   var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
   $scope.makeAWishFact = makeAWishFacts.pop();
-
+  $scope.showModal = false;
+  
   $scope.pickCard = function(card) {
     if (!$scope.hasPickedCards) {
       if ($scope.pickedCards.indexOf(card.id) < 0) {
@@ -126,6 +127,17 @@ angular.module('mean.system')
 
   $scope.abandonGame = function() {
     game.leaveGame();
+    $window.location.reload();
+    $location.path('/');
+  };
+
+  $scope.gamePage = function() {
+    $window.location.reload();
+    game.joinGame('joinNewGame');
+  };
+
+  $scope.homePage = function() {
+    $window.location.reload();
     $location.path('/');
   };
 
@@ -146,6 +158,20 @@ angular.module('mean.system')
   $scope.$watch('game.state', function() {
     if (game.state === 'waiting for czar to decide' && $scope.showTable === false) {
       $scope.showTable = true;
+    } else if (game.state === 'winner has been chosen') {
+      $scope.showModal = true;
+    } else if (game.state === 'game ended') {
+      $scope.showModal = true;
+    } else if (game.state === 'game dissolved') {
+      $scope.showModal = true;
+    } else if (game.state === 'awaiting players') {
+      $scope.showModal = false;
+    }
+
+    if(game.state === 'winner has been chosen') {
+      setTimeout(function() {
+        $scope.showModal = false;
+      }, 2500);
     }
   });
 

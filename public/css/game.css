@@ -1,0 +1,145 @@
+.container {
+  margin: 0;
+  width: 100%; }
+
+.game-cards {
+  background-color: #000;
+  border: 1px solid #000;
+  border-radius: 5px;
+  color: #000;
+  height: 180px;
+  margin: 50px;
+  width: 130px; }
+  .game-cards p {
+    font-size: smaller;
+    color: #000; }
+
+.players-cards {
+  height: 500px; }
+
+.deck-of-black-cards {
+  border-left: 1px solid #ebebe0;
+  border-top: 1px solid #ebebe0;
+  box-shadow: -2px -2px 0 0 #fff;
+  font-size: 25px;
+  line-height: 180px;
+  text-align: center; }
+
+.black-card {
+  font-size: medium;
+  height: 200px;
+  padding: 10px;
+  width: 150px; }
+  .black-card p {
+    color: #fff; }
+  .black-card u {
+    border-bottom: 0.125em solid #fff;
+    content: "";
+    display: inline-block;
+    height: 1em;
+    margin-bottom: -0.125em;
+    position: relative;
+    text-decoration: none;
+    width: 25%; }
+
+.start-game,
+.awaiting-players {
+  margin-top: 100px; }
+
+
+.start-game p {
+  margin-left: 10px; }
+
+.question-holder {
+  padding-left: 100px; }
+
+.black-cards-bar {
+  border-bottom: 3px solid #eee;
+  height: 300px; }
+
+.white-cards-bar {
+  border-left: 3px solid #eee; }
+
+.exit {
+  font-size: 18px; }
+
+.timer-place {
+  margin-top: 69px; }
+
+.time {
+  font-size: 72px;
+  font-weight: bolder;
+  padding: 0 10%; }
+
+.avatar {
+  background-color: #4074f5;
+  border-radius: 100%;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  width: 50px; }
+
+.name {
+  margin: auto;
+  width: 100px; }
+
+.score {
+  background-color: #a9a9a9;
+  border-radius: 100%;
+  height: 50px;
+  line-height: 50px;
+  width: 50px; }
+
+.flex-container {
+  background-color: #eee;
+  border-radius: 50px;
+  box-shadow: 0 3px 1px #808080;
+  display: flex;
+  height: 50px;
+  margin: 30px 0;
+  max-width: 200px; }
+
+.flex-item {
+  text-align: center; }
+
+.white-cards-holder {
+  height: 500px; }
+  .white-cards-holder .game-cards {
+    background-color: #fff;
+    border: 1px solid #d6d6c2;
+    color: #fff;
+    float: left;
+    margin: 10px;
+    padding: 10px; }
+
+.player-holder {
+  position: relative; }
+
+.is-czar {
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  background-color: #3498db;
+  box-shadow: 0 2px 1px #808080;
+  font-weight: 800;
+  left: 70px;
+  padding: 2px;
+  position: absolute;
+  text-align: center;
+  top: 50px;
+  width: 49px; }
+
+.instruction-text {
+  font-size: 20px;
+  font-weight: 800;
+  padding: 10px;
+  text-align: center;
+  width: auto; }
+
+info-modal {
+  height: 100px;
+  left: 0;
+  margin: 0 auto;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  top: 50px; }

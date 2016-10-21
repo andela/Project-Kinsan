@@ -29,18 +29,24 @@ module.exports = function(config) {
       'public/js/socket.io.js',
       './src/app/**/*.js',
       './src/app/*.js',
+      'public/js/*.js',
       'public/js/**/*.js',
-      'public/js/controllers/history.ctr.js',
-      'public/js/services/history.fac.js',
       './src/test/**/*.js',
+      'public/views/*.tpl.html', // Ralph: load template file for the directives
       './src/test/*.js',
       'test/app/*.test.js',
+      'test/app/**/*.test.js',
       {pattern: 'test/app/response.json', watched: true, served: true, included: false}
     ],
 
 
     // list of files to exclude
-    exclude: [
+    plugins: [
+      'karma-jasmine',
+      'karma-chrome-launcher',
+      'karma-coverage',
+      'karma-jasmine-html-reporter',
+      'karma-ng-html2js-preprocessor'
     ],
 
     // test results reporter to use
@@ -50,7 +56,12 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      './src/app/**/*.js': ['coverage']
+      './src/app/**/*.js': ['coverage'],
+      'public/views/*.tpl.html': 'ng-html2js' // Ralph: add ng-html2js to watch the template files
+    },
+
+    ngHtml2JsPreprocessor: {
+      stripPrefix: 'public' //Ralph: strip public away from the link of the template
     },
 
     coverageReporter: {

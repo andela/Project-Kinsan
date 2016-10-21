@@ -1,6 +1,7 @@
+var server = require('./../../server');
 var expect = require('chai').expect;
 var supertest = require('supertest');
-var api = supertest('http://localhost:3000');
+var api = supertest(server);
 
 describe('History', function () {
   describe('/api/user/:id/history endpoint', function () {
@@ -54,12 +55,9 @@ describe('History', function () {
       'winner': '57e96f012206d8884e000001'
     };
 
-    afterEach(function (done) {
-      api.del('/api/history/qwerty1237k')
-      .set('Accept', 'application/json')
-      .end(function () {
-        done();
-      });
+    afterEach(function () {
+      api.delete('/api/history/qwerty1237k')
+      .set('Accept', 'application/json');
     });
 
     it('should respond with status code 200', function (done) {
