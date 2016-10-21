@@ -87,15 +87,25 @@ describe('Game chat test', function(){
 
       it('should assert that a game session with a gameId exist',function(done){
         var nonExistentGameId = 'asdf1234';
-        GameChat.sessionExists(nonExistentGameId).then(function(data){
-          expect(data).toBe(false);
-          GameChat.sessionExists(validGameId).then(function(data){
+        GameChat.sessionExists(validGameId)
+          .then(function(data){
             expect(data).toBe(true);
             done();
-          }).catch(function(){
+          })
+          .catch(function(){
             expect(false).toBe(true);
             done();
           });
+
+        GameChat.sessionExists(nonExistentGameId)
+        .then(function(data){
+          expect(data).toBe(false);
+          done();
+        })
+        .catch(function(errorMsg){
+          expect(errorMsg)
+          .toEqual('Session "'+nonExistentGameId+'" does not exist');
+          done();
         });
       });
     });
