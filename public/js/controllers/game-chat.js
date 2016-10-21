@@ -4,7 +4,6 @@ angular.module('mean.gameChat')
     $scope.gameId = game.gameID;
     $scope.users = game.players;
     $scope.currentUser = Global.user;
-      
     $scope.GameChat = GameChat;
     $scope.messages = {};
 
@@ -69,7 +68,7 @@ angular.module('mean.gameChat')
       //No game chat session existed before
       $scope.GameChat.startSession($scope.gameId, $scope.users).then(function(){
         //now listen for messages
-        $scope.GameChat.listenForMessage($scope.gameId, function(messages){ 
+        $scope.GameChat.listenForMessage($scope.gameId, function(messages){
           $scope.newMessage(messages);
         });
 
@@ -77,7 +76,7 @@ angular.module('mean.gameChat')
         $scope.GameChat.listenForTyping($scope.gameId, $scope.typingListener);
       });
     });
-    
+
     $(document).ready( function () {
       var scrolled = 100000, messageInput = $('#message');
       messageInput.keyup(function(){
