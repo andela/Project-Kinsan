@@ -11,6 +11,7 @@
     "angular-mocks": "^1.5.8",
     "angular-resource": "^1.5.8",
     "firebase": "^3.4.1",
+    "angular-route": "^1.5.8",
     "angular-sanitize": "^1.5.8",
     "jasmine-jquery": "^2.1.1"
   },
