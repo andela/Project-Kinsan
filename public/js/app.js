@@ -57,7 +57,7 @@ angular.module('mean', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngResource', 'ui.
     }]);
 
 angular.module('mean.system', []);
-angular.module('mean.directives', []);
+angular.module('mean.directives', ['mean.system', 'mean.gameChat']);
 angular.module('services.History', ['mean.system']);
 angular.module('mean.gameChat', ['mean.system']);
 angular.module('services.Auth', ['mean.system']);
