@@ -17,12 +17,13 @@ $andela-blue: #4074f5;
   background-color: $black;
   border: 1px solid $black;
   border-radius: 5px;
-  color: $white;
+  color: $black;
   height: 180px;
   margin: 50px;
   width: 130px;
   p {
     font-size: smaller;
+    color: $black;
   }
 }
 
@@ -44,6 +45,10 @@ $andela-blue: #4074f5;
   height: 200px;
   padding: 10px;
   width: 150px;
+
+  p {
+    color: $white;
+  }
 
   u {
     border-bottom: 0.125em solid $white;
@@ -96,7 +101,7 @@ $andela-blue: #4074f5;
 .avatar {
   background-color: $andela-blue;
   border-radius: 100%;
-  color: $solid-white;
+  color: $white;
   height: 50px;
   line-height: 50px;
   width: 50px;
