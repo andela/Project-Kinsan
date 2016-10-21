@@ -38,12 +38,12 @@ angular.module('mean', ['ngCookies', 'ngRoute', 'ngSanitize', 'ngResource', 'ui.
       }
   ]).config(['$locationProvider',
     function($locationProvider) {
-      $locationProvider.hashPrefix("!");
+      $locationProvider.hashPrefix('!');
     }
   ]).run(['$rootScope', function($rootScope) {
     $rootScope.safeApply = function(fn) {
       var phase = this.$root.$$phase;
-      if(phase == '$apply' || phase == '$digest') {
+      if(phase === '$apply' || phase === '$digest') {
         if(fn && (typeof(fn) === 'function')) {
           fn();
         }
