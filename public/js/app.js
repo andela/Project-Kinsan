@@ -37,20 +37,17 @@ angular.module('mean', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngResource', 'ui.
             redirectTo: '/'
           });
       }
-  ])
-    .config(['$locationProvider', function($locationProvider) {
+
+  ]).config(['$locationProvider',
+    function($locationProvider) {
       $locationProvider.hashPrefix('!');
     }
-  ])
-    .run(['$rootScope', function($rootScope) {
-      $rootScope.safeApply = function(fn) {
-        var phase = this.$root.$$phase;
-        if(phase === '$apply' || phase === '$digest') {
-          if(fn && (typeof(fn) === 'function')) {
-            fn();
-          }
-        } else {
-          this.$apply(fn);
+  ]).run(['$rootScope', function($rootScope) {
+    $rootScope.safeApply = function(fn) {
+      var phase = this.$root.$$phase;
+      if(phase === '$apply' || phase === '$digest') {
+        if(fn && (typeof(fn) === 'function')) {
+          fn();
         }
       };
     }]).run(['DonationService', function (DonationService) {
