@@ -1,10 +1,5 @@
 /* globals document, window */
-
-<<<<<<< HEAD
 angular.module('mean', ['ngRoute', 'ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives', 'services.History', 'mean.gameChat', 'services.Auth'])
-=======
-angular.module('mean', ['ngRoute', 'ngCookies', 'ngResource', 'ui.bootstrap', 'ui.route', 'mean.system', 'mean.directives', 'services.History', 'services.Auth'])
->>>>>>> 03488a95831cbc92ae757efc684e3f6168156293
   .config(['$routeProvider',
       function($routeProvider) {
         $routeProvider.
