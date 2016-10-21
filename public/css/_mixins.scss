@@ -1,0 +1,6 @@
+@mixin shouting-headers{
+  font-family: proxima-bold;
+  color: $smooth-gray !important;
+  word-spacing: 7px !important;
+  letter-spacing: 10px;
+}
