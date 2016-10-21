@@ -1,5 +1,4 @@
-<div class = "container" ng-controller = "GameController">
-
+<div class = "container" ng-controller="GameController">
   <div class="row">
     <div class = "col-sm-12 black-cards-bar">
       <div class = "row">
@@ -21,14 +20,19 @@
   <div class="row">
     <div class = "col-sm-12 col-xs-12 players-cards">
       <div class = "row">
-        <player players="game.players"
-        ng-hide="(game.state === 'game dissolved' || game.state === 'game ended')">
-        </player>
-        <answer></answer>
-        <chat></chat>
+        <div class="col-sm-2">
+          <player players="game.players"
+          ng-hide="(game.state === 'game dissolved' || game.state === 'game ended')">
+          </player>
+        </div>
+        <div class="col-sm-7">
+          <answer></answer>
+        </div>
+        <div class="col-sm-3">
+          <chat ng-if="loadchild"></chat>
+        </div>
       </div>
     </div>
   </div>
-  <info-modal ng-show="showModal"><info-modal>
+  <info-modal ng-show="showModal"></info-modal>
 </div>
-<!--end of actual game-->
