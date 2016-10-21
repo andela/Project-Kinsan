@@ -1,6 +1,8 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { RouterModule } from '@angular/router';
+import { RouterModule }  from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+import { NgbModule }     from '@ng-bootstrap/ng-bootstrap';
 
 import { GameComponent } from './components/game.component';
 
@@ -11,9 +13,14 @@ import { PlayerComponent }          from './components/player/player.component';
 import { InfoModalComponent }       from './components/info-modal/info-modal.component';
 import { ChatComponent }            from './components/chat/chat.component';
 
+import { GameService }              from './services/game.service.js';
+import { SocketService }              from './services/socket.service.js';
+
 @NgModule({
   imports:      [ 
       BrowserModule,
+      FormsModule,
+      NgbModule.forRoot(),
       RouterModule.forRoot([
       {
         path: 'heroes',
@@ -30,7 +37,11 @@ import { ChatComponent }            from './components/chat/chat.component';
       InfoModalComponent,
       ChatComponent
   ],
-  bootstrap: [ GameComponent ]
+  bootstrap: [ GameComponent ],
+  providers: [
+    GameService,
+    SocketService
+  ]
 })
 export class AppModule 
 { 
