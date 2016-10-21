@@ -152,7 +152,8 @@ module.exports = function(io) {
   var fireGame = function(player,socket) {
     var game;
     if (gamesNeedingPlayers.length <= 0) {
-      gameID += 1;
+      var presentTime = new Date().getTime();
+      gameID = presentTime.toString(16);
       var gameIDStr = gameID.toString();
       game = new Game(gameIDStr, io);
       allPlayers[socket.id] = true;
