@@ -9,6 +9,7 @@ angular.module('mean.system')
   var makeAWishFacts = MakeAWishFactsService.getMakeAWishFacts();
   $scope.makeAWishFact = makeAWishFacts.pop();
   $scope.showModal = false;
+  $scope.loadchild=false;
   
   $scope.pickCard = function(card) {
     if (!$scope.hasPickedCards) {
@@ -137,8 +138,8 @@ angular.module('mean.system')
   };
 
   $scope.homePage = function() {
-    $window.location.reload();
     $location.path('/');
+    $window.location.reload();
   };
 
     // Catches changes to round to update when no players pick card
@@ -166,6 +167,10 @@ angular.module('mean.system')
       $scope.showModal = true;
     } else if (game.state === 'awaiting players') {
       $scope.showModal = false;
+    } else if(game.state === 'waiting for players to pick') {
+      if(!$scope.loadchild) {
+        $scope.loadchild=true;
+      }
     }
 
     if(game.state === 'winner has been chosen') {
