@@ -1,0 +1,45 @@
+<div class = "col-sm-7 white-cards-bar">
+
+    <!-- Hide this entire section if the game has either not started or has ended-->
+    <div [hidden]="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'">
+
+        <!--Show this div if the player is the czar and no answer has been chosen-->
+        <div [hidden]="!(isCzar() && game.table.length===0 && game.state !== 'game dissolved' && game.state !== 'awaiting players')">
+            <p class="instruction-text">Waiting for players to pick a card</p>
+        </div>
+
+        <!-- Show this section if answers have been chosen to both the czar and other players -->
+        <div [hidden]="!showTable || isCzar()">
+            <p [hidden]="!isCzar() && game.table.length!==0" class="instruction-text">Pick winning card</p>
+            <p [hidden]="!isCzar()" class="instruction-text">Waiting for the czar</p>
+            <div class = "white-cards-holder">
+
+                <!-- Cycle through the answers selected in the game answer table -->
+                <div ng-repeat="answer in game.table">
+                    <div class="game-cards" (click)="pickWinning(answer)"
+                    *ngFor="let card of answer.card" [ngStyle]="pointerCursorStyle()">
+                        <p [innerHTML]="card.text"></p>
+                        <span id='selection-number' [hidden]="!firstAnswer($index)"> 1 </span>
+                        <span id='selection-number' [hidden]="!secondAnswer($index)"> 2 </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Show this area if the player(not the czar) has not selected an answer -->
+        <div [hidden]="!showTable || isCzar()">
+            <p class="instruction-text">Pick your answer</p>
+            <div class = "white-cards-holder">
+
+                <!-- Display the cards in a players deck -->
+                <div class = "game-cards" (click)="pickCard(card)"
+                *ngFor="let card of game.players[game.playerIndex].hand"
+                [ngStyle]="{'cursor':'pointer'}">
+                    <p [innerHTML]="card.text"></p>
+                    <span id='selection-number' [hidden]="!showFirst(card)"> 1 </span>
+                    <span id='selection-number' [hidden]="!showSecond(card)"> 2 </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

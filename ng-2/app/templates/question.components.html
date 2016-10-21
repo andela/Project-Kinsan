@@ -1,0 +1,14 @@
+<div class = "col-sm-6 col-xs-6 question-holder">
+  <div class = "awaiting-players" [hidden]="!(game.state === 'awaiting players')">
+    <p class = "ptext" [hidden] = "!game.players.length < game.playerMinLimit "> Waiting for more players to join game ...</p>
+    <div class = "start-game" [hidden] = "!((game.playerIndex === 0 || game.joinOverride) && game.players.length >=  game.playerMinLimit)">
+      <button type = "button" class = "btn btn-primary btn-lg exit" (cick) = "startGame()" >Start Game</button>
+      <p class = "ptext">with {{game.players.length}} players</p>
+    </div>
+</div>
+  <div class = "game-cards black-card" [hidden]="game.state === 'game ended' || game.state ==='game dissolved' || game.state === 'awaiting players'">
+    <p class = "text" [innerHTML]="game.curQuestion.text">
+
+    </p>
+  </div>
+</div>

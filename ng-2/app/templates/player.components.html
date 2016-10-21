@@ -1,0 +1,8 @@
+<div class = "col-sm-2 players-bar">
+    <div *ngFor="let item of players" class = "flex-container player-holder">
+        <div class = "flex-item avatar avatar"><img [src]="item.avatar" height="50px" width="50px"></div>
+        <div class="flex-item name">{{item.username}} <i [hidden]="!isPlayer($index)" class="glyphicon glyphicon-user" aria-hidden="true"></i></div>
+        <div class = "score flex-item">{{item.points}}</div>
+        <span [hidden]="!currentCzar($index)" class="is-czar"> is czar</span>
+    </div>
+</div>
