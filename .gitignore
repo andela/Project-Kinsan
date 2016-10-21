@@ -1,5 +1,7 @@
 node_modules
 public/lib
+public/css/landing.css
+public/css/chat.css
 .sass-cache/
 .DS_store
 c4h_keys.txt
