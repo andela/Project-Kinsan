@@ -1,36 +1,37 @@
+// scss-lint:disable ImportantRule, QualifyingElement
 @import "colors";
 @import "mixins";
-@font-face {
+@font-face  {
   font-family: 'proxima';
   src: url('../fonts/proximanova-regular-webfont.ttf') format('truetype'),
   url('../fonts/proximanova-regular-webfont.ttf') format('woff')
 }
 
-@font-face {
+@font-face  {
   font-family: 'proxima-light';
   src: url('../fonts/proximanova-light-webfont.ttf') format('truetype'),
   url('../fonts/proximanova-light-webfont.ttf') format('woff')
 }
 
 
-@font-face {
+@font-face  {
   font-family: 'proxima-bold';
   src: url('../fonts/proximanova-semibold-webfont.ttf') format('truetype'),
   url('../fonts/proximanova-semibold-webfont.ttf') format('woff')
 }
 
-a{
+a {
   color: inherit !important;
   text-decoration: none;
 }
 
 /*Header*/
 
-.navbar-light{
+.navbar-light {
   background: #fff !important;
   color: #9e9e9e;
 
-  #header-play{
+  #header-play {
     width: 110px;
     text-align: center;
     background: $ascent;
@@ -42,28 +43,28 @@ a{
 
 
 /*Main*/
-.container{
+.container {
 
   width: 100%;
   margin: 0 !important;
 
-  .section{
+  .section {
     padding-bottom: 15px;
   }
 
-  #site-title{
+  #site-title {
     padding: 20px;
   }
 
-  #demo-video{
+  #demo-video {
     width: 100%;
     padding: 0 80px;
   }
 
-  #play-now{
+  #play-now {
     margin: 55px 0;
 
-    button{
+    button {
       background: $ascent;
       padding: 25px;
       color: #ffffff;
@@ -77,14 +78,14 @@ a{
 
 
 
-.how-to-play{
+.how-to-play {
   background: #f6f6f6;
   padding: 15px;
 
-  .desc-box{
+  .desc-box {
     margin-top: 200px;
 
-    .desc-text{
+    .desc-text {
       font-size: 35px;
       color: $smooth-gray;
       font-weight: lighter;
@@ -93,27 +94,27 @@ a{
   }
 }
 
-.animated-col{
+.animated-col {
   height: 500px;
   overflow: hidden;
 
-  #how-to-play-title{
+  #how-to-play-title {
     margin-top: 16px;
   }
 
-  .cards{
+  .cards {
     margin-top: 20px;
     float: left;
     margin-left: 26px;
     position: absolute;
     left: 50%;
 
-    .cards-container{
+    .cards-container {
       position: relative;
       left: -50%;
       width: 500px;
 
-      .card{
+      .card {
         width: 300px;
         background: white;
         padding: 20px;
@@ -128,47 +129,47 @@ a{
         border: 2px solid #b2b2b2;
         position: absolute;
         z-index: 2;
-        left:130px;
+        left: 130px;
         color: #656565;
       }
 
-      .real-cards:first-child{
+      .real-cards:first-child {
         display: inherit !important;
       }
 
-      .card.current{
+      .card.current {
         z-index: 3;
         display: inherit !important;
       }
 
-      .card.real-card{
+      .card.real-card {
         display: none;
       }
 
-      .card.shadow-card{
+      .card.shadow-card {
         background: #dbdbdb;
         position: absolute;
         transform: rotate(-6deg);
         z-index: 1;
         left: 90px;
 
-        #slider-controls{
+        #slider-controls {
           width: 460px;
           position: relative;
           top: 180px;
           transform: rotate(6deg) !important;
           left: -72px !important;
 
-          #slider-left{
+          #slider-left {
             float: left;
           }
 
-          #slider-right{
+          #slider-right {
             left: -32px;
             float: right;
           }
 
-          .slider-controller{
+          .slider-controller {
             color: $light-gray;
             position: relative;
             z-index: 3;
@@ -176,11 +177,11 @@ a{
             cursor: pointer;
           }
 
-          .slider-controller.not-dead:hover{
+          .slider-controller.not-dead:hover {
             color: #575757;
           }
 
-          .slider-controller.dead{
+          .slider-controller.dead {
             color: #e8e8e8;
             cursor: not-allowed;
           }
@@ -195,11 +196,11 @@ a{
 
 }
 
-#donate-title, #how-to-play-title, #site-title{
+#donate-title, #how-to-play-title, #site-title {
   @include shouting-headers;
 }
 
-.divider{
+.divider {
   background: #afafaf;
   height: 1px;
   width: 100%;
@@ -207,120 +208,120 @@ a{
 
 
 
-.quote{
+.quote {
   font-family: proxima-light;
   font-size: 40px;
   color: $light-gray;
   font-weight: lighter;
 
-  sup{
+  sup {
     font-size: 14px;
     top: -1.5em !important;
   }
 
 }
 
-.donation-text{
+.donation-text {
   margin-top: 50px;
   font-size: 23px;
   color: $light-gray;
   font-family: proxima-light;
 }
 
-.donate-input{
+.donate-input {
   margin-top: 80px;
   border: 2px solid #d5d5d5;
   width: 400px;
   text-align: left;
 }
 
-.footer{
+.footer {
   margin-top: 80px;
   background: #444444;
   padding: 40px;
 
-  p{
+  p {
     color: #9c9c9c;
     font-size: 20px;
   }
 
 }
 
-.donate-input {
+.donate-input  {
 
-  input{
+  input {
     outline: 0;
     color: #c2c2c2;
     padding: 20px;
     font-size: 21px;
     background: white;
     width: 226px;
-    border:0;
+    border: 0;
   }
 
-  button{
+  button {
      padding: 25px;
      background: $ascent;
      color: #fff;
      width: 170px;
      border: 0;
      font-weight: bolder;
-     float:right;
+     float: right;
      font-size: 16px;
    }
 }
 
 /*Applying user queries*/
 
-@media (max-width:860px) {
-  #demo-video{
+@media (max-width:860px)  {
+  #demo-video {
     padding: 0 !important;
   }
 }
-@media (max-width:320px) {
-  .cards {
+@media (max-width:320px)  {
+  .cards  {
     margin-left: 60px !important;
   }
 }
-@media (max-width:499px){
-  .card{
-    width:180px !important;
+@media (max-width:499px) {
+  .card {
+    width: 180px !important;
   }
 
-  #slider-controls{
-    width:330px !important;
+  #slider-controls {
+    width: 330px !important;
   }
-  .desc-box {
+  .desc-box  {
     margin-top: 0 !important;
   }
 
-  #site-title{
-    padding:0;
+  #site-title {
+    padding: 0;
   }
 
-  #demo-video{
+  #demo-video {
     height: 300px;
   }
 
-  #play-now{
-    margin: 0 0 55px 0;
+  #play-now {
+    margin: 0 0 55px;
   }
 
-  .desc-text{
-    margin: 0 0 55px 0 !important;
+  .desc-text {
+    margin: 0 0 55px!important;
     font-size: 25px;
   }
 
-  .donate-input input{
-    width: 60%
+  .donate-input input {
+    width: 60%;
   }
 
-  .donate-input button{
-    width : 40%;
+  .donate-input button {
+    width: 40%;
   }
 
-  .donate-input {
-    width: auto
+  .donate-input  {
+    width: auto;
   }
 
 }
