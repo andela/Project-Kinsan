@@ -12,8 +12,8 @@
     position: relative;
     width: 300px; }
   .chat-box .chat-messages {
-    min-height: 280px;
     height: 1vh;
+    min-height: 280px;
     overflow-y: scroll; }
   .chat-box .chat-top {
     background: #006ce5;

@@ -323,11 +323,11 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     }
 
     #selection-number {
-        color: black;
-        position: absolute;
         bottom: 1px;
-        left: 7px;
+        color: black;
         font-size: 18px;
+        left: 7px;
+        position: absolute;
     }
 
     &.black {
