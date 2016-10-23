@@ -61,7 +61,7 @@ module.exports = function(config) {
     },
 
     ngHtml2JsPreprocessor: {
-      stripPrefix: 'public/' //Ralph: strip public away from the link of the template
+      stripPrefix: 'public' //Ralph: strip public away from the link of the template
     },
 
     coverageReporter: {

@@ -10,6 +10,7 @@
     "angular": "^1.5.8",
     "angular-mocks": "^1.5.8",
     "angular-resource": "^1.5.8",
+    "angular-cookies": "^1.5.8",
     "firebase": "^3.4.1",
     "hello": "^1.14.0",
     "angular-sanitize": "^1.5.8",

@@ -49,12 +49,15 @@ angular.module('mean', ['ngRoute', 'ngCookies', 'ngSanitize', 'ngResource', 'ui.
         if(fn && (typeof(fn) === 'function')) {
           fn();
         }
-      };
-    }]).run(['DonationService', function (DonationService) {
+      } else {
+        this.$apply(fn);
+      }
+    };
+  }]).run(['DonationService', function (DonationService) {
       window.userDonationCb = function (donationObject) {
         DonationService.userDonated(donationObject);
       };
-    }]);
+  }]);
 
 angular.module('mean.system', []);
 angular.module('mean.directives', ['mean.system', 'mean.gameChat']);
