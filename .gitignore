@@ -7,3 +7,7 @@ c4h_keys.txt
 bower_components
 /coverage
 .env
+public/css/chat.css
+public/css/common.css
+public/css/game.css
+public/css/modal.css
