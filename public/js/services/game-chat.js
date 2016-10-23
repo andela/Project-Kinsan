@@ -69,7 +69,7 @@ angular.module('mean.gameChat')
         return new Promise(function(fufill, fail){
           database.ref(that.messagesRef + '/'+ gameId).push({
             'sender': sender.username || sender.name,
-            'avatar': sender.avatar,
+            'avatar': !!(sender.avatar) ? sender.avatar : 'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_male_dark_on_clear_200x200.png',
             'message': msg,
             'timestamp': timestamp
           }).then(function () {
