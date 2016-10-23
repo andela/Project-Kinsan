@@ -21,10 +21,11 @@
   .card.how-to {
     font-size: 1.4rem; }
   .card #selection-number {
-    position: absolute;
     bottom: 1px;
+    color: black;
+    font-size: 18px;
     left: 7px;
-    font-size: 18px; }
+    position: absolute; }
   .card.black {
     background: #252525;
     border-color: white;

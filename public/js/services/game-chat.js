@@ -26,13 +26,13 @@ angular.module('mean.gameChat')
       sessionExists : function(gameId){
         var that = this;
         return new Promise(function(fufill, fail){
-          database.ref(that.sessionStoreRef).once('value')
+          database.ref(that.sessionStoreRef+'/'+gameId).once('value')
             .then(function(snapshot){
               if (snapshot.val() == null) {
                 fail('Session "'+gameId+'" does not exist');
               }
-              var exists = (snapshot.val()[gameId] === true);
-              fufill(exists);
+              // var exists = (snapshot.val()[gameId] === true);
+              fufill(true);
             });
         });
       },
@@ -68,8 +68,8 @@ angular.module('mean.gameChat')
         var that = this, timestamp =  Date.parse(new Date()) / 1000;
         return new Promise(function(fufill, fail){
           database.ref(that.messagesRef + '/'+ gameId).push({
-            'sender': sender.name,
-            'avatar': sender.avatar,
+            'sender': sender.username || sender.name,
+            'avatar': (sender.avatar) ? sender.avatar : 'http://brandonmathis.com/projects/fancy-avatars/demo/images/avatar_male_dark_on_clear_200x200.png',
             'message': msg,
             'timestamp': timestamp
           }).then(function () {
@@ -112,8 +112,6 @@ angular.module('mean.gameChat')
           }).catch(function(error){
             fail(error);
           });
-        }).catch(function(error){
-          fail(error);
         });
       },
 

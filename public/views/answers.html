@@ -37,6 +37,7 @@
     </ol>
   </div>
 </div>
+
 <div id="game-end-container" ng-show="game.state === 'game ended' || game.state ==='game dissolved'">
   <div id="inner-info-exit">
     <div class="game-end-answer-text" ng-show="game.state ==='game dissolved' && game.gameWinner === -1">
@@ -69,6 +70,7 @@
       <!-- <script type="text/javascript" src="https://apisandbox.crowdrise.com/widgets/donate/project/36715/?callback=userDonationCb"></script> -->
   </div>
 </div>
+
 <div id="czar-blank-container" ng-show="isCzar() && game.table.length===0 && game.state !== 'game dissolved' && game.state !== 'awaiting players'">
   <div id="czar-blank-inner">
     You are the Card Czar. <br>

@@ -22,7 +22,7 @@
           <li ng-show="show_history"><a href="#!/">GAME HISTORY</a></li>
           <li><a href="#!/">SHOP</a></li>
           <li ng-show="show_history" ng-click="signout()"><a href="#!/">SIGNOUT</a></li>
-          <li id="header-play"><a href="#!/" class="header-play">PLAY</a></li>
+          <li id="header-play"><a href="/#!/game" class="header-play">PLAY</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -41,6 +41,7 @@
               PLAY NOW
             </button>
           </div>
+
         </div>
       </div>
     </div>
@@ -170,7 +171,7 @@
                         </div>
                         <div class="form-group">
                           <input type="password" class="form-control" ng-model="signin_password" placeholder="password" />
-                        </div>           
+                        </div>
                         <button type="submit" class="btn btn-signin center-block" ng-click="signin()">SIGN IN</button>
                       </form>
                       <br>
@@ -181,14 +182,14 @@
                     <div class="col-sm-6">
                       <div class="text-center">
                         <input type="image" src="./../img/facebook.png" ng-click="facebookSignIn()" />
-                      </div>  
+                      </div>
                       <div class="text-center">
                         <input type="image" src="./../img/twitter.png" ng-click="twitterSignIn()" />
-                      </div> 
+                      </div>
                       <div class="text-center" >
                         <input type="image" src="./../img/google.png" ng-click="googleSignIn()" />
-                      </div>   
-                      <br />   
+                      </div>
+                      <br />
                       <div class="text-center">
                         <p>don't have an account? <a id="lbl_show_signup" href="#!/" class="anchor" data-dismiss="modal" data-toggle="modal" data-target="#signup-modal" >sign up</a></p>
                       </div>
@@ -196,7 +197,7 @@
                   </div>
                 </div>
               </div>
-            </div>         
+            </div>
           </div>
         </div>
       </div>
@@ -209,7 +210,7 @@
       <div class="modal-dialog vertical-align-center signup-modal-width">
         <div class="modal-content">
           <div class="modal-body">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>          
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true" >&times;</button>
             <div class="text-center">
               <h3 class="center-block">SIGN UP</h3>
             </div>
@@ -223,10 +224,10 @@
               </div>
               <div class="form-group">
                 <input type="password" class="form-control" ng-model="signup_password" placeholder="password" required />
-              </div>   
+              </div>
               <div class="form-group">
                 <input type="password" class="form-control" ng-model="signup_password_again" placeholder="password again" required />
-              </div>            
+              </div>
               <button type="submit" class="btn btn-signin center-block" ng-click="signup()">SIGN UP</button>
               <br />
             </form>
