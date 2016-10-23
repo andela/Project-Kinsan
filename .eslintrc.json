@@ -33,6 +33,6 @@
         "angular": true,
         "inject": true,
         "getJSONFixture": true,
-        "_": true,
+        "_": true
     }
 }
