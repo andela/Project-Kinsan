@@ -321,10 +321,10 @@ background-image: linear-gradient(to bottom right, #0B394E 0%, #ABCE8D 100%);
     &.how-to {
         font-size: 1.4rem;
     }
-
+    $black: #000;                
     #selection-number {
         bottom: 1px;
-        color: #000;
+        color: $black;
         font-size: 18px;
         left: 7px;
         position: absolute;
