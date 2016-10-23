@@ -32,6 +32,7 @@
         "should": true,
         "angular": true,
         "inject": true,
-        "getJSONFixture": true
+        "getJSONFixture": true,
+        "_": true,
     }
 }

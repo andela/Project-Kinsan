@@ -25,7 +25,7 @@ angular.module('mean.system')
 
     var notificationQueue = [];
     var timeout = false;
-    var self = this;
+    // var self = this;
     var joinOverrideTimeout = 0;
     var user = Global.user;
     var authenticated = Global.authenticated;
