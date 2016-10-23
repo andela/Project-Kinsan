@@ -1,3 +1,4 @@
+/*eslint no-unused-vars: ["error", { "varsIgnorePattern": "^joinOverrideTimeout" }]*/
 angular.module('mean.system')
   .factory('game', ['socket', '$timeout', 'Global', function (socket, $timeout, Global) {
 
