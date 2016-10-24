@@ -1,12 +1,12 @@
 /* globals window */
 angular.module('mean.system')
-  .factory('Global', [function() {
+  .factory('Global', ['$cookies', function($cookies) {
     var _this = this;
+    var userObject = $cookies.getObject('_userData');
     _this._data = {
-      user: window.user,
-      authenticated: !! window.user
+      user: (typeof userObject !== 'undefined') ? userObject.user : null,
+      authenticated: (typeof userObject !== 'undefined') ? userObject.authenticated : false
     };
-
     return _this._data;
   }])
   .factory('AvatarService', ['$http', '$q', function($http, $q) {

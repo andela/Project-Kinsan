@@ -1,26 +1,38 @@
-<div class="chat-box" ng-controller="GameChatCtrl">
-  <div class="close-chat" id="chat">
-  </div>
-  <div class="box" id="box">
-    <div class="chat-top" id="top">
-      <em class="chat-sign">CHAT</em>
-    </div>
-    <div class="chat-messages" id="chatMessages">
-      <ul class="chat-ul">
-        <li class="chat-li" ng-repeat="newMessage in messages">
-          <img ng-src="{{newMessage.avatar}}"/>
-          <div class="chat-side-text">
-            <p class="chat-name"> {{newMessage.sender}} <small class="chat-time">{{newMessage.timestamp | date:'h:mma'}}</small> </p>
-            <p class="chat-text"> {{newMessage.message}} </p>
+<div class = "container" ng-controller="GameController">
+  <div class="row">
+    <div class = "col-sm-12 black-cards-bar">
+      <div class = "row">
+        <div class = "col-sm-3 col-xs-2 black-cards-deck-holder">
+          <div class = "game-cards deck-of-black-cards">
+            CFH.IO
           </div>
-        </li>
-      </ul>
-    </div>
-    <p class="is-typing" id="isTyping"></p>
-    <div class ="chat-bottom">
-      <img src="img/smile1.png" style="margin-right:2px;"/>
-      <input id="message" class="message" type="text" placeholder="Message here.." ng-model="message" />
-      <img id="send" src="img/send.png" style="float:right;margin-top:6px;" ng-click="sendMessage(message, 'Abisoye')"/>
+        </div>
+        <question></question>
+        <div class = "col-sm-3 col-xs-2 timer-place">
+          <timer></timer>
+          <button ng-click="abandonGame()" type="button" class="btn btn-default btn-md exit">Leave Game</button>
+        </div>
+      </div>
     </div>
   </div>
+
+
+  <div class="row">
+    <div class = "col-sm-12 col-xs-12 players-cards">
+      <div class = "row">
+        <div class="col-sm-2">
+          <player players="game.players"
+          ng-hide="(game.state === 'game dissolved' || game.state === 'game ended')">
+          </player>
+        </div>
+        <div class="col-sm-7">
+          <answer></answer>
+        </div>
+        <div class="col-sm-3">
+          <chat ng-if="loadchild"></chat>
+        </div>
+      </div>
+    </div>
+  </div>
+  <info-modal ng-show="showModal"></info-modal>
 </div>
