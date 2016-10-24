@@ -22,7 +22,7 @@
           <li ng-show="show_history"><a href="#!/">GAME HISTORY</a></li>
           <li><a href="#!/">SHOP</a></li>
           <li ng-show="show_history" ng-click="signout()"><a href="#!/">SIGNOUT</a></li>
-          <li id="header-play"><a href="/#!/game" class="header-play">PLAY</a></li>
+          <li id="header-play"><a href="/#!/game" ng-click="redirectToGame()" class="header-play">PLAY</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

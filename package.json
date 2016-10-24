@@ -57,6 +57,7 @@
     "chai": "^3.5.0",
     "chai-http": "^3.0.0",
     "coveralls": "^2.11.14",
+    "dotenv": "^2.0.0",
     "eslint": "^3.6.1",
     "gulp": "^3.9.1",
     "gulp-bower": "0.0.13",

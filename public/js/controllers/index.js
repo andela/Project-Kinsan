@@ -16,14 +16,17 @@ angular.module('mean.system')
     var expiryDate = new Date();
     expiryDate.setDate(expiryDate.getDate() + 1);
     $cookies.putObject('_userData', $scope.userData, { expires: expiryDate }); 
-
-    $scope.redirectToGame();   
+    setGlobalData(data.data);   
   };
 
-  $scope.redirectToGame = function redirectToGame() {
+  function setGlobalData(userData) {
+    $scope.userData = userData;
     Global.user = $scope.userData.user;
     Global.authenticated = $scope.userData.authenticated;
     $scope.show_history = true;
+  }
+
+  $scope.redirectToGame = function redirectToGame() {
     $location.path('/game');
   };
 
@@ -62,8 +65,7 @@ angular.module('mean.system')
   function checkAuthStatus() {
     const userData = $cookies.getObject('_userData');
     if (userData) {
-      $scope.userData = userData;
-      $scope.redirectToGame();
+      setGlobalData(userData);
     }
   }
 
@@ -154,8 +156,8 @@ angular.module('mean.system')
   };
 
   $scope.googleSignIn = function() {
-    const facebook = hello('google');
-    facebook.login({ redirect_uri: 'http://localhost:3000/', scope: 'email' }).then( 
+    const google = hello('google');
+    google.login({ redirect_uri: 'http://project-kinsan-staging.herokuapp.com/', scope: 'email' }).then( 
       function() {
         hello('google').api('me').then(function(user) {
           const userDetails = {
