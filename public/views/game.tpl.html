@@ -1,14 +1,20 @@
-<div class = "container" ng-controller="GameController">
+<div class="container" ng-controller="GameController">
   <div class="row">
-    <div class = "col-sm-12 black-cards-bar">
-      <div class = "row">
-        <div class = "col-sm-3 col-xs-2 black-cards-deck-holder">
-          <div class = "game-cards deck-of-black-cards">
+    <div data-toggle="modal" data-target="#friendModal" class="buttonInvite" ng-click="friendsModal()">
+      <p>Invite Friends</p>
+    </div>
+    <div class="col-sm-12 black-cards-bar">
+      <div class="row">
+        <div class="col-sm-3 col-xs-2 black-cards-deck-holder">
+          <div class="game-cards deck-of-black-cards">
             CFH.IO
+          </div>
+          <div class="friendStatus">
+            <p ng-show="displayStatus" ng-bind-html="message"></p>
           </div>
         </div>
         <question></question>
-        <div class = "col-sm-3 col-xs-2 timer-place">
+        <div class="col-sm-3 col-xs-2 timer-place">
           <timer></timer>
           <button ng-click="abandonGame()" type="button" class="btn btn-default btn-md exit">Leave Game</button>
         </div>
@@ -18,11 +24,10 @@
 
 
   <div class="row">
-    <div class = "col-sm-12 col-xs-12 players-cards">
-      <div class = "row">
+    <div class="col-sm-12 col-xs-12 players-cards">
+      <div class="row">
         <div class="col-sm-2">
-          <player players="game.players"
-          ng-hide="(game.state === 'game dissolved' || game.state === 'game ended')">
+          <player players="game.players" ng-hide="(game.state === 'game dissolved' || game.state === 'game ended')">
           </player>
         </div>
         <div class="col-sm-7">
@@ -34,5 +39,6 @@
       </div>
     </div>
   </div>
+  <friend-modal></friend-modal>
   <info-modal ng-show="showModal"></info-modal>
 </div>

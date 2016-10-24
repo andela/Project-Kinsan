@@ -1,0 +1,26 @@
+<div class="modal fade" id="friendModal" aria-labelledby="friendModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Search for and Invite users to this game</h4>
+      </div>
+      <div class="modal-body">
+        <div class="searchFrom">
+          <div class="friendradio" ng-init="friendType=friendsList">
+
+            <input type="radio" ng-model="friendType" ng-value="friendsList" name="friendType" checked/>Only Friends
+            <input type="radio" ng-model="friendType" ng-value="UserList" name="friendType" />All Users
+          </div>
+          <input type="type" ng-model="searchFriends" placeholder="Enter friends name..." />
+          <hr />
+        </div>
+        <div class="searchFrom friends">
+          <p ng-model="searchresult">{{ searchresult }}</p>
+          <ul ng-repeat="friend in friendType | filter: searchFriends | limitTo : 5">
+            <li><span class="a" ng-click="inviteuser(friend.name)">Invite</span>{{ friend.name }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
